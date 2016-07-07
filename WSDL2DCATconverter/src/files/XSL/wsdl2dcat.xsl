@@ -57,22 +57,22 @@
         <xsl:text>&gt;&#10;</xsl:text>
         <xsl:text>&#x9;a dcat:Catalog ;&#10;</xsl:text>
         <xsl:text>&#x9;dc:title "The FSB web service catalogue" ;&#10;</xsl:text>
-        <xsl:text>&#x9;dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet.&#10;The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources.&#10;For more details about:&#10;- The FSB;&#10;- The access procedure to the Web Services;&#10;- The site navigation;&#10;Please consult the list of available Web Services by using the search tool or browse through the catalogue.&#10;Please note that this site contains only information and technical documents.&#10;The content of this site is only available in English."  </xsl:text>
-        <xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>
+        <xsl:text>&#x9;dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet. The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources. For more details about: - The FSB - The access procedure to the Web Services; - The site navigation; Please consult the list of available Web Services by using the search tool or browse through the catalogue. Please note that this site contains only information and technical documents. The content of this site is only available in English." ;&#10;</xsl:text>
+        <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
-        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;foaf:homepage &lt;</xsl:text>
         <xsl:value-of select="$homepage"/>
-        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;foaf:homepage &lt;</xsl:text>
         <xsl:value-of select="$homepage"/>
-        <xsl:text  >&gt; .&#10;</xsl:text>
-        <xsl:text>&#x9;dc:license ... ;&#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
+        <!--<xsl:text>&#x9;dc:license ... ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:publisher &lt;</xsl:text>
         <xsl:value-of select="$publisher"/>
-        <xsl:text  >&gt; .&#10;</xsl:text>
-        <xsl:text>&#x9;dc:modified ... ;&#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
+        <!--<xsl:text>&#x9;dc:modified ... ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dcat:dataset &lt;</xsl:text>
         <xsl:value-of select="$service"/>
         <xsl:text  >&gt; .&#10;</xsl:text>
@@ -92,14 +92,14 @@
         <xsl:text>&#x9;dc:identifier "</xsl:text>
         <xsl:value-of select="substring-after($service,$baseUri)"/>
         <xsl:text>" ;&#10;</xsl:text>
-        <xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>
-        <xsl:text>&#x9;dc:modified "..." ;&#10;</xsl:text>
+        <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
+        <!--<xsl:text>&#x9;dc:modified "..." ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
-        <xsl:text  >&gt; &#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;dc:theme &lt;</xsl:text>
         <xsl:value-of select="$theme"/>
-        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:distribution </xsl:text> 
         <xsl:variable name="distributionList">
             <xsl:apply-templates select="wsdl:message">
