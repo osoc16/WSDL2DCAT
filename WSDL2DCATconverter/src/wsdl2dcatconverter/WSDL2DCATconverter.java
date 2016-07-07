@@ -23,6 +23,7 @@ import javax.xml.transform.stream.StreamSource;
 /**
  *
  * @author Miguel
+ * @author Umut
  */
 public class WSDL2DCATconverter {
 
@@ -43,24 +44,12 @@ public class WSDL2DCATconverter {
         createDirectoryIfNeeded(inputDir);
         createDirectoryIfNeeded(outputDir);
 
-        int wsdlCount = 0;
-        int xsdCount = 0;
-
         File[] WSDLfiles = new File(inputDir).listFiles();
         File[] XSDfiles = new File(messageDescriptionDir).listFiles();
-        for (File file : WSDLfiles) {
-            String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
-            if (file.isFile() && ext.equals("wsdl")) {
-                wsdlCount++;
-            }
-        }
-
-        for (File file : XSDfiles) {
-            String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
-            if (file.isFile() && ext.equals("xsd")) {
-                xsdCount++;
-            }
-        }
+        
+        int wsdlCount = getCountOfType(WSDLfiles, "wsdl");
+        int xsdCount = getCountOfType(XSDfiles, "xsd");
+        
         if (wsdlCount == 0 || xsdCount == 0) {
             System.out.println("No WSDL file found in directory: " + inputDir);
             System.out.println("No XSD file found in directory: " + messageDescriptionDir);
@@ -69,28 +58,38 @@ public class WSDL2DCATconverter {
             System.out.println("Found " + xsdCount + " XSD file(s).");
             System.out.println("Conversion has been started.");
             for (File file : WSDLfiles) {
-                String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
-                if (file.isFile() && ext.equals("wsdl")) {
+                if (file.isFile() && getExtension(file).equals("wsdl")) {
                     // Convert each WSDL file to DCAT
-                    convertWSDLToDCAT(file);
+                    convertToDCAT(file, "wsdl");
                     // (TODO) Validate each DCAT file
                 }
-
             }
             for (File file : XSDfiles) {
-                String ext = file.getName().substring(file.getName().lastIndexOf(".") + 1);
-                if (file.isFile() && ext.equals("xsd")) {
-                    // Convert each WSDL file to DCAT
-                    convertXSDToDCAT(file);
+                if (file.isFile() && getExtension(file).equals("xsd")) {
+                    // Convert each XSD file to DCAT
+                    convertToDCAT(file, "xsd");
                     // (TODO) Validate each DCAT file
                 }
-
             }
             System.out.println("File(s) have been converted to DCAT.");
             System.out.println("DCAT files can be found in: \n" + outputDir);
         }
     }
+    
+    private static int getCountOfType(File[] files, String type){
+        int count = 0;
+        for (File file : files) {
+            if (file.isFile() && getExtension(file).equals(type)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
+    private static String getExtension(File file){
+        return file.getName().substring(file.getName().lastIndexOf(".") + 1);
+    }
+    
     private static void createDirectoryIfNeeded(String directoryName) {
         File theDir = new File(directoryName);
 
@@ -102,36 +101,15 @@ public class WSDL2DCATconverter {
         }
     }
 
-    private static void convertWSDLToDCAT(File WSDLfile) {
+
+    private static void convertToDCAT(File file, String fileType) {
         OutputStream DCATfile = null;
         try {
-            String DCATfileName = outputDir + "\\" + removeExtension(WSDLfile) + "_wsdl.dcat";
-            String StylesheetFileName = stylesheetDir + "\\" + "wsdl2dcat.xsl";
+            String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
+            String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
             TransformerFactory tFactory = TransformerFactory.newInstance();
             Source xslDoc = new StreamSource(StylesheetFileName);
-            Source xmlDoc = new StreamSource(WSDLfile);
-            DCATfile = new FileOutputStream(DCATfileName);
-            Transformer trasform = tFactory.newTransformer(xslDoc);
-            trasform.transform(xmlDoc, new StreamResult(DCATfile));
-            System.out.println("DEBUG: File should be made: " + DCATfileName);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(WSDL2DCATconverter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(WSDL2DCATconverter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(WSDL2DCATconverter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private static void convertXSDToDCAT(File XSDfile) {
-        OutputStream DCATfile = null;
-        try {
-            String DCATfileName = outputDir + "\\" + removeExtension(XSDfile) + "_xsd.dcat";
-            String StylesheetFileName = stylesheetDir + "\\" + "xsd2dcat.xsl";
-            TransformerFactory tFactory = TransformerFactory.newInstance();
-            Source xslDoc = new StreamSource(StylesheetFileName);
-            Source xmlDoc = new StreamSource(XSDfile);
+            Source xmlDoc = new StreamSource(file);
             DCATfile = new FileOutputStream(DCATfileName);
             Transformer trasform = tFactory.newTransformer(xslDoc);
             trasform.transform(xmlDoc, new StreamResult(DCATfile));
