@@ -95,15 +95,17 @@ public class WSDL2DCATconverter {
         OutputStream DCATfile = null;
         try {
             for (File file : files) {
-                String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
-                String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
-                TransformerFactory tFactory = TransformerFactory.newInstance();
-                Source xslDoc = new StreamSource(StylesheetFileName);
-                Source xmlDoc = new StreamSource(file);
-                DCATfile = new FileOutputStream(DCATfileName);
-                Transformer trasform = tFactory.newTransformer(xslDoc);
-                trasform.transform(xmlDoc, new StreamResult(DCATfile));
-                System.out.println("DEBUG: File should be made: " + DCATfileName);
+                if (file.isFile() && getExtension(file).equals(fileType)) {
+                    String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
+                    String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
+                    TransformerFactory tFactory = TransformerFactory.newInstance();
+                    Source xslDoc = new StreamSource(StylesheetFileName);
+                    Source xmlDoc = new StreamSource(file);
+                    DCATfile = new FileOutputStream(DCATfileName);
+                    Transformer trasform = tFactory.newTransformer(xslDoc);
+                    trasform.transform(xmlDoc, new StreamResult(DCATfile));
+                    System.out.println("DEBUG: File should be made: " + DCATfileName);
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(WSDL2DCATconverter.class.getName()).log(Level.SEVERE, null, ex);
