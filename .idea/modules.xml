@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WSDL2DCAT.iml" filepath="$PROJECT_DIR$/WSDL2DCAT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Fedict.iml" filepath="$PROJECT_DIR$/.idea/Fedict.iml" />
     </modules>
   </component>
 </project>
