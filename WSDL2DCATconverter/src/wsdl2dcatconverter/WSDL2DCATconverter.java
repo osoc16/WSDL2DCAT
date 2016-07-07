@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Miguel
+ * @author Umut open Summer of code 2016
  */
 package wsdl2dcatconverter;
 
@@ -21,9 +20,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- *
- * @author Miguel
- * @author Umut
+ * Converts WSDL to DCAT using XSL Transformation (XSLT)
  */
 public class WSDL2DCATconverter {
 
@@ -34,9 +31,13 @@ public class WSDL2DCATconverter {
 
     InputStream is = null;
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("WSDL2DCAT tool");
-        String currentPath = System.getProperty("user.dir")+"\\src\\files";
+        String currentPath = System.getProperty("user.dir") + "\\src\\files";
         inputDir = currentPath + "\\WSDL\\";
         outputDir = currentPath + "\\DCAT\\";
         stylesheetDir = currentPath + "\\XSL\\";
@@ -46,10 +47,10 @@ public class WSDL2DCATconverter {
 
         File[] WSDLfiles = new File(inputDir).listFiles();
         File[] XSDfiles = new File(messageDescriptionDir).listFiles();
-        
+
         int wsdlCount = getCountOfType(WSDLfiles, "wsdl");
         int xsdCount = getCountOfType(XSDfiles, "xsd");
-        
+
         if (wsdlCount == 0 || xsdCount == 0) {
             System.out.println("No WSDL file found in directory: " + inputDir);
             System.out.println("No XSD file found in directory: " + messageDescriptionDir);
@@ -65,8 +66,15 @@ public class WSDL2DCATconverter {
             System.out.println("DCAT files can be found in: \n" + outputDir);
         }
     }
-    
-    private static int getCountOfType(File[] files, String type){
+
+    /**
+     * Counts the amount of files according to given type
+     *
+     * @param files Files to work with
+     * @param type The type of files
+     * @return Amount of files according to type
+     */
+    private static int getCountOfType(File[] files, String type) {
         int count = 0;
         for (File file : files) {
             if (file.isFile() && getExtension(file).equals(type)) {
@@ -76,10 +84,21 @@ public class WSDL2DCATconverter {
         return count;
     }
 
-    private static String getExtension(File file){
+    /**
+     * Gets the extension from a file
+     *
+     * @param file File to work with
+     * @return Extension of the file
+     */
+    private static String getExtension(File file) {
         return file.getName().substring(file.getName().lastIndexOf(".") + 1);
     }
-    
+
+    /**
+     * Creates directory if the directory doesn't exist
+     *
+     * @param directoryName Directory name to check
+     */
     private static void createDirectoryIfNeeded(String directoryName) {
         File theDir = new File(directoryName);
 
@@ -91,6 +110,12 @@ public class WSDL2DCATconverter {
         }
     }
 
+    /**
+     * Converts collection of files to DCAT files
+     *
+     * @param files Files to work with
+     * @param fileType The type of files
+     */
     private static void convertToDCAT(File[] files, String fileType) {
         OutputStream DCATfile = null;
         try {
@@ -117,6 +142,12 @@ public class WSDL2DCATconverter {
 
     }
 
+    /**
+     * Removes extension from a file
+     *
+     * @param file File to work with
+     * @return Name of the file without the extension
+     */
     private static String removeExtension(File file) {
         String fname = file.getName();
         int pos = fname.lastIndexOf(".");
