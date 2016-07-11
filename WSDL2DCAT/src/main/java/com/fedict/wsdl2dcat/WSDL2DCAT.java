@@ -125,7 +125,7 @@ public class WSDL2DCAT {
                 if (file.isFile() && getExtension(file).equals(fileType)) {
                     String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
                     String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
-                    TransformerFactory tFactory = TransformerFactory.newInstance();
+                    TransformerFactory tFactory = new net.sf.saxon.TransformerFactoryImpl();
                     Source xslDoc = new StreamSource(StylesheetFileName);
                     Source xmlDoc = new StreamSource(file);
                     DCATfile = new FileOutputStream(DCATfileName);
