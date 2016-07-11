@@ -22,7 +22,8 @@
         <xsl:variable name="dc" select="'http://purl.org/dc/terms/'" />
         <xsl:variable name="foaf" select="'http://xmlns.com/foaf/0.1/'" />
         <xsl:variable name="rdfs" select="'http://www.w3.org/2000/01/rdf-schema#'" />
-        
+        <xsl:variable name="languageTag" select="'@en'" />
+
         <!--Prefixes-->
         <xsl:text>@prefix dcat: &lt;</xsl:text>
         <xsl:value-of select="$dcat"/>
@@ -42,6 +43,8 @@
         <xsl:variable name="distribution" select="namespace::mes" />
         <xsl:apply-templates select="xs:element">
             <xsl:with-param name="distribution" select="$distribution" />
+            <xsl:with-param name="languageTag" select="$languageTag" />
+
         </xsl:apply-templates>
         
     </xsl:template>
@@ -50,14 +53,17 @@
 
     <xsl:template match="xs:element">
         <xsl:param name = "distribution" />
+        <xsl:param name = "languageTag" />
         <xsl:text>&lt;</xsl:text>  
         <xsl:value-of select="concat($distribution,'/',@name)" /> 
         <xsl:text>&gt;</xsl:text>    
         <xsl:text>
          &#x9;a dcat:Distribution ;&#10;&#x9;dc:description "
         </xsl:text>
-        <xsl:apply-templates select="xs:annotation/xs:documentation" />   
-        <xsl:text>";&#10;</xsl:text>              
+        <xsl:apply-templates select="xs:annotation/xs:documentation" />        
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>     
     </xsl:template>
     
     <xsl:template match="xs:annotation/xs:documentation">
