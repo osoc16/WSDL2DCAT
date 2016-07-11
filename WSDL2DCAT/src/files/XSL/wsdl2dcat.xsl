@@ -32,10 +32,10 @@
         <xsl:variable name="languageTag" select="'@en'" />
         
         <xsl:variable name="baseUri" select="'http://fsb.belgium.be/'" />
-        <xsl:variable name="language" select="'http://lexvo.org/id/iso639-3/eng'" />
+            <xsl:variable name="language" select="'http://publications.europa.eu/resource/authority/language/ENG'" />
         <xsl:variable name="homepage" select="'http://registry.fsb.belgium.be/web/service-catalog/partner/homepage'" />
         <xsl:variable name="publisher" select="'https://opencorporates.com/companies/be/0367302178'" />
-        <xsl:variable name="theme" select="'http://ns.thedatatank.com/dcat/themes#Government'" />
+        <xsl:variable name="theme" select="'http://publications.europa.eu/resource/authority/data-theme/GOVE'" />
 
         <!--Prefixes-->
         <xsl:text>@prefix dcat: &lt;</xsl:text>
