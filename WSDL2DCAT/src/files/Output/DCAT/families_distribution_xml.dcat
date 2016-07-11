@@ -1,0 +1,392 @@
+<http://fsb.rovin.be/service/S189-AddressHistoryService>
+	a dcat:Distribution ;
+	dc:description "Web service delivering the history of address of a person."@en;
+
+<http://fsb.rovin.be/service/S190-HouseholdService>
+	a dcat:Distribution ;
+	dc:description "Web service to obtain information regarding the household situation of a person."@en;
+
+<http://fsb.rovin.be/service/S038-InternetGamingValidationService>
+	a dcat:Distribution ;
+	dc:description "Web service which checks if a person is minimum 18 years old and lives in Belgium."@en;
+
+<http://fsb.rovin.be/service/S197-NRProxyService>
+	a dcat:Distribution ;
+	dc:description "De Nrproxyservice geeft de mogelijk om IT's door te geven die wij niet beschikbaar stellen in onze standaard PersonService webservices"@en;
+
+<http://fsb.rovin.be/service/S196-PersonHistoryService>
+	a dcat:Distribution ;
+	dc:description "De PersonHistoryservice gives historic data of personnames, civilstate and nationality"@en;
+
+<http://fsb.rovin.be/service/S192-VerifyPersonNameService>
+	a dcat:Distribution ;
+	dc:description "Web service which returns 'True' or 'False' when input of national number, first name and last name of a person correspond."@en;
+
+<http://fsb.rovin.be/service/S035-GetPersonService>
+	a dcat:Distribution ;
+	dc:description "Web service which orchestrates the retrieval of person information from the RRN and the BCS/KSZ authentic sources."@en;
+
+<http://fsb.rovin.be/service/S037-SearchPersonService>
+	a dcat:Distribution ;
+	dc:description "Web service which offers two operations searchPersonByName and searchPersonByAddress. The service returns basic person information."@en;
+
+<http://fsb.rovin.be/service/S151-ManagePersonService>
+	a dcat:Distribution ;
+	dc:description "Web service which enables the consumer to retrieve and add or update basic person information in the BCSS/KSZ registry."@en;
+
+<http://fsb.rovin.be/service/S234-SSRProxyService>
+	a dcat:Distribution ;
+	dc:description "De SSRproxyservice geeft de mogelijk om bispersonen aan te maken en om bis en RAD (enkel adres) personen te updaten"@en;
+
+<http://fsb.rovin.be/service/S191-PictureService>
+	a dcat:Distribution ;
+	dc:description "Web service which delivers the eID photo of a person."@en;
+
+<http://fsb.rovin.be/service/S235-AuthorisationFileService>
+	a dcat:Distribution ;
+	dc:description "Web service to manage authorisation files for mobile trade and fairs."@en;
+
+<http://fsb.rovin.be/service/S236-CertificateService>
+	a dcat:Distribution ;
+	dc:description "Web service to manage certifications which provide authorization for mobile trade and fairs."@en;
+
+<http://fsb.rovin.be/service/S237-ListService>
+	a dcat:Distribution ;
+	dc:description "Web service to retrieve information regarding authorizations for mobile trade and fairs."@en;
+
+<http://fsb.rovin.be/service/S040-WSConsultAgentEnterpriseService>
+	a dcat:Distribution ;
+	dc:description "opzoeken van wettelijke vertegenwoordiger van een onderneming"@en;
+
+<http://fsb.rovin.be/service/S042-WSConsultAttestService>
+	a dcat:Distribution ;
+	dc:description "raadplegen van attesten (= bewijzen van ondernemersvaardigheid om een bepaalde activiteit te kunnen uitoefenen)"@en;
+
+<http://fsb.rovin.be/service/S043-WSConsultKBOService>
+	a dcat:Distribution ;
+	dc:description "raadplegen van ondernemingsgegevens in de Kruispuntbank van Ondernemingen (KBO)"@en;
+
+<http://fsb.rovin.be/service/S048-WSConsultTAPService>
+	a dcat:Distribution ;
+	dc:description "raadplegen van de huidige situatie van de toelatingsaanvragen van een onderneming of een vestigingseenheid in de TAP (Toelatingen Autorisatie Procedure) databank"@en;
+
+<http://fsb.rovin.be/service/S044-WSReportKBOService>
+	a dcat:Distribution ;
+	dc:description "opvragen van rapporten in de KBO"@en;
+
+<http://fsb.rovin.be/service/S049-WSReportTAPService>
+	a dcat:Distribution ;
+	dc:description "opvragen van overzicht van de lopende toelatingsaanvragen van één onderneming of één vestigingseenheid op een bepaald tijdstip in de TAP (Toelatingen Autorisatie Procedure) databank"@en;
+
+<http://fsb.rovin.be/service/S045-WSStatusKBOService>
+	a dcat:Distribution ;
+	dc:description "nagaan van de beschikbaarheid van de KBO services"@en;
+
+<http://fsb.rovin.be/service/S047-WSUpdateAttestService>
+	a dcat:Distribution ;
+	dc:description "creëren en aanpassen van attesten (= bewijzen van ondernemersvaardigheid om een bepaalde activiteit te kunnen uitoefenen)"@en;
+
+<http://fsb.rovin.be/service/S051-WSUpdateKBOService>
+	a dcat:Distribution ;
+	dc:description "creëren en aanpassen van ondernemingsgegevens in de KBO"@en;
+
+<http://fsb.rovin.be/service/S050-WSUpdateTAPService>
+	a dcat:Distribution ;
+	dc:description "creëren, wijzigen of annuleren van toelatingsaanvragen van één onderneming of één vestigingseenheid in de  TAP (Toelatingen Autorisatie Procedure) databank"@en;
+
+<http://fsb.rovin.be/service/S095-PoliceBackOfficeService>
+	a dcat:Distribution ;
+	dc:description "backend politie om neerleggen van een klacht te registreren"@en;
+
+<http://fsb.rovin.be/service/S096-PoliceReferenceTableUpdateService>
+	a dcat:Distribution ;
+	dc:description "uitwisselen van info tussen front- en back-end van Aline tijdens de update van de referentietabellen van de politie"@en;
+
+<http://fsb.rovin.be/service/S222-AlineCasBackEndService>
+	a dcat:Distribution ;
+	dc:description "beheer van aangiften van alarmsystemen door alarmcentrales"@en;
+
+<http://fsb.rovin.be/service/S093-AlinePublicBackEndService>
+	a dcat:Distribution ;
+	dc:description "beheer van aangiften van alarmsystemen"@en;
+
+<http://fsb.rovin.be/service/S159-CitizenStatusService>
+	a dcat:Distribution ;
+	dc:description "Webservice die bevestigt of de aangelogde persoon recht heeft op een sociaal tarief"@en;
+
+<http://fsb.rovin.be/service/S223-SoctarService>
+	a dcat:Distribution ;
+	dc:description "Consulteren of een persoon recht heeft op Sociaal energie tarief"@en;
+
+<http://fsb.rovin.be/service/S097-CityService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor eBirth waarop de gemeenten zich connecteren"@en;
+
+<http://fsb.rovin.be/service/S147-HospitalService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor eBirth waarop de gegevens van de ziekenhuizen via eHealt op terecht komen"@en;
+
+<http://fsb.rovin.be/service/S148-InternalService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor eBirth"@en;
+
+<http://fsb.rovin.be/service/S149-ManageService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor eBirth"@en;
+
+<http://fsb.rovin.be/service/S240-CCFFSubscriber>
+	a dcat:Distribution ;
+	dc:description "Fod Finance subscriber service"@en;
+
+<http://fsb.rovin.be/service/S238-DebtService>
+	a dcat:Distribution ;
+	dc:description "Web service to send debt notifications to the FourthWay project"@en;
+
+<http://fsb.rovin.be/service/S239-TransactionService>
+	a dcat:Distribution ;
+	dc:description "Web service to send a notice to the FourthWay project"@en;
+
+<http://fsb.rovin.be/service/S241-FRNBSubscriber>
+	a dcat:Distribution ;
+	dc:description "FRNB subscriver service"@en;
+
+<http://fsb.rovin.be/service/S242-BCSSSubscriber>
+	a dcat:Distribution ;
+	dc:description "KSZ subscriber service"@en;
+
+<http://fsb.rovin.be/service/S099-DebtInfoProvider>
+	a dcat:Distribution ;
+	dc:description "Web service to send debt notifications to the FourthWay project"@en;
+
+<http://fsb.rovin.be/service/S266-ESUCECACSubscriber>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S100-NoticeRequester>
+	a dcat:Distribution ;
+	dc:description "Web service to send a notice to the FourthWay project"@en;
+
+<http://fsb.rovin.be/service/S152-ActivityService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S154-ProcedureService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S156-SectorService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S153-AddressService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S155-ProductService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S138-EchoService>
+	a dcat:Distribution ;
+	dc:description "FSB service om consumer en provider  connectietesten zonder WS-security mogelijk te maken"@en;
+
+<http://fsb.rovin.be/service/S243-SecuredEchoService>
+	a dcat:Distribution ;
+	dc:description "FSB service om consumer en provider  connectietesten met WS-security mogelijk te maken"@en;
+
+<http://fsb.rovin.be/service/S220-MoniteurEDepotCallbackService>
+	a dcat:Distribution ;
+	dc:description "Webservice for Staatsblad  to reply on eDepot messages (confirmation of publication of the Deed)"@en;
+
+<http://fsb.rovin.be/service/S140-MoniteurProxyService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor FRNB om ondernemingen te publiceren met als provider Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S219-JusticeEDepotCallbackService>
+	a dcat:Distribution ;
+	dc:description "Webservice for Justice to reply on eDepot messages (prevalidation of Deed OK and confirmation data Deed received)"@en;
+
+<http://fsb.rovin.be/service/S142-JusticeProxyService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor FRNB om ondernemingen aan te maken met als provider FOD justitie en Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S143-EDepotCreateService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor FRNB om ondernemingen aan te maken met als providers KBO, FOD justitie en Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S144-EDepotUpdateService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor FRNB om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S194-EvzwNotificationService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor Fod Justitie (eGriffie) om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S145-CredocNotificationService>
+	a dcat:Distribution ;
+	dc:description "FSB service voor FRNB om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad"@en;
+
+<http://fsb.rovin.be/service/S231-AttributeAuthorityService>
+	a dcat:Distribution ;
+	dc:description "Service to consult eHealth attributes of a person or organisation"@en;
+
+<http://fsb.rovin.be/service/S232-AttributeService>
+	a dcat:Distribution ;
+	dc:description "Service to consult IAM attributes of a person or organisation"@en;
+
+<http://fsb.rovin.be/service/S233-OrganizationPublicationService>
+	a dcat:Distribution ;
+	dc:description "Service to consult departments of public organisations"@en;
+
+<http://fsb.rovin.be/service/S160-SocialSecurityUserManagementService>
+	a dcat:Distribution ;
+	dc:description "Webservice die de mogelijkheid geeft om rollen op te vragen bij de KSZ. Wordt bijvoorbeeld gebruikt om aan OCMW's toegang te verlenen tot de Digiflow applicatie"@en;
+
+<http://fsb.rovin.be/service/S224-FlemishRegionUserManagementService>
+	a dcat:Distribution ;
+	dc:description "Flemisch Regional Usermangement Service gebruikt door FAS voor het opvragen van de rollen van de vlaamse ambtenaren."@en;
+
+<http://fsb.rovin.be/service/S179-AttestService>
+	a dcat:Distribution ;
+	dc:description "Web service to obtain official attests from SPF Finance / FOD Financiën (Fiscal Attest and VAT Status Attest, BCE/KBO (Attest non-bankrupcy), ONSS/RSZ (Employer Contribution Balance Attest), NBB (Annual Account Attest)"@en;
+
+<http://fsb.rovin.be/service/S181-SocialDebtService>
+	a dcat:Distribution ;
+	dc:description "Web service to obtain official Social Debt Attest from RSZ/ONSS"@en;
+
+<http://fsb.rovin.be/service/S180-FiscalDebtService>
+	a dcat:Distribution ;
+	dc:description "Web service to obtain official Fiscal Attest from SPF Finance / FOD Financiën."@en;
+
+<http://fsb.rovin.be/service/S188-BankAccountExtractsService>
+	a dcat:Distribution ;
+	dc:description "Web service to retrieve references of the balance sheets of a Belgian company from the enterprise number."@en;
+
+<http://fsb.rovin.be/service/S136-NationalExecutionMeasureNotificationService>
+	a dcat:Distribution ;
+	dc:description ""@en;
+
+<http://fsb.rovin.be/service/S244-LRITEndpointService>
+	a dcat:Distribution ;
+	dc:description "Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers."@en;
+
+<http://fsb.rovin.be/service/S185-MIKPrivateService>
+	a dcat:Distribution ;
+	dc:description "Web service to retrieve new ships data and GPS location information from EMSA (European Maritime Safety Agency) only for MIK."@en;
+
+<http://fsb.rovin.be/service/S186-MikPublicService>
+	a dcat:Distribution ;
+	dc:description "Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows consumers to manage their subscription by communicating with MIK or to request ad-hoc information."@en;
+
+<http://fsb.rovin.be/service/S187-MIKResponseService>
+	a dcat:Distribution ;
+	dc:description "Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers."@en;
+
+<http://fsb.rovin.be/service/S150-CodageService>
+	a dcat:Distribution ;
+	dc:description "Web service from eHealth to encode medical forms."@en;
+
+<http://fsb.rovin.be/service/S211-CountryService>
+	a dcat:Distribution ;
+	dc:description "Webservice for mapping CountryCodes , Nationalities and places (ISO, NIS)"@en;
+
+<http://fsb.rovin.be/service/S217-CustomerService>
+	a dcat:Distribution ;
+	dc:description "Webservice for Governement Organisations to confirm receipt of invoice supplier"@en;
+
+<http://fsb.rovin.be/service/S218-SupplierService>
+	a dcat:Distribution ;
+	dc:description "Webservices for suppliers to sent invoice digitaly to government organisations"@en;
+
+<http://fsb.rovin.be/service/S229-CapacityService>
+	a dcat:Distribution ;
+	dc:description "Service to consult capacities of organisation or person for a chosen domain. Today only HealthCare Domain"@en;
+
+<http://fsb.rovin.be/service/S230-MandateService>
+	a dcat:Distribution ;
+	dc:description "Service to consult Mandate of organisation or person for a chosen domain. Today only HealthCare Domain"@en;
+
+<http://fsb.rovin.be/service/S183-SocialSecurityAccessManagmentService>
+	a dcat:Distribution ;
+	dc:description "Web service which consults the User Management of ONSS/RSZ to retrieve information about  which organization is represented by a person or  who is representing an organization."@en;
+
+<http://fsb.rovin.be/service/S246-PTS_CBS2Mob>
+	a dcat:Distribution ;
+	dc:description "Webservices to send information from Belgian Ports to ISPS (Mobiliteit)"@en;
+
+<http://fsb.rovin.be/service/S247-PTS_Mob2CBS>
+	a dcat:Distribution ;
+	dc:description "Webservices to send clearance from ISPS to Belgian ports"@en;
+
+<http://fsb.rovin.be/service/S248-PTS_CBS2FedPol>
+	a dcat:Distribution ;
+	dc:description "Webservices to send information from Belgian Ports to AquaTask (FedPol)"@en;
+
+<http://fsb.rovin.be/service/S249-PTS_FedPol2CBS>
+	a dcat:Distribution ;
+	dc:description "Webservices to send clearance from AquaTask to Belgian Ports"@en;
+
+<http://fsb.rovin.be/service/S250-PTS_CBS2VVVL>
+	a dcat:Distribution ;
+	dc:description "Webservices to send information from Belgian Ports to Saniport"@en;
+
+<http://fsb.rovin.be/service/S251-PTS_VVVL2CBS>
+	a dcat:Distribution ;
+	dc:description "Webservices to send clearance from Saniport to Belgian Ports"@en;
+
+<http://fsb.rovin.be/service/S253-PTS_AllowParticipation>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S254-PTS_Book>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S255-PTS_GetOrgList>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S256PTS_GetPDetailsRRN>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S257-PTS_GetSessions>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S258-PTS_KeepMeInformed>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S259-PTS_SetPDetails>
+	a dcat:Distribution ;
+	dc:description "Webservice to consult, register and follow up courses of OFO-IFA"@en;
+
+<http://fsb.rovin.be/service/S262-ePVSocSecDocumentService>
+	a dcat:Distribution ;
+	dc:description "Webservice voor het opvragen van de ePV 's van de sociale zekerheid"@en;
+
+<http://fsb.rovin.be/service/S261-CriminalRecordService>
+	a dcat:Distribution ;
+	dc:description "Webservice voor het consulteren van het Strafregister"@en;
+
+<http://fsb.rovin.be/service/S264-ARZAService>
+	a dcat:Distribution ;
+	dc:description "Webservice voor het opvragen van de sociale bijdragen van een betrokken zelfstandige"@en;
+
+<http://fsb.rovin.be/service/S268-LEDService>
+	a dcat:Distribution ;
+	dc:description "Webservice voor consulteren van de Vlaamse Leer en Ervaringen Database"@en;
+
+<http://fsb.rovin.be/service/S270-CarPassService>
+	a dcat:Distribution ;
+	dc:description "Ophalen gegevens kilometerstand bij Car-Pass vzw"@en;
+
+<http://fsb.rovin.be/service/S271-CarPassEUService>
+	a dcat:Distribution ;
+	dc:description "Ophalen gegevens kilometerstand bij Europese partnerlanden (via FOD Mobiliteit)"@en;
+
+<http://fsb.rovin.be/service/VehicleRegistrationService>
+	a dcat:Distribution ;
+	dc:description "Consultation titular of vehicle"@en;
+

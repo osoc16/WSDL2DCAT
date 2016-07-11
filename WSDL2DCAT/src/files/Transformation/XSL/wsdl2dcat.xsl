@@ -12,7 +12,7 @@
                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 xmlns:str="http://exslt.org/strings"
-                  xmlns:dtyf="http://www.datypic.com/functions"
+                xmlns:dtyf="http://www.datypic.com/functions"
 >
     <xsl:output method="text" />
 
@@ -21,7 +21,7 @@
     -->
     
     <xsl:template match="wsdl:definitions">
-        <xsl:variable name="catalog" select="namespace::fsb" />
+        <xsl:variable name="catalog" select="'http://fsb.rovin.be'" />
         <xsl:variable name="service" select="namespace::tns" />
         <xsl:variable name="distribution" select="namespace::mes" />
         
@@ -32,7 +32,7 @@
         <xsl:variable name="languageTag" select="'@en'" />
         
         <xsl:variable name="baseUri" select="'http://fsb.belgium.be/'" />
-            <xsl:variable name="language" select="'http://publications.europa.eu/resource/authority/language/ENG'" />
+        <xsl:variable name="language" select="'http://publications.europa.eu/resource/authority/language/ENG'" />
         <xsl:variable name="homepage" select="'http://registry.fsb.belgium.be/web/service-catalog/partner/homepage'" />
         <xsl:variable name="publisher" select="'https://opencorporates.com/companies/be/0367302178'" />
         <xsl:variable name="theme" select="'http://publications.europa.eu/resource/authority/data-theme/GOVE'" />
@@ -57,8 +57,12 @@
         <xsl:value-of select="$catalog"/>
         <xsl:text>&gt;&#10;</xsl:text>
         <xsl:text>&#x9;a dcat:Catalog ;&#10;</xsl:text>
-        <xsl:text>&#x9;dc:title "The FSB web service catalogue"</xsl:text><xsl:value-of select="$languageTag"/> <xsl:text>;&#10;</xsl:text>
-        <xsl:text>&#x9;dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet. The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources. For more details about: - The FSB - The access procedure to the Web Services; - The site navigation; Please consult the list of available Web Services by using the search tool or browse through the catalogue. Please note that this site contains only information and technical documents. The content of this site is only available in English."</xsl:text><xsl:value-of select="$languageTag"/> <xsl:text>;&#10;</xsl:text>
+        <xsl:text>&#x9;dc:title "The FSB web service catalogue"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>
+        <xsl:text>&#x9;dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet. The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources. For more details about: - The FSB - The access procedure to the Web Services; - The site navigation; Please consult the list of available Web Services by using the search tool or browse through the catalogue. Please note that this site contains only information and technical documents. The content of this site is only available in English."</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>
         <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
@@ -83,13 +87,19 @@
         <xsl:text>&#x9;a dcat:Dataset ;&#10;</xsl:text>
         <xsl:text>&#x9;dc:title "Service name </xsl:text>
         <xsl:value-of select="$service"/>
-        <xsl:text>"</xsl:text><xsl:value-of select="$languageTag"/> <xsl:text>;&#10;</xsl:text>
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>
         <xsl:text>&#x9;dc:description "This is a fedict webservice named: </xsl:text>
         <xsl:value-of select="$service"/>
-        <xsl:text>"</xsl:text><xsl:value-of select="$languageTag"/> <xsl:text>;&#10;</xsl:text>
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>
         <xsl:text>&#x9;dc:identifier "</xsl:text>
         <xsl:value-of select="substring-after($service,$baseUri)"/>
-        <xsl:text>"</xsl:text><xsl:value-of select="$languageTag"/> <xsl:text>;&#10;</xsl:text>
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text>;&#10;</xsl:text>
         <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
         <!--<xsl:text>&#x9;dc:modified "..." ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
@@ -99,12 +109,8 @@
         <xsl:value-of select="$theme"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:distribution </xsl:text> 
-        <xsl:variable name="distributionList">
             <xsl:apply-templates select="wsdl:message">
-                <xsl:with-param name="distribution" select="$distribution" />
             </xsl:apply-templates>       
-        </xsl:variable>
-        <xsl:value-of select="$distributionList"/>
         <xsl:text> .&#10;</xsl:text>
         
  
@@ -115,7 +121,7 @@
     <xsl:template match="wsdl:message">
         <xsl:param name = "distribution" />
         <xsl:if test="not(position()=1)">
-            <xsl:text>,</xsl:text>
+            <xsl:text>, </xsl:text>
         </xsl:if>
         
         <xsl:text> &lt;</xsl:text>
