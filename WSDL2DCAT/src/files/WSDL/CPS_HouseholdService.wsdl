@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://fsb.belgium.be/householdService/v1_00" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:mes="http://fsb.belgium.be/householdService/messages/v1_00" 
+	xmlns:fsb="http://fsb.belgium.be/v1_01" 
+	targetNamespace="http://fsb.belgium.be/householdService/v1_00">
+
+	<wsdl:documentation>version 1.00</wsdl:documentation>
+        
+        <!--reeds beschreven via url-->
+	<wsdl:types>
+		<xsd:schema xmlns:tns="http://fsb.belgium.be/householdService/v1_00" targetNamespace="http://fsb.belgium.be/householdService/v1_00">
+			<xsd:import namespace="http://fsb.belgium.be/householdService/messages/v1_00" schemaLocation="../messages/v1_00/householdServiceMessages.xsd" />
+			<xsd:import namespace="http://fsb.belgium.be/v1_01" schemaLocation="../../../v1_01/fsb.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="headerRequest">
+		<wsdl:part name="header" element="fsb:SyncHeader" />
+	</wsdl:message>
+
+	<wsdl:message name="headerResponse">
+		<wsdl:part name="header" element="fsb:SyncResponseHeader" />
+	</wsdl:message>
+
+	<wsdl:message name="getHeadOfHouseholdRequest">
+		<wsdl:part name="body" element="mes:getHeadOfHouseholdRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="getHeadOfHouseholdResponse">
+		<wsdl:part name="body" element="mes:getHeadOfHouseholdResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="isHeadOfHouseholdRequest">
+		<wsdl:part name="body" element="mes:isHeadOfHouseholdRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="isHeadOfHouseholdResponse">
+		<wsdl:part name="body" element="mes:isHeadOfHouseholdResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getHouseholdRequest">
+		<wsdl:part name="body" element="mes:getHouseholdRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="getHouseholdResponse">
+		<wsdl:part name="body" element="mes:getHouseholdResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="getHouseholdEventsRequest">
+		<wsdl:part name="body" element="mes:getHouseholdEventsRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="getHouseholdEventsResponse">
+		<wsdl:part name="body" element="mes:getHouseholdEventsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="getNumberOfHouseholdMembersRequest">
+		<wsdl:part name="body" element="mes:getNumberOfHouseholdMembersRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="getNumberOfHouseholdMembersResponse">
+		<wsdl:part name="body" element="mes:getNumberOfHouseholdMembersResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="householdServicePortType">
+		<wsdl:operation name="getHeadOfHousehold">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:getHeadOfHouseholdRequest" />
+			<wsdl:output message="tns:getHeadOfHouseholdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="isHeadOfHousehold">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:isHeadOfHouseholdRequest" />
+			<wsdl:output message="tns:isHeadOfHouseholdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getHousehold">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:getHouseholdRequest" />
+			<wsdl:output message="tns:getHouseholdResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getHouseholdEvents">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:getHouseholdEventsRequest" />
+			<wsdl:output message="tns:getHouseholdEventsResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getNumberOfHouseholdMembers">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:getNumberOfHouseholdMembersRequest" />
+			<wsdl:output message="tns:getNumberOfHouseholdMembersResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="householdServiceSoapBinding" type="tns:householdServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getHeadOfHousehold">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="isHeadOfHousehold">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getHousehold">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getHouseholdEvents">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getNumberOfHouseholdMembers">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="householdService">
+		<wsdl:port binding="tns:householdServiceSoapBinding" name="householdServicePort">
+			<soap:address location="https://fsb.services.pr.belgium.be/1.00/CPS_HouseholdService" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

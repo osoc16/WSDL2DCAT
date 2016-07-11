@@ -1,15 +1,17 @@
-Webservice Family;Webservice;Backend;Description;Uri
-S034-PersonServices;S189-AddressHistoryService;IBZ-RRN;Web service delivering the history of address of a person.;testUri
-S034-PersonServices;S190-HouseholdService;IBZ-RRN;Web service to obtain information regarding the household situation of a person.;
+Webservice Family;Webservice;Backend;Description;Uri-Webservice (targetNamespace webservice)
+S034-PersonServices;S189-AddressHistoryService;IBZ-RRN;Web service delivering the history of address of a person.;http://fsb.belgium.be/addressHistoryService/v1_00
+S034-PersonServices;S190-HouseholdService;IBZ-RRN;Web service to obtain information regarding the household situation of a person.;http://fsb.belgium.be/householdService/v1_00
 S034-PersonServices;S038-InternetGamingValidationService;IBZ-RRN;"Web service which checks if a person is minimum 18 years old and lives in Belgium.
-";
+";" 
+
+http://fsb.belgium.be/InternetGamingValidationService/v1_00  "
 S034-PersonServices;S197-NRProxyService;IBZ-RRN;De Nrproxyservice geeft de mogelijk om IT's door te geven die wij niet beschikbaar stellen in onze standaard PersonService webservices;
-S034-PersonServices;S196-PersonHistoryService;IBZ-RRN;De PersonHistoryservice gives historic data of personnames, civilstate and nationality;
-S034-PersonServices;S192-VerifyPersonNameService;IBZ-RRN / KSZ;Web service which returns 'True' or 'False' when input of national number, first name and last name of a person correspond.;
+S034-PersonServices;S196-PersonHistoryService;IBZ-RRN;De PersonHistoryservice gives historic data of personnames, civilstate and nationality;http://fsb.belgium.be/personHistoryService/v1_00
+S034-PersonServices;S192-VerifyPersonNameService;IBZ-RRN / KSZ;Web service which returns 'True' or 'False' when input of national number, first name and last name of a person correspond.;http://fsb.belgium.be/verifyPersonNameService/v1_00
 S034-PersonServices;S035-GetPersonService;IBZ-RRN / KSZ;"Web service which orchestrates the retrieval of person information from the RRN and the BCS/KSZ authentic sources.
-";
+";http://fsb.belgium.be/getPersonService/v2_00
 S034-PersonServices;S037-SearchPersonService;IBZ-RRN / KSZ;"Web service which offers two operations searchPersonByName and searchPersonByAddress. The service returns basic person information.
-";
+";http://fsb.belgium.be/searchPersonService/v2_00
 S034-PersonServices;S151-ManagePersonService;KSZ;Web service which enables the consumer to retrieve and add or update basic person information in the BCSS/KSZ registry.;
 S034-PersonServices;S234-SSRProxyService;KSZ;De SSRproxyservice geeft de mogelijk om bispersonen aan te maken en om bis en RAD (enkel adres) personen te updaten;
 S034-PersonServices;S191-PictureService;IBZ-RRN;Web service which delivers the eID photo of a person.;
