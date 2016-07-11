@@ -35,6 +35,7 @@ public class WSDL2DCAT {
 
     /**
      * Main method
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -60,8 +61,9 @@ public class WSDL2DCAT {
             System.out.println("Found " + wsdlCount + " WSDL file(s).");
             System.out.println("Found " + xsdCount + " XSD file(s).");
             System.out.println("Conversion has been started.");
-            convertToDCAT(WSDLfiles, "wsdl");
-            convertToDCAT(XSDfiles, "xsd");
+            Converter converter = new Converter();
+            converter.convertToDCAT(WSDLfiles, "wsdl");
+            converter.convertToDCAT(XSDfiles, "xsd");
             // (TODO) Validate each DCAT file
 
             System.out.println("File(s) have been converted to DCAT.");
@@ -113,38 +115,6 @@ public class WSDL2DCAT {
     }
 
     /**
-     * Converts collection of files to DCAT files
-     *
-     * @param files Files to work with
-     * @param fileType The type of files
-     */
-    private static void convertToDCAT(File[] files, String fileType) {
-        OutputStream DCATfile = null;
-        try {
-            for (File file : files) {
-                if (file.isFile() && getExtension(file).equals(fileType)) {
-                    String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
-                    String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
-                    TransformerFactory tFactory = new net.sf.saxon.TransformerFactoryImpl();
-                    Source xslDoc = new StreamSource(StylesheetFileName);
-                    Source xmlDoc = new StreamSource(file);
-                    DCATfile = new FileOutputStream(DCATfileName);
-                    Transformer trasform = tFactory.newTransformer(xslDoc);
-                    trasform.transform(xmlDoc, new StreamResult(DCATfile));
-                    System.out.println("DEBUG: File should be made: " + DCATfileName);
-                }
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    /**
      * Removes extension from a file
      *
      * @param file File to work with
@@ -159,5 +129,3 @@ public class WSDL2DCAT {
         return fname;
     }
 }
-
-
