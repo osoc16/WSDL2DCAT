@@ -57,18 +57,16 @@
         <xsl:text>&lt;</xsl:text>  
         <xsl:value-of select="concat($distribution,'/',@name)" /> 
         <xsl:text>&gt;</xsl:text>    
-        <xsl:text>
-         &#x9;a dcat:Distribution ;&#10;&#x9;dc:description "
-        </xsl:text>
+        <xsl:text>&#10;&#x9;a dcat:Distribution ;&#10;&#x9;dc:description "</xsl:text>
         <xsl:apply-templates select="xs:annotation/xs:documentation" />        
         <xsl:text>"</xsl:text>
         <xsl:value-of select="$languageTag"/> 
-        <xsl:text>;&#10;</xsl:text>     
+        <xsl:text>;&#10;&#10;</xsl:text>     
     </xsl:template>
     
     <xsl:template match="xs:annotation/xs:documentation">
-        <xsl:value-of select="." />
-        
+        <xsl:value-of select="replace(., '^(\s+)|\t+|\n+|\r+', '')" />
+
     </xsl:template>
 
 </xsl:stylesheet>
