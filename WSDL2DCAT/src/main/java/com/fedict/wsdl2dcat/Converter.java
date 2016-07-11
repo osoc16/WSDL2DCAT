@@ -40,11 +40,10 @@ public class Converter {
         this.stylesheetDir = stylesheetDir;
     }
 
-     public void convertToDCAT(File[] files, String fileType) {
-         
-         convertToDCAT(files,fileType,this.outputDir,this.stylesheetDir);
-     }
-    
+    public void convertToDCAT(File[] files, String fileType) {
+        convertToDCAT(files, fileType, this.outputDir, this.stylesheetDir);
+    }
+
     /**
      * Converts collection of files to DCAT files
      *

@@ -65,9 +65,6 @@
         <xsl:text>&#x9;foaf:homepage &lt;</xsl:text>
         <xsl:value-of select="$homepage"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
-        <xsl:text>&#x9;foaf:homepage &lt;</xsl:text>
-        <xsl:value-of select="$homepage"/>
-        <xsl:text  >&gt; ;&#10;</xsl:text>
         <!--<xsl:text>&#x9;dc:license ... ;&#10;</xsl:text>-->
         <xsl:text>&#x9;dc:publisher &lt;</xsl:text>
         <xsl:value-of select="$publisher"/>
