@@ -22,6 +22,7 @@ import javax.xml.transform.stream.StreamSource;
 /**
  *
  * @author Miguel
+ * @author Umut
  */
 public class Converter {
 
@@ -44,7 +45,8 @@ public class Converter {
     /**
      * Consructor sets output and stylesheet directory.
      *
-     * @param inputDir
+     * @param inputDir directory for reading files to convert
+     * @param fileType file type of the converted files
      * @param outputDir directory where the converted files will be stored
      * @param stylesheetDir directory where the XSL files are stored
      */
@@ -58,8 +60,7 @@ public class Converter {
     /**
      * Convert files with the file type to output directory
      *
-     * @param inputDir
-     * @param fileType file type of the converted files
+     * @param inputDir directory for reading files to convert
      */
     public void convertToDCAT(String inputDir) {
         convertToDCAT(inputDir, this.fileType, this.outputDir, this.stylesheetDir);
@@ -68,7 +69,7 @@ public class Converter {
     /**
      * Convert files with the file type to output directory
      *
-     * @param inputDir
+     * @param inputDir directory for reading files to convert
      * @param fileType file type of the converted files
      */
     public void convertToDCAT(String inputDir, String fileType) {
@@ -78,8 +79,9 @@ public class Converter {
     /**
      * Convert files with the file type to output directory
      *
-     * @param inputDir
+     * @param inputDir directory for reading files to convert
      * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
      */
     public void convertToDCAT(String inputDir, String fileType, String outputDir) {
         convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
@@ -88,7 +90,7 @@ public class Converter {
     /**
      * Converts files with file type to DCAT files
      *
-     * @param inputDir
+     * @param inputDir directory for reading files to convert
      * @param fileType file type of the converted files
      * @param outputDir directory where the converted files will be stored
      * @param stylesheetDir directory where the XSL files are stored

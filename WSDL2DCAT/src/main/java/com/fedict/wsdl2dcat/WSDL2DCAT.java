@@ -11,6 +11,7 @@ import java.io.InputStream;
 /**
  *
  * @author Miguel
+ * @author Umut
  */
 public class WSDL2DCAT {
 
