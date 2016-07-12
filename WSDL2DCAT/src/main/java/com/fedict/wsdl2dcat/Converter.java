@@ -49,7 +49,7 @@ public class Converter {
 
         this.inputDirFamilies = currentPath + "\\Input\\FAMILIES\\";
         this.fileTypeFamilies = "xml";
-        
+
         this.inputDirXsd = currentPath + "\\Input\\XSD\\";
         this.fileTypeXsd = "xsd";
     }
@@ -151,7 +151,7 @@ public class Converter {
             File[] files = new File(inputDir).listFiles();
             int count = getCountOfType(files, fileType);
             if (count == 0) {
-                System.out.println("No " + fileType + " file found in directory: " + inputDir);
+                throw new IllegalArgumentException("No " + fileType + " file found in directory: " + inputDir);
             } else {
                 System.out.println("Found " + count + " " + fileType + " file(s).");
                 System.out.println("Conversion has been started.");
@@ -179,6 +179,9 @@ public class Converter {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
     }
@@ -188,7 +191,7 @@ public class Converter {
      *
      * @param directoryName Directory name to check
      */
-    private static void createDirectoryIfNeeded(String directoryName) {
+    private static void createDirectoryIfNeeded(String directoryName) throws IllegalArgumentException {
         File theDir = new File(directoryName);
 
         // if the directory does not exist, create it
@@ -197,8 +200,7 @@ public class Converter {
             if (theDir.mkdir()) {
                 System.out.println("Creating directory: " + directoryName);
             } else {
-                System.out.println("The argument " + directoryName +" is not a directory");
-
+                throw new IllegalArgumentException("The argument " + directoryName + " is not a directory");
             }
         }
     }

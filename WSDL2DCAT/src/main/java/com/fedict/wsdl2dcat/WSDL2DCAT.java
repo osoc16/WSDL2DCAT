@@ -28,7 +28,7 @@ public class WSDL2DCAT {
      * @param args input, output, stylesheet directory
      */
     public static void main(String[] args) {
-        System.out.println("WSDL2DCAT tool");
+        System.out.println("WSDL2DCAT tool \n");
         Converter converter = new Converter();
 
         switch (args.length) {
@@ -45,14 +45,11 @@ public class WSDL2DCAT {
                 //arguments: input directory, file type , output directory
                 converter.convertToDCAT(args[0], args[1], args[2]);
                 break;
-            case 4:
-                //arguments: input directory, file type , output directory , style sheet directory
-                converter.convertToDCAT(args[0], args[1], args[2], args[3]);
-                break;
+
             default:
                 converter.convertToDCAT();
                 converter.convertFamiliesToDCAT();
-                converter.convertToDCAT();
+
                 break;
         }
     }
