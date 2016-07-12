@@ -24,6 +24,7 @@
         <xsl:variable name="dc" select="'http://purl.org/dc/terms/'" />
         <xsl:variable name="foaf" select="'http://xmlns.com/foaf/0.1/'" />
         <xsl:variable name="rdfs" select="'http://www.w3.org/2000/01/rdf-schema#'" />
+
         <!--Prefixes-->
         <xsl:text>@prefix dcat: &lt;</xsl:text>
         <xsl:value-of select="$dcat"/>
@@ -39,6 +40,8 @@
         <xsl:text  >&gt; .&#10;</xsl:text>
         <xsl:text>&#10;</xsl:text>
         
+        <!--Dataset-->
+    
         <xsl:for-each-group select="family" group-by="@uri">
 
         
@@ -48,7 +51,7 @@
             <xsl:variable name="language" select="'http://publications.europa.eu/resource/authority/language/ENG'" />
             <xsl:variable name="theme" select="'http://publications.europa.eu/resource/authority/data-theme/GOVE'" />
             
-      
+
             
             <!--Family -->
             <xsl:text>&lt;</xsl:text>
@@ -60,7 +63,7 @@
             <xsl:text>"</xsl:text>
             <xsl:value-of select="$languageTag"/> 
             <xsl:text>;&#10;</xsl:text>
-            <xsl:text>&#x9;dc:description "This is a fedict webservice family named: </xsl:text>
+            <xsl:text>&#x9;dc:description "This is a fedict web service family named: </xsl:text>
             <xsl:value-of select="$family"/>
             <xsl:text>"</xsl:text>
             <xsl:value-of select="$languageTag"/> 

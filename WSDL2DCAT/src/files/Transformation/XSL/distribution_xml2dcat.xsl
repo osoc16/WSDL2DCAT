@@ -22,7 +22,11 @@
         <xsl:variable name="dc" select="'http://purl.org/dc/terms/'" />
         <xsl:variable name="foaf" select="'http://xmlns.com/foaf/0.1/'" />
         <xsl:variable name="rdfs" select="'http://www.w3.org/2000/01/rdf-schema#'" />
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 8e8ab3a8c97b248566c68017e0319dc3b7914215
         <!--Prefixes-->
         <xsl:text>@prefix dcat: &lt;</xsl:text>
         <xsl:value-of select="$dcat"/>
@@ -37,7 +41,11 @@
         <xsl:value-of select="$rdfs"/>
         <xsl:text  >&gt; .&#10;</xsl:text>
         <xsl:text>&#10;</xsl:text>
+<<<<<<< HEAD
         
+=======
+        <!--Distribution-->
+>>>>>>> 8e8ab3a8c97b248566c68017e0319dc3b7914215
         <xsl:apply-templates select="family/service" />      
     </xsl:template>
     

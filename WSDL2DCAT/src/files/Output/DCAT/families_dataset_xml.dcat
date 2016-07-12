@@ -6,7 +6,7 @@
 <http://fsb.rovin.be/family/S034-PersonServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S034-PersonServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S034-PersonServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S034-PersonServices"@en;
 	dc:identifier "S034-PersonServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -20,7 +20,7 @@
 <http://fsb.rovin.be/family/S039-EnterpriseServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S039-EnterpriseServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S039-EnterpriseServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S039-EnterpriseServices"@en;
 	dc:identifier "S039-EnterpriseServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -34,7 +34,7 @@
 <http://fsb.rovin.be/family/S092-eLoketServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S092-eLoketServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S092-eLoketServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S092-eLoketServices"@en;
 	dc:identifier "S092-eLoketServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -48,7 +48,7 @@
 <http://fsb.rovin.be/family/S097-eBirthServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S097-eBirthServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S097-eBirthServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S097-eBirthServices"@en;
 	dc:identifier "S097-eBirthServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -62,7 +62,7 @@
 <http://fsb.rovin.be/family/S098-4thWayServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S098-4thWayServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S098-4thWayServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S098-4thWayServices"@en;
 	dc:identifier "S098-4thWayServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -76,7 +76,7 @@
 <http://fsb.rovin.be/family/S135-EDRLServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S135-EDRLServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S135-EDRLServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S135-EDRLServices"@en;
 	dc:identifier "S135-EDRLServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -90,7 +90,7 @@
 <http://fsb.rovin.be/family/S137-FSBUtilityServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S137-FSBUtilityServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S137-FSBUtilityServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S137-FSBUtilityServices"@en;
 	dc:identifier "S137-FSBUtilityServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -104,7 +104,7 @@
 <http://fsb.rovin.be/family/S139-eDepotServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S139-eDepotServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S139-eDepotServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S139-eDepotServices"@en;
 	dc:identifier "S139-eDepotServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -118,7 +118,7 @@
 <http://fsb.rovin.be/family/S160-AuthorizationServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S160-AuthorizationServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S160-AuthorizationServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S160-AuthorizationServices"@en;
 	dc:identifier "S160-AuthorizationServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -132,7 +132,7 @@
 <http://fsb.rovin.be/family/S163-DebtServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S163-DebtServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S163-DebtServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S163-DebtServices"@en;
 	dc:identifier "S163-DebtServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -146,7 +146,7 @@
 <http://fsb.rovin.be/family/S165-NationalBankServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S165-NationalBankServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S165-NationalBankServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S165-NationalBankServices"@en;
 	dc:identifier "S165-NationalBankServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -160,7 +160,7 @@
 <http://fsb.rovin.be/family/S170-EurTransBelServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S170-EurTransBelServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S170-EurTransBelServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S170-EurTransBelServices"@en;
 	dc:identifier "S170-EurTransBelServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -174,7 +174,7 @@
 <http://fsb.rovin.be/family/S184-Maritime Localization Services>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S184-Maritime Localization Services"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S184-Maritime Localization Services"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S184-Maritime Localization Services"@en;
 	dc:identifier "S184-Maritime Localization Services"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -188,7 +188,7 @@
 <http://fsb.rovin.be/family/S193-eHealthServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S193-eHealthServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S193-eHealthServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S193-eHealthServices"@en;
 	dc:identifier "S193-eHealthServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -202,7 +202,7 @@
 <http://fsb.rovin.be/family/S210-MappingServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S210-MappingServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S210-MappingServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S210-MappingServices"@en;
 	dc:identifier "S210-MappingServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -216,7 +216,7 @@
 <http://fsb.rovin.be/family/S216-eInvoiceServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S216-eInvoiceServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S216-eInvoiceServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S216-eInvoiceServices"@en;
 	dc:identifier "S216-eInvoiceServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -230,7 +230,7 @@
 <http://fsb.rovin.be/family/S227-CSAMServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S227-CSAMServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S227-CSAMServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S227-CSAMServices"@en;
 	dc:identifier "S227-CSAMServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -244,7 +244,7 @@
 <http://fsb.rovin.be/family/S245-TrafficClearingService>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S245-TrafficClearingService"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S245-TrafficClearingService"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S245-TrafficClearingService"@en;
 	dc:identifier "S245-TrafficClearingService"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -258,7 +258,7 @@
 <http://fsb.rovin.be/family/S252-EmployeeSelfServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S252-EmployeeSelfServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S252-EmployeeSelfServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S252-EmployeeSelfServices"@en;
 	dc:identifier "S252-EmployeeSelfServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -272,7 +272,7 @@
 <http://fsb.rovin.be/family/S260-JudicialServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S260-JudicialServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S260-JudicialServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S260-JudicialServices"@en;
 	dc:identifier "S260-JudicialServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -286,7 +286,7 @@
 <http://fsb.rovin.be/family/S263-SocialSecurityServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S263-SocialSecurityServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S263-SocialSecurityServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S263-SocialSecurityServices"@en;
 	dc:identifier "S263-SocialSecurityServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -300,7 +300,7 @@
 <http://fsb.rovin.be/family/S267-VDIServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S267-VDIServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S267-VDIServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S267-VDIServices"@en;
 	dc:identifier "S267-VDIServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -314,7 +314,7 @@
 <http://fsb.rovin.be/family/S269-MobilityServices>
 	a dcat:Dataset ;
 	dc:title "Family name http://fsb.rovin.be/family/S269-MobilityServices"@en;
-	dc:description "This is a fedict webservice family named: http://fsb.rovin.be/family/S269-MobilityServices"@en;
+	dc:description "This is a fedict web service family named: http://fsb.rovin.be/family/S269-MobilityServices"@en;
 	dc:identifier "S269-MobilityServices"@en;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;

@@ -11,6 +11,7 @@ import java.io.InputStream;
 /**
  *
  * @author Miguel
+ * @author Umut
  */
 public class WSDL2DCAT {
 
@@ -49,6 +50,8 @@ public class WSDL2DCAT {
                 converter.convertToDCAT(args[0], args[1], args[2], args[3]);
                 break;
             default:
+                converter.convertToDCAT();
+                converter.convertFamiliesToDCAT();
                 converter.convertToDCAT();
                 break;
         }
