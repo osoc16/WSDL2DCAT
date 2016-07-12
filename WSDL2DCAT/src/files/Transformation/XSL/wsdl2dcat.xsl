@@ -63,7 +63,9 @@
         <xsl:text>&#x9;dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet. The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources. For more details about: - The FSB - The access procedure to the Web Services; - The site navigation; Please consult the list of available Web Services by using the search tool or browse through the catalogue. Please note that this site contains only information and technical documents. The content of this site is only available in English."</xsl:text>
         <xsl:value-of select="$languageTag"/> 
         <xsl:text>;&#10;</xsl:text>
-        <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
+        <!--<xsl:text>&#x9;dc:issued "</xsl:text>   
+        <xsl:text>" ;&#10;</xsl:text>
+        -->
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
@@ -74,7 +76,9 @@
         <xsl:text>&#x9;dc:publisher &lt;</xsl:text>
         <xsl:value-of select="$publisher"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
-        <!--<xsl:text>&#x9;dc:modified ... ;&#10;</xsl:text>-->
+        <xsl:text>&#x9;dc:modified "</xsl:text>   
+        <xsl:value-of select="current-date()"/> 
+        <xsl:text>" ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:dataset &lt;</xsl:text>
         <xsl:value-of select="$service"/>
         <xsl:text  >&gt; .&#10;</xsl:text>
@@ -101,7 +105,9 @@
         <xsl:value-of select="$languageTag"/> 
         <xsl:text>;&#10;</xsl:text>
         <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
-        <!--<xsl:text>&#x9;dc:modified "..." ;&#10;</xsl:text>-->
+        <xsl:text>&#x9;dc:modified "</xsl:text>   
+        <xsl:value-of select="current-date()"/> 
+        <xsl:text>" ;&#10;</xsl:text>
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
@@ -109,8 +115,9 @@
         <xsl:value-of select="$theme"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:distribution </xsl:text> 
-            <xsl:apply-templates select="wsdl:message">
-            </xsl:apply-templates>       
+        <xsl:apply-templates select="wsdl:message">
+            <xsl:with-param name="distribution" select="$distribution" />
+        </xsl:apply-templates>       
         <xsl:text> .&#10;</xsl:text>
         
  
@@ -125,7 +132,7 @@
         </xsl:if>
         
         <xsl:text> &lt;</xsl:text>
-        <xsl:value-of select="concat($distribution,'/',@name)"/>
+        <xsl:value-of select="concat($distribution, '/',@name)"/>
         <xsl:text>&gt;</xsl:text>           
 
                   
