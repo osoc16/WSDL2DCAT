@@ -14,6 +14,11 @@
         </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/files</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <version>2.4.3</version>
