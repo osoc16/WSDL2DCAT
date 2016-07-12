@@ -178,15 +178,12 @@ public class Converter {
                 System.out.println("DCAT files can be found in: \n" + outputDir);
                 System.out.println("--------------------------------------------");
             }
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException | IllegalArgumentException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerConfigurationException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-
         }
 
     }
