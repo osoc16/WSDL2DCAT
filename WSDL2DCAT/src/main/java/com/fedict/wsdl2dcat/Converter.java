@@ -184,8 +184,12 @@ public class Converter {
         // if the directory does not exist, create it
         if (!theDir.exists()) {
             System.out.println("Needed directory not found.");
-            System.out.println("Creating directory: " + directoryName);
-            theDir.mkdir();
+            if (theDir.mkdir()) {
+                System.out.println("Creating directory: " + directoryName);
+            } else {
+                System.out.println("The argument " + directoryName +" is not a directory");
+
+            }
         }
     }
 
