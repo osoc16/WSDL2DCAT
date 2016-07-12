@@ -42,7 +42,6 @@ public class Converter {
         this.outputDir = currentPath + "\\Output\\DCAT\\";
         this.stylesheetDir = currentPath + "\\Transformation\\XSL\\";
         this.fileType = "wsdl";
-
         this.inputDirFamilies = currentPath + "\\Input\\FAMILIES\\";
         this.fileTypeFamilies = "xml";
     }
