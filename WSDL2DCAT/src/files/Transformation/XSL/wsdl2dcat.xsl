@@ -74,7 +74,9 @@
         <xsl:text>&#x9;dc:publisher &lt;</xsl:text>
         <xsl:value-of select="$publisher"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
-        <!--<xsl:text>&#x9;dc:modified ... ;&#10;</xsl:text>-->
+        <xsl:text>&#x9;dc:modified "</xsl:text>   
+             <xsl:value-of select="current-date()"/> 
+            <xsl:text>" ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:dataset &lt;</xsl:text>
         <xsl:value-of select="$service"/>
         <xsl:text  >&gt; .&#10;</xsl:text>
@@ -101,7 +103,9 @@
         <xsl:value-of select="$languageTag"/> 
         <xsl:text>;&#10;</xsl:text>
         <!--<xsl:text>&#x9;dc:issued "..." ;&#10;</xsl:text>-->
-        <!--<xsl:text>&#x9;dc:modified "..." ;&#10;</xsl:text>-->
+        <xsl:text>&#x9;dc:modified "</xsl:text>   
+             <xsl:value-of select="current-date()"/> 
+            <xsl:text>" ;&#10;</xsl:text>
         <xsl:text>&#x9;dc:language &lt;</xsl:text>
         <xsl:value-of select="$language"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>

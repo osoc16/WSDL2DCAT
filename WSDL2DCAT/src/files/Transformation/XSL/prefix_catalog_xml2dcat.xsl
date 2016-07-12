@@ -67,7 +67,9 @@
         <xsl:text>&#x9;dc:publisher &lt;</xsl:text>
         <xsl:value-of select="$publisher"/>
         <xsl:text  >&gt; ;&#10;</xsl:text>
-        <!--<xsl:text>&#x9;dc:modified ... ;&#10;</xsl:text>-->
+        <xsl:text>&#x9;dc:modified "</xsl:text>   
+             <xsl:value-of select="current-date()"/> 
+            <xsl:text>" ;&#10;</xsl:text>
         <xsl:text>&#x9;dcat:dataset </xsl:text>
         <!--<xsl:value-of select="$service"/> -->
         <xsl:apply-templates select="family">
