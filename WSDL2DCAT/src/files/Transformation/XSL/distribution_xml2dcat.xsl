@@ -17,8 +17,28 @@
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
-    <xsl:template match="/">
-        <xsl:apply-templates select="fsb/family/service" />      
+    <xsl:template match="fsb">
+        <xsl:variable name="dcat" select="'http://www.w3.org/ns/dcat#'" />
+        <xsl:variable name="dc" select="'http://purl.org/dc/terms/'" />
+        <xsl:variable name="foaf" select="'http://xmlns.com/foaf/0.1/'" />
+        <xsl:variable name="rdfs" select="'http://www.w3.org/2000/01/rdf-schema#'" />
+        
+        <!--Prefixes-->
+        <xsl:text>@prefix dcat: &lt;</xsl:text>
+        <xsl:value-of select="$dcat"/>
+        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text>&#x9;@prefix dc: &lt;</xsl:text>
+        <xsl:value-of select="$dc"/>
+        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text>&#x9;@prefix foaf: &lt;</xsl:text>
+        <xsl:value-of select="$foaf"/>
+        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text>&#x9;@prefix rdfs: &lt;</xsl:text>
+        <xsl:value-of select="$rdfs"/>
+        <xsl:text  >&gt; .&#10;</xsl:text>
+        <xsl:text>&#10;</xsl:text>
+        <!--Distribution-->
+        <xsl:apply-templates select="family/service" />      
     </xsl:template>
     
     <xsl:template match="fsb/family/service">
