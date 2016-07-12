@@ -14,7 +14,6 @@ import java.io.InputStream;
  * @author Umut
  */
 public class WSDL2DCAT {
-
     static String inputDir;
     static String outputDir;
     static String stylesheetDir;
