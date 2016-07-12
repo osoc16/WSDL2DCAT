@@ -31,30 +31,25 @@ public class Converter {
     private final String stylesheetDir;
     private final String fileType;
 
+    private final String inputDirFamilies;
+    private final String fileTypeFamilies;
+
     /**
      * Default constructor. Sets default output and stylesheet directory.
      */
     public Converter() {
         String currentPath = System.getProperty("user.dir") + "\\src\\files";
-        this.inputDir = currentPath + "\\WSDL\\";
-        this.outputDir = currentPath + "\\DCAT\\";
-        this.stylesheetDir = currentPath + "\\XSL\\";
+        this.inputDir = currentPath + "\\Input\\WSDL\\";
+        this.outputDir = currentPath + "\\Output\\DCAT\\";
+        this.stylesheetDir = currentPath + "\\Transformation\\XSL\\";
         this.fileType = "wsdl";
+        this.inputDirFamilies = currentPath + "\\Input\\FAMILIES\\";
+        this.fileTypeFamilies = "xml";
     }
 
-    /**
-     * Consructor sets output and stylesheet directory.
-     *
-     * @param inputDir directory for reading files to convert
-     * @param fileType file type of the converted files
-     * @param outputDir directory where the converted files will be stored
-     * @param stylesheetDir directory where the XSL files are stored
-     */
-    public Converter(String inputDir, String fileType, String outputDir, String stylesheetDir) {
-        this.inputDir = inputDir;
-        this.outputDir = outputDir;
-        this.stylesheetDir = stylesheetDir;
-        this.fileType = fileType;
+    public void convertToDCAT() {
+        convertToDCAT(this.inputDir, this.fileType, this.outputDir, this.stylesheetDir);
+
     }
 
     /**
@@ -88,6 +83,43 @@ public class Converter {
     }
 
     /**
+     * *
+     *
+     * @param inputDir
+     * @param fileType
+     * @param outputDir
+     * @param stylesheetDir
+     */
+    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, fileType);
+    }
+
+    public void convertFamiliesToDCAT() {
+        convertFamiliesToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
+
+    }
+
+    public void convertFamiliesToDCAT(String inputDir) {
+        convertFamiliesToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
+
+    }
+
+    public void convertFamiliesToDCAT(String inputDir, String fileType) {
+        convertFamiliesToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir);
+
+    }
+
+    public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir) {
+        convertFamiliesToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
+    }
+
+    public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
+    }
+
+    /**
      * Converts files with file type to DCAT files
      *
      * @param inputDir directory for reading files to convert
@@ -95,7 +127,16 @@ public class Converter {
      * @param outputDir directory where the converted files will be stored
      * @param stylesheetDir directory where the XSL files are stored
      */
-    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
+    /**
+     * Converts files with file type to DCAT files
+     *
+     * @param inputDir
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     * @param stylesheetDir directory where the XSL files are stored
+     * @param stylesheetFileName
+     */
+    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
             createDirectoryIfNeeded(inputDir);
@@ -110,8 +151,8 @@ public class Converter {
 
                 for (File file : files) {
                     if (file.isFile() && getExtension(file).equals(fileType)) {
-                        String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + fileType + ".dcat";
-                        String StylesheetFileName = stylesheetDir + "\\" + fileType + "2dcat.xsl";
+                        String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + stylesheetFileName + ".dcat";
+                        String StylesheetFileName = stylesheetDir + "\\" + stylesheetFileName + "2dcat.xsl";
                         TransformerFactory tFactory = new net.sf.saxon.TransformerFactoryImpl();
                         Source xslDoc = new StreamSource(StylesheetFileName);
                         Source xmlDoc = new StreamSource(file);

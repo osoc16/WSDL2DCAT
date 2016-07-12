@@ -61,7 +61,7 @@
         <xsl:apply-templates select="xs:annotation/xs:documentation" />        
         <xsl:text>"</xsl:text>
         <xsl:value-of select="$languageTag"/> 
-        <xsl:text>;&#10;&#10;</xsl:text>     
+        <xsl:text> .&#10;&#10;</xsl:text>     
     </xsl:template>
     
     <xsl:template match="xs:annotation/xs:documentation">
