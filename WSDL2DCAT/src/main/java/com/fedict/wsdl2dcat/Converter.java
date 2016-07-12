@@ -5,11 +5,20 @@
  */
 package com.fedict.wsdl2dcat;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Enumeration;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.transform.Source;
@@ -28,6 +37,13 @@ import org.apache.commons.io.FileUtils;
  */
 public class Converter {
 
+    // Default paths
+    private static final String WSDLPATH = "\\Input\\WSDL\\";
+    private static final String XSDPATH = "\\Input\\XSD\\";
+    private static final String DCATPATH = "\\Output\\DCAT\\";
+    private static final String XSLPATH = "\\Transformation\\XSL\\";
+    private static final String FAMILIESPATH = "\\Input\\FAMILIES\\";
+
     private final String outputDir;
     private final String inputDir;
     private final String stylesheetDir;
@@ -44,12 +60,21 @@ public class Converter {
      */
     public Converter() {
         String currentPath = System.getProperty("user.dir") + "\\src\\files";
-        this.inputDir = currentPath + "\\Input\\WSDL\\";
-        this.outputDir = currentPath + "\\Output\\DCAT\\";
-        this.stylesheetDir = currentPath + "\\Transformation\\XSL\\";
+        final File jarFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+        if (jarFile.isFile()) {
+            currentPath = jarFile.getParent();
+            try {
+                extractFilesFromJAR();
+            } catch (Exception ex) {
+                Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.inputDir = currentPath + WSDLPATH;
+        this.outputDir = currentPath + DCATPATH;
+        this.stylesheetDir = currentPath + XSLPATH;
         this.fileType = "wsdl";
 
-        this.inputDirFamilies = currentPath + "\\Input\\FAMILIES\\";
+        this.inputDirFamilies = currentPath + FAMILIESPATH;
         this.fileTypeFamilies = "xml";
 
         this.inputDirXsd = currentPath + "\\Input\\XSD\\";
@@ -61,46 +86,71 @@ public class Converter {
         convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir);
     }
 
-    /**
-     * Convert files with the file type to output directory
-     *
-     * @param inputDir directory for reading files to convert
-     */
     public void convertToDCAT(String inputDir) {
         convertToDCAT(inputDir, this.fileType, this.outputDir, this.stylesheetDir);
     }
 
-    /**
-     * Convert files with the file type to output directory
-     *
-     * @param inputDir directory for reading files to convert
-     * @param fileType file type of the converted files
-     */
     public void convertToDCAT(String inputDir, String fileType) {
         convertToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir);
     }
 
-    /**
-     * Convert files with the file type to output directory
-     *
-     * @param inputDir directory for reading files to convert
-     * @param fileType file type of the converted files
-     * @param outputDir directory where the converted files will be stored
-     */
     public void convertToDCAT(String inputDir, String fileType, String outputDir) {
         convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
     }
 
-    /**
-     * *
-     *
-     * @param inputDir
-     * @param fileType
-     * @param outputDir
-     * @param stylesheetDir
-     */
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, fileType);
+    }
+
+    /**
+     * Converts files with file type to DCAT files
+     *
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     * @param stylesheetDir directory where the XSL files are stored
+     * @param stylesheetFileName name of the stylesheet that should be used
+     */
+    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
+        OutputStream DCATfile = null;
+        try {
+            createDirectoryIfNeeded(inputDir);
+            createDirectoryIfNeeded(outputDir);
+            String[] extensions = {fileType};
+            Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
+            int count = files.size();
+            if (count == 0) {
+                throw new IllegalArgumentException("No " + fileType + " file found in directory: " + inputDir);
+            } else {
+                System.out.println("Found " + count + " " + fileType + " file(s).");
+                System.out.println("Conversion has been started.");
+
+                for (File file : files) {
+                    if (file.isFile() && getExtension(file).equals(fileType)) {
+                        String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + stylesheetFileName + ".dcat";
+                        System.out.println("DCATFilename: " + DCATfileName);
+                        String StylesheetFileName = stylesheetDir + "\\" + stylesheetFileName + "2dcat.xsl";
+                        TransformerFactory tFactory = new net.sf.saxon.TransformerFactoryImpl();
+                        Source xslDoc = new StreamSource(StylesheetFileName);
+                        Source xmlDoc = new StreamSource(file);
+                        DCATfile = new FileOutputStream(DCATfileName);
+                        Transformer trasform = tFactory.newTransformer(xslDoc);
+                        trasform.transform(xmlDoc, new StreamResult(DCATfile));
+                        System.out.println("DEBUG: File should be made: " + DCATfileName);
+                    }
+                }
+                System.out.println("File(s) have been converted to DCAT.");
+                System.out.println("DCAT files can be found in: \n" + outputDir);
+                System.out.println("--------------------------------------------");
+            }
+        } catch (FileNotFoundException | IllegalArgumentException ex) {
+            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerConfigurationException ex) {
+            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public void convertFamiliesToDCAT() {
@@ -129,61 +179,43 @@ public class Converter {
     }
 
     /**
-     * Converts files with file type to DCAT files
+     * Exports all resources in JAR file to the local file path.
      *
-     * @param inputDir directory for reading files to convert
-     * @param fileType file type of the converted files
-     * @param outputDir directory where the converted files will be stored
-     * @param stylesheetDir directory where the XSL files are stored
+     * @throws Exception
      */
-    /**
-     * Converts files with file type to DCAT files
-     *
-     * @param inputDir
-     * @param fileType file type of the converted files
-     * @param outputDir directory where the converted files will be stored
-     * @param stylesheetDir directory where the XSL files are stored
-     * @param stylesheetFileName
-     */
-    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
-        OutputStream DCATfile = null;
-        try {
-            createDirectoryIfNeeded(inputDir);
-            createDirectoryIfNeeded(outputDir);
-            String[] extensions = {fileType};
-            Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
-            int count = files.size();
-            if (count == 0) {
-                throw new IllegalArgumentException("No " + fileType + " file found in directory: " + inputDir);
-            } else {
-                System.out.println("Found " + count + " " + fileType + " file(s).");
-                System.out.println("Conversion has been started.");
+    private void extractFilesFromJAR() throws IOException, Exception {
+        final File jarFilePath = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+        String jarDirectory = jarFilePath.getParent();
+        JarFile jarFile = new JarFile(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
 
-                for (File file : files) {
-                    if (file.isFile() && getExtension(file).equals(fileType)) {
-                        String DCATfileName = outputDir + "\\" + removeExtension(file) + "_" + stylesheetFileName + ".dcat";
-                        String StylesheetFileName = stylesheetDir + "\\" + stylesheetFileName + "2dcat.xsl";
-                        TransformerFactory tFactory = new net.sf.saxon.TransformerFactoryImpl();
-                        Source xslDoc = new StreamSource(StylesheetFileName);
-                        Source xmlDoc = new StreamSource(file);
-                        DCATfile = new FileOutputStream(DCATfileName);
-                        Transformer trasform = tFactory.newTransformer(xslDoc);
-                        trasform.transform(xmlDoc, new StreamResult(DCATfile));
-                        System.out.println("DEBUG: File should be made: " + DCATfileName);
+        createDirectoryIfNeeded(jarDirectory + WSDLPATH);
+        createDirectoryIfNeeded(jarDirectory + XSDPATH);
+        createDirectoryIfNeeded(jarDirectory + XSLPATH);
+        createDirectoryIfNeeded(jarDirectory + FAMILIESPATH);
+        createDirectoryIfNeeded(jarDirectory + DCATPATH);
+
+        BufferedOutputStream out = null;
+        Enumeration<JarEntry> entries = jarFile.entries();
+
+        while (entries.hasMoreElements()) {
+            JarEntry entry = entries.nextElement();
+            String name = entry.getName();
+
+            if ((name.startsWith("Input") || name.startsWith("Output") || name.startsWith("Transformation"))
+                    && (name.endsWith(".wsdl") || name.endsWith(".xsd") || name.endsWith(".dcat") || name.endsWith(".xsl") || name.endsWith(".xml"))) {
+                File file = new File(name);
+                out = new BufferedOutputStream(new FileOutputStream(file));
+                try (BufferedInputStream is = new BufferedInputStream(jarFile.getInputStream(entry))) {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = 0;
+                    while ((bytesRead = is.read(buffer)) != -1) {
+                        out.write(buffer, 0, bytesRead);
                     }
                 }
-                System.out.println("File(s) have been converted to DCAT.");
-                System.out.println("DCAT files can be found in: \n" + outputDir);
-                System.out.println("--------------------------------------------");
+                out.flush();
+                out.close();
             }
-        } catch (FileNotFoundException | IllegalArgumentException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
@@ -191,16 +223,17 @@ public class Converter {
      *
      * @param directoryName Directory name to check
      */
-    private static void createDirectoryIfNeeded(String directoryName) throws IllegalArgumentException {
-        File theDir = new File(directoryName);
+    private static void createDirectoryIfNeeded(String directoryName) {
+        Path path = Paths.get(directoryName);
 
         // if the directory does not exist, create it
-        if (!theDir.exists()) {
+        if (!Files.exists(path)) {
             System.out.println("Needed directory not found.");
-            if (theDir.mkdir()) {
-                System.out.println("Creating directory: " + directoryName);
-            } else {
-                throw new IllegalArgumentException("The argument " + directoryName + " is not a directory");
+            System.out.println("Creating directory: " + directoryName);
+            try {
+                Files.createDirectories(path);
+            } catch (IOException ex) {
+                Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
