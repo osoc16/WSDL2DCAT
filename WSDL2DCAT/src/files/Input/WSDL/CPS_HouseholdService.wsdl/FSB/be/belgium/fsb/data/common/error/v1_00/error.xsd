@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:cod="http://fsb.belgium.be/data/common/code/v1_00" 
+		xmlns:err="http://fsb.belgium.be/data/common/error/v1_00" 
+		targetNamespace="http://fsb.belgium.be/data/common/error/v1_00" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+		
+	<xs:annotation>
+		<xs:documentation>
+			Definitions of error and warning types.
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://fsb.belgium.be/data/common/code/v1_00" schemaLocation="../../code/v1_00/code.xsd"/>
+
+	<xs:complexType name="ErrorOrWarningType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of a business error or warning. I consists of a code, including optional
+				language-dependent description, and a possible cause. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="code" type="cod:CodeType" nillable="true"/>
+			<xs:element name="cause" type="err:ErrorOrWarningType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="warning" type="err:ErrorOrWarningType"/>
+	
+	<xs:element name="error" type="err:ErrorOrWarningType"/>
+	
+</xs:schema>

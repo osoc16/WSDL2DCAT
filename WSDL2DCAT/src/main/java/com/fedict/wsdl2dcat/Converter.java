@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.transform.Source;
@@ -18,6 +21,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -148,8 +152,9 @@ public class Converter {
         try {
             createDirectoryIfNeeded(inputDir);
             createDirectoryIfNeeded(outputDir);
-            File[] files = new File(inputDir).listFiles();
-            int count = getCountOfType(files, fileType);
+            String [] extensions = {fileType};
+            Collection<File> files = FileUtils.listFiles(new File(inputDir),extensions , true);
+            int count = files.size();
             if (count == 0) {
                 throw new IllegalArgumentException("No " + fileType + " file found in directory: " + inputDir);
             } else {

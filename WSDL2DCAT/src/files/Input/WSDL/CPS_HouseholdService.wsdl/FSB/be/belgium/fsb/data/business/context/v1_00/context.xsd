@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:ctx="http://fsb.belgium.be/data/business/context/v1_00" 
+		xmlns:iso="http://fsb.belgium.be/data/common/isocodes/v1_00"
+		xmlns:num="http://fsb.belgium.be/data/entity/person/number/v1_00" 
+		targetNamespace="http://fsb.belgium.be/data/business/context/v1_00" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+
+	<xs:annotation>
+		<xs:documentation>
+			Definitions of context types. Some (legacy) service providers must know in which context their 
+			service is called in order to respond correctly. Which context elements are required by a service
+			operation is defined in the WSDL.
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://fsb.belgium.be/data/common/isocodes/v1_00" schemaLocation="../../../common/isocodes/v1_00/isocodes.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/number/v1_00" schemaLocation="../../../entity/person/number/v1_00/personNumber.xsd"/>
+
+	<xs:complexType name="UserContextType">
+		<xs:annotation>
+			<xs:documentation>
+				The user context defines information regarding the actual user performing a request.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="personNumber" type="num:PersonNumberType" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						The basic identifier of a person is his personNumber. 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="language" type="iso:LanguageType" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						The preferred language of the actual user performing the request.
+						This influences the language in which response elements are cast. 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="userContext" type="ctx:UserContextType"/>
+
+	<xs:complexType name="ApplicationContextType">
+		<xs:annotation>
+			<xs:documentation>
+				The application context defines information regarding the actual application from which the request originates.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="appId" type="xs:string" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						The basic identifier of an application. This can be a free-format string. 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="applicationContext" type="ctx:ApplicationContextType"/>
+	
+	<!-- 
+		To be defined: other contexts such as:
+			message context
+				consumer message id
+				fsb message id
+				consumer correlation id
+			transaction context
+				ACID transaction id
+				business transaction id
+			business process context
+				process instance id
+	 -->
+	 
+
+</xs:schema>

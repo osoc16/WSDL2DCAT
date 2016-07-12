@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:per="http://fsb.belgium.be/data/entity/person/v1_00" 
+		xmlns:nam="http://fsb.belgium.be/data/entity/person/name/v1_00" 
+		xmlns:nat="http://fsb.belgium.be/data/entity/person/nationality/v1_00" 
+		xmlns:num="http://fsb.belgium.be/data/entity/person/number/v1_00" 
+		xmlns:bir="http://fsb.belgium.be/data/entity/person/birth/v1_00" 
+		xmlns:dec="http://fsb.belgium.be/data/entity/person/decease/v1_00" 
+		xmlns:civ="http://fsb.belgium.be/data/entity/person/civilstate/v1_00" 
+		xmlns:pro="http://fsb.belgium.be/data/entity/person/profession/v1_00" 
+		xmlns:dat="http://fsb.belgium.be/data/common/date/v1_00" 
+		xmlns:cod="http://fsb.belgium.be/data/common/code/v1_00" 
+		xmlns:lab="http://fsb.belgium.be/data/common/label/v1_00" 
+		targetNamespace="http://fsb.belgium.be/data/entity/person/v1_00" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+
+	<xs:annotation>
+		<xs:documentation>
+			Definitions of person types.
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/name/v1_00" schemaLocation="../name/v1_00/name.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/number/v1_00" schemaLocation="../number/v1_00/personNumber.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/common/date/v1_00" schemaLocation="../../../common/date/v1_00/date.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/common/code/v1_00" schemaLocation="../../../common/code/v1_00/code.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/common/label/v1_00" schemaLocation="../../../common/label/v1_00/labels.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/birth/v1_00" schemaLocation="../birth/v1_00/birth.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/decease/v1_00" schemaLocation="../decease/v1_00/decease.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/civilstate/v1_00" schemaLocation="../civilstate/v1_00/civilState.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/profession/v1_00" schemaLocation="../profession/v1_00/profession.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/nationality/v1_00" schemaLocation="../nationality/v1_00/nationality.xsd"/>
+
+    <xs:element name="personNumber" type="num:PersonNumberType" nillable="true"/>
+    <xs:element name="name" type="nam:NameType" nillable="true"/>
+    <xs:element name="gender" type="cod:CodeType" nillable="true"/>
+	<xs:element name="nationality" type="cod:CodeType" nillable="true"/>
+	<xs:element name="birthPlace" type="bir:BirthPlaceType" nillable="true"/>
+	<xs:element name="officialBirthDate" type="dat:DateType" nillable="true"/>
+    <xs:element name="deceasePlace" type="dec:DeceasePlaceType" nillable="true"/>
+	<xs:element name="officialDeceaseDate" type="dat:DateType"  nillable="true"/>
+	<xs:element name="civilState" type="cod:CodeType"  nillable="true"/>
+				
+    
+	<xs:complexType name="PersonType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The base class for person types. The base person must contain a person number and a name.
+				If, for whatever reason, these do not exist or cannot be filled in, they must explicitly
+				be set to nil.
+				The base class is abstract and no non-abstract elements can exist with this type. Its sole
+				purpose is to define the mandatory fields of a person. Instances must use any of the subtypes.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="per:personNumber"/>
+			<xs:element ref="per:name"/>
+		</xs:sequence>
+		<xs:attribute name="trust" type="cod:TrustType" use="optional"/>
+		<xs:attribute name="source" type="cod:CodeSourceType" use="optional"/>
+	</xs:complexType>
+
+	<xs:complexType name="BasicPersonType">
+		<xs:annotation>
+			<xs:documentation>
+				A simple person is a person holding basic information, such as the person number, the names,
+				the gender, the nationality, the birth place, the official birth date and the official decease 
+				date. Most of these fields are optional, but should be filled in, if known. If not known, the
+				optional fields should be omitted. If known, but on purpose not propagated, they should be set 
+				to nil.
+				For most purposes, the simple person holds enough information. If not, the detailed person
+				whould be considered instead.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="per:PersonType">
+				<xs:sequence>
+					<xs:element ref="per:gender"/>
+					<xs:element ref="per:nationality" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="per:birthPlace"  minOccurs="0" />
+					<xs:element ref="per:officialBirthDate"  minOccurs="0" />
+					<xs:element ref="per:deceasePlace"  minOccurs="0" />
+					<xs:element ref="per:officialDeceaseDate"  minOccurs="0" />
+					<xs:element ref="per:civilState"  minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ExtendedPersonType">
+		<xs:annotation>
+			<xs:documentation>
+				A detailed person is a simple person, with additional, optional information. 
+				The detailed person is modelled after the information present in the Belgian National Register.
+				Information that is not relevant to certain applications/services may be omitted.
+				All fields are nillable, but fields should only be set to nil if the information is deliberately
+				witheld.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="per:BasicPersonType">
+				<xs:sequence>
+					<xs:element name="declaredBirthDate" type="dat:DateType" minOccurs="0" nillable="true"/>
+					<xs:element name="declaredDeceaseDate" type="dat:DateType" minOccurs="0" nillable="true"/>
+					<xs:element name="birthDocuments" type="bir:BirthDocumentsType" minOccurs="0" nillable="true"/>
+					<xs:element name="deceaseDocuments" type="dec:DeceaseDocumentsType" minOccurs="0" nillable="true"/>
+					<xs:element name="nobilityTitle" type="nam:NobilityTitleType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+					<xs:element name="pseudonym" type="nam:PseudonymType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+					<xs:element name="disappearanceDate" type="dat:DateType" minOccurs="0" nillable="true"/>
+					<xs:element name="disappearanceComment" type="lab:CommentType" minOccurs="0" nillable="true"/>
+					<xs:element name="civilStateInformation" type="civ:CivilStateInformationType" minOccurs="0" nillable="true"/>
+					<xs:element name="profession" type="pro:ProfessionType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+					<xs:element name="nationalityReason" type="nat:NationalityReasonType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="basicPerson" type="per:BasicPersonType">
+		<xs:annotation>
+			<xs:documentation>
+				Root element holding a basic person.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="extendedPerson" type="per:ExtendedPersonType">
+		<xs:annotation>
+			<xs:documentation>
+				Root element holding a detailed person.
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="person">
+		<xs:annotation>
+			<xs:documentation>
+				Root element holding a person of one of the subtypes.
+			</xs:documentation>
+			<!-- 
+			Because not all XML web service frameworks correctly interprete substitution groups, it was decided
+			to work with XML choices instead of substitution groups. This means that you will always have an element
+			'person' which contains a subelement 'simplePerson' or 'detailedPerson.'
+			Using substitution groups would be simpler and yields cleaner XML; it also more extensible and looser
+			coupled than choice groups. Hence, it is advisable to change the choice-group constructions in the
+			future and to prefer substitution groups.
+			-->
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="per:basicPerson"/>
+				<xs:element ref="per:extendedPerson"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
