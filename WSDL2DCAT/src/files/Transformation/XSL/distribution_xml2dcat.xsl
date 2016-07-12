@@ -30,7 +30,7 @@
         <xsl:apply-templates select="desc" />      
         <xsl:text>"</xsl:text>
         <xsl:value-of select="$languageTag"/> 
-        <xsl:text>;&#10;&#10;</xsl:text>       
+        <xsl:text> .&#10;&#10;</xsl:text>       
         
                   
     </xsl:template>

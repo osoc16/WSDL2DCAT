@@ -85,7 +85,7 @@
         </xsl:if>
         
         <xsl:text> &lt;</xsl:text>
-        <xsl:value-of select="concat($families,'/',@uri)"/>
+        <xsl:value-of select="@uri"/>
         <xsl:text>&gt;</xsl:text>           
 
                   

@@ -94,34 +94,28 @@ public class Converter {
     }
 
     public void convertFamiliesToDCAT() {
-        convertToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "prefix_catalog_xml");
-        convertToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "dataset_xml");
-        convertToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "distribution_xml");
+        convertFamiliesToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
 
     }
 
     public void convertFamiliesToDCAT(String inputDir) {
-        convertToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "xmla");
-        convertToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "xmlb");
-        convertToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir, "xmlc");
+        convertFamiliesToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
+
     }
 
     public void convertFamiliesToDCAT(String inputDir, String fileType) {
-        convertToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir, "xmla");
-        convertToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir, "xmlb");
-        convertToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir, "xmlc");
+        convertFamiliesToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir);
+
     }
 
     public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir) {
-        convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir, "xmla");
-        convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir, "xmlb");
-        convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir, "xmlc");
+        convertFamiliesToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
     }
 
     public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "xmla");
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "xmlb");
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "xmlc");
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
+        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
     }
 
     /**
