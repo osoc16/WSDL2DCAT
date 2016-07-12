@@ -16,3 +16,5 @@ hs_err_pid*
 /XSLX2XMLconverter/build/
 /XSLX2XMLconverter/dist/
 /WSDL2DCAT/target/
+
+.idea
