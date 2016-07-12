@@ -34,6 +34,9 @@ public class Converter {
     private final String inputDirFamilies;
     private final String fileTypeFamilies;
 
+    private final String inputDirXsd;
+    private final String fileTypeXsd;
+
     /**
      * Default constructor. Sets default output and stylesheet directory.
      */
@@ -43,13 +46,17 @@ public class Converter {
         this.outputDir = currentPath + "\\Output\\DCAT\\";
         this.stylesheetDir = currentPath + "\\Transformation\\XSL\\";
         this.fileType = "wsdl";
+
         this.inputDirFamilies = currentPath + "\\Input\\FAMILIES\\";
         this.fileTypeFamilies = "xml";
+        
+        this.inputDirXsd = currentPath + "\\Input\\XSD\\";
+        this.fileTypeXsd = "xsd";
     }
 
     public void convertToDCAT() {
         convertToDCAT(this.inputDir, this.fileType, this.outputDir, this.stylesheetDir);
-
+        convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir);
     }
 
     /**
@@ -164,6 +171,7 @@ public class Converter {
                 }
                 System.out.println("File(s) have been converted to DCAT.");
                 System.out.println("DCAT files can be found in: \n" + outputDir);
+                System.out.println("--------------------------------------------");
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);

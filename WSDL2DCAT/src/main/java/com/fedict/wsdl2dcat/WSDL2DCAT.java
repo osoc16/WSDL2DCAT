@@ -51,6 +51,8 @@ public class WSDL2DCAT {
                 break;
             default:
                 converter.convertToDCAT();
+                converter.convertFamiliesToDCAT();
+                converter.convertToDCAT();
                 break;
         }
     }
