@@ -32,7 +32,6 @@ IF "%option%" EQU "2" GOTO CustomConvert
 IF "%option%" EQU "3" GOTO Prerequire
 IF "%option%" EQU "4" GOTO End
 ECHO Please provide valid option!
-SET option=1
 GOTO Start
 :DefaultConvert
 	java -cp %jarname% %mainclass%
@@ -40,7 +39,13 @@ GOTO Start
 :CustomConvert
 	SET /p mainclass=Main class (default: com.fedict.wsdl2dcat.WSDL2DCAT):
 	SET /p inputfolder=Input folder (default: files/Input/WSDL):
-	SET /p filetype=File type (default: wsdl):
+	:CheckValidType
+	SET /p filetype=File type (options:wsdl/xsd :: default: wsdl):
+	IF /I "%filetype%" EQU "wsdl" GOTO TypeIsValid
+	IF /I "%filetype%" EQU "xsd" GOTO TypeIsValid
+	ECHO Please provide one of the following filetypes: wsdl/xsd
+	GOTO CheckValidType
+	:TypeIsValid
 	SET /p outputfolder=Output folder (default: files/Output/DCAT):
 	java -cp %jarname% %mainclass% %inputfolder% %filetype% %outputfolder%
 	PAUSE
