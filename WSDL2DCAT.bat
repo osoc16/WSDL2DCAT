@@ -17,7 +17,7 @@ IF exist "%jarname%" (
 ECHO Select from the following options:
 ECHO 1: start conversion with standard settings (default)
 ECHO 2: start conversion with custom settings
-ECHO 3: start choose another JAR file
+ECHO 3: choose another JAR file
 ECHO 4: exit application
 SET /p option=Option (default 1):
 ECHO Your option was: %option%
