@@ -59,16 +59,7 @@ public class Converter {
      * Default constructor. Sets default output and stylesheet directory.
      */
     public Converter() {
-        String currentPath = System.getProperty("user.dir") + "\\src\\files";
-        final File jarFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-        if (jarFile.isFile()) {
-            currentPath = jarFile.getParent();
-            try {
-                extractFilesFromJAR(jarFile);
-            } catch (Exception ex) {
-                Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        String currentPath ="files";
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
@@ -114,9 +105,11 @@ public class Converter {
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
-            createDirectoryIfNeeded(inputDir);
-            createDirectoryIfNeeded(outputDir);
+            //createDirectoryIfNeeded(inputDir);
+            //createDirectoryIfNeeded(outputDir);
+            
             String[] extensions = {fileType};
+            System.out.println(inputDir);
             Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
             int count = files.size();
             if (count == 0) {
@@ -178,42 +171,6 @@ public class Converter {
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
     }
 
-    /**
-     * Exports all resources in JAR file to the local file path.
-     *
-     * @throws Exception
-     */
-    private void extractFilesFromJAR(File file) throws IOException, Exception {
-        String jarDirectory = file.getParent();
-       JarFile jarFile = new JarFile(file.getPath());
-        createDirectoryIfNeeded(jarDirectory + WSDLPATH);
-        createDirectoryIfNeeded(jarDirectory + XSDPATH);
-        createDirectoryIfNeeded(jarDirectory + XSLPATH);
-        createDirectoryIfNeeded(jarDirectory + FAMILIESPATH);
-        createDirectoryIfNeeded(jarDirectory + DCATPATH);
-
-        BufferedOutputStream out = null;
-        Enumeration<JarEntry> entries = jarFile.entries();
-        while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();
-            String name = entry.getName();
-
-            if ((name.startsWith("Input") || name.startsWith("Output") || name.startsWith("Transformation"))
-                    && (name.endsWith(".wsdl") || name.endsWith(".xsd") || name.endsWith(".dcat") || name.endsWith(".xsl") || name.endsWith(".xml"))) {
-                File EntryFile = new File(name);
-                out = new BufferedOutputStream(new FileOutputStream(EntryFile));
-                try (BufferedInputStream is = new BufferedInputStream(jarFile.getInputStream(entry))) {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = 0;
-                    while ((bytesRead = is.read(buffer)) != -1) {
-                        out.write(buffer, 0, bytesRead);
-                    }
-                }
-                out.flush();
-                out.close();
-            }
-        }
-    }
 
     /**
      * Creates directory if the directory doesn't exist
@@ -229,8 +186,10 @@ public class Converter {
             System.out.println("Creating directory: " + directoryName);
             try {
                 Files.createDirectories(path);
+
             } catch (IOException ex) {
-                Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Converter.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

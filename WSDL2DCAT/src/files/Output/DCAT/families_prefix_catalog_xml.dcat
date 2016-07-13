@@ -10,6 +10,6 @@
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	foaf:homepage <http://registry.fsb.belgium.be/web/service-catalog/partner/homepage> ;
 	dc:publisher <https://opencorporates.com/companies/be/0367302178> ;
-	dc:modified "2016-07-12+02:00" ;
+	dc:modified "2016-07-13+02:00" ;
 	dcat:dataset  <http://fsb.rovin.be/family/S034-PersonServices>, <http://fsb.rovin.be/family/S039-EnterpriseServices>, <http://fsb.rovin.be/family/S092-eLoketServices>, <http://fsb.rovin.be/family/S097-eBirthServices>, <http://fsb.rovin.be/family/S098-4thWayServices>, <http://fsb.rovin.be/family/S135-EDRLServices>, <http://fsb.rovin.be/family/S137-FSBUtilityServices>, <http://fsb.rovin.be/family/S139-eDepotServices>, <http://fsb.rovin.be/family/S160-AuthorizationServices>, <http://fsb.rovin.be/family/S163-DebtServices>, <http://fsb.rovin.be/family/S165-NationalBankServices>, <http://fsb.rovin.be/family/S170-EurTransBelServices>, <http://fsb.rovin.be/family/S184-Maritime Localization Services>, <http://fsb.rovin.be/family/S193-eHealthServices>, <http://fsb.rovin.be/family/S210-MappingServices>, <http://fsb.rovin.be/family/S216-eInvoiceServices>, <http://fsb.rovin.be/family/S227-CSAMServices>, <http://fsb.rovin.be/family/S245-TrafficClearingService>, <http://fsb.rovin.be/family/S252-EmployeeSelfServices>, <http://fsb.rovin.be/family/S260-JudicialServices>, <http://fsb.rovin.be/family/S263-SocialSecurityServices>, <http://fsb.rovin.be/family/S267-VDIServices>, <http://fsb.rovin.be/family/S269-MobilityServices> .
 
