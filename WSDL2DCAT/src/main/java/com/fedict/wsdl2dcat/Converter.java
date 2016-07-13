@@ -64,7 +64,7 @@ public class Converter {
         if (jarFile.isFile()) {
             currentPath = jarFile.getParent();
             try {
-                extractFilesFromJAR();
+                extractFilesFromJAR(jarFile);
             } catch (Exception ex) {
                 Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -183,11 +183,9 @@ public class Converter {
      *
      * @throws Exception
      */
-    private void extractFilesFromJAR() throws IOException, Exception {
-        final File jarFilePath = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-        String jarDirectory = jarFilePath.getParent();
-        JarFile jarFile = new JarFile(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-
+    private void extractFilesFromJAR(File file) throws IOException, Exception {
+        String jarDirectory = file.getParent();
+       JarFile jarFile = new JarFile(file.getPath());
         createDirectoryIfNeeded(jarDirectory + WSDLPATH);
         createDirectoryIfNeeded(jarDirectory + XSDPATH);
         createDirectoryIfNeeded(jarDirectory + XSLPATH);
@@ -196,15 +194,14 @@ public class Converter {
 
         BufferedOutputStream out = null;
         Enumeration<JarEntry> entries = jarFile.entries();
-
         while (entries.hasMoreElements()) {
             JarEntry entry = entries.nextElement();
             String name = entry.getName();
 
             if ((name.startsWith("Input") || name.startsWith("Output") || name.startsWith("Transformation"))
                     && (name.endsWith(".wsdl") || name.endsWith(".xsd") || name.endsWith(".dcat") || name.endsWith(".xsl") || name.endsWith(".xml"))) {
-                File file = new File(name);
-                out = new BufferedOutputStream(new FileOutputStream(file));
+                File EntryFile = new File(name);
+                out = new BufferedOutputStream(new FileOutputStream(EntryFile));
                 try (BufferedInputStream is = new BufferedInputStream(jarFile.getInputStream(entry))) {
                     byte[] buffer = new byte[4096];
                     int bytesRead = 0;
