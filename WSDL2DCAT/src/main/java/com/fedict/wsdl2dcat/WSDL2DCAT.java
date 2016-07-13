@@ -5,7 +5,6 @@
  */
 package com.fedict.wsdl2dcat;
 
-import java.io.File;
 import java.io.InputStream;
 
 /**
@@ -31,7 +30,6 @@ public class WSDL2DCAT {
         Converter converter = new Converter();
 
         switch (args.length) {
-
             case 1:
                 //arguments: input directory
                 converter.convertToDCAT(args[0]);
@@ -48,7 +46,6 @@ public class WSDL2DCAT {
             default:
                 converter.convertToDCAT();
                 converter.convertFamiliesToDCAT();
-
                 break;
         }
     }

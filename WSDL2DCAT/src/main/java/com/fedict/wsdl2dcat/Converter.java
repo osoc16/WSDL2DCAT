@@ -59,7 +59,7 @@ public class Converter {
      * Default constructor. Sets default output and stylesheet directory.
      */
     public Converter() {
-        String currentPath ="files";
+        String currentPath = "files";
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
@@ -70,6 +70,11 @@ public class Converter {
 
         this.inputDirXsd = currentPath + "\\Input\\XSD\\";
         this.fileTypeXsd = "xsd";
+
+        createDirectoryIfNeeded(inputDir);
+        createDirectoryIfNeeded(outputDir);
+        createDirectoryIfNeeded(stylesheetDir);
+
     }
 
     public void convertToDCAT() {
@@ -105,9 +110,7 @@ public class Converter {
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
-            //createDirectoryIfNeeded(inputDir);
-            //createDirectoryIfNeeded(outputDir);
-            
+
             String[] extensions = {fileType};
             System.out.println(inputDir);
             Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
@@ -170,7 +173,6 @@ public class Converter {
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
     }
-
 
     /**
      * Creates directory if the directory doesn't exist
@@ -235,4 +237,5 @@ public class Converter {
         }
         return fname;
     }
+
 }
