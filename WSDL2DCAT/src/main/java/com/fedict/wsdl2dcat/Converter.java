@@ -70,6 +70,11 @@ public class Converter {
 
         this.inputDirXsd = currentPath + "\\Input\\XSD\\";
         this.fileTypeXsd = "xsd";
+
+        createDirectoryIfNeeded(inputDir);
+        createDirectoryIfNeeded(outputDir);
+        createDirectoryIfNeeded(stylesheetDir);
+
     }
 
     /**
@@ -139,9 +144,6 @@ public class Converter {
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
-            //createDirectoryIfNeeded(inputDir);
-            //createDirectoryIfNeeded(outputDir);
-
             String[] extensions = {fileType};
             System.out.println(inputDir);
             Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
@@ -298,4 +300,5 @@ public class Converter {
         }
         return fname;
     }
+
 }
