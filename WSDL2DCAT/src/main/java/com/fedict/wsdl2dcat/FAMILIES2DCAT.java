@@ -30,10 +30,6 @@ public class FAMILIES2DCAT {
                 //arguments: input directory, file type , output directory
                 converter.convertFamiliesToDCAT(args[0], args[1], args[2]);
                 break;
-            case 4:
-                //arguments: input directory, file type , output directory , style sheet directory
-                converter.convertFamiliesToDCAT(args[0], args[1], args[2], args[3]);
-                break;
             default:
                 converter.convertFamiliesToDCAT();
                 break;
