@@ -1,12 +1,12 @@
 @ECHO off
 ECHO Welcome to WSDL2DCAT app
-SET jarname=uber-WSDL2DCAT-1.0-SNAPSHOT.jar
 SET mainclass=com.fedict.wsdl2dcat.WSDL2DCAT
 SET inputfolder=files/Input/WSDL
 SET filetype=wsdl
 SET outputfolder=files/Output/DCAT
-SET option=1
 :Prerequire
+SET jarname=uber-WSDL2DCAT-1.0-SNAPSHOT.jar
+SET option=1
 SET /p jarname=Please provide the required JAR file: (uber-WSDL2DCAT-1.0-SNAPSHOT.jar) 
 IF exist "%jarname%" (
 	GOTO Start
@@ -17,12 +17,14 @@ IF exist "%jarname%" (
 ECHO Select from the following options:
 ECHO 1: start conversion with standard settings (default)
 ECHO 2: start conversion with custom settings
-ECHO 3: exit application
+ECHO 3: start choose another JAR file
+ECHO 4: exit application
 SET /p option=Option (default 1):
 ECHO Your option was: %option%
 IF "%option%" EQU "1" GOTO DefaultConvert
 IF "%option%" EQU "2" GOTO CustomConvert
-IF "%option%" EQU "3" GOTO End
+IF "%option%" EQU "3" GOTO Prerequire
+IF "%option%" EQU "4" GOTO End
 ECHO Please provide valid option!
 SET option=1
 GOTO Start
