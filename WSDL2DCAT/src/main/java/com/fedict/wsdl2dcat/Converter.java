@@ -77,29 +77,63 @@ public class Converter {
 
     }
 
+    /**
+     * (overload) Converts files in default folder to DCAT files
+     */
     public void convertToDCAT() {
         convertToDCAT(this.inputDir, this.fileType, this.outputDir, this.stylesheetDir);
         convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir);
     }
 
+    /**
+     * (overload) Converts files from custom folder to DCAT files
+     *
+     * @param inputDir directory from where the files will be read
+     */
     public void convertToDCAT(String inputDir) {
         convertToDCAT(inputDir, this.fileType, this.outputDir, this.stylesheetDir);
     }
 
+    /**
+     * (overload) Converts files from custom folder with custom file type to
+     * DCAT files
+     *
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     */
     public void convertToDCAT(String inputDir, String fileType) {
         convertToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir);
     }
 
+    /**
+     * (overload) Converts files from custom folder with custom file type to
+     * DCAT files
+     * DCAT files are saved in specified folder
+     *
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     */
     public void convertToDCAT(String inputDir, String fileType, String outputDir) {
         convertToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
     }
 
+    /**
+     * (overload) Converts files from custom folder with custom file type to
+     * DCAT files DCAT files are saved in specified folder 
+     * Custom stylesheet folder can be specified
+     *
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     * @param stylesheetDir directory where the XSL files are stored
+     */
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, fileType);
     }
 
     /**
-     * Converts files with file type to DCAT files
+     * Method used for converting files to DCAT
      *
      * @param inputDir directory from where the files will be read
      * @param fileType file type of the converted files
@@ -110,7 +144,6 @@ public class Converter {
     public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
-
             String[] extensions = {fileType};
             System.out.println(inputDir);
             Collection<File> files = FileUtils.listFiles(new File(inputDir), extensions, true);
@@ -149,25 +182,55 @@ public class Converter {
 
     }
 
+    /**
+     * (overload)
+     * Converts families to DCAT using default settings
+     *
+     */
     public void convertFamiliesToDCAT() {
         convertFamiliesToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
-
     }
 
+    /**
+     * (overload)
+     * Converts families from custom folder to DCAT
+     * @param inputDir directory from where the files will be read
+     */
     public void convertFamiliesToDCAT(String inputDir) {
         convertFamiliesToDCAT(inputDir, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
-
     }
 
+    /**
+     * (overload)
+     * Converts families from custom folder with custom file type to
+     * DCAT files
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     */
     public void convertFamiliesToDCAT(String inputDir, String fileType) {
         convertFamiliesToDCAT(inputDir, fileType, this.outputDir, this.stylesheetDir);
-
     }
 
+    /**
+     * (overload)
+     * Converts families from custom folder with custom file type to
+     * DCAT files DCAT files are saved in specified folder 
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     */
     public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir) {
         convertFamiliesToDCAT(inputDir, fileType, outputDir, this.stylesheetDir);
     }
 
+    /**
+     * Method used for converting families to DCAT
+     * 
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     * @param stylesheetDir directory where the XSL files are stored
+     */
     public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
         convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
