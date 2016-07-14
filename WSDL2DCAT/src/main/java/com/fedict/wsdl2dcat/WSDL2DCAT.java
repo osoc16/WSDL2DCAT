@@ -45,7 +45,6 @@ public class WSDL2DCAT {
 
                 System.out.println("Input folder (default: files/Input/WSDL):");
                 String inputDir = sc.nextLine();
-                System.out.println(inputDir);
                 if (!inputDir.equals("")) {
                     converter.setInputDir(inputDir);
                 }
