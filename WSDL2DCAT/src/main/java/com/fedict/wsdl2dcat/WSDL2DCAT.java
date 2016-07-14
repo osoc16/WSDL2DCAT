@@ -36,12 +36,12 @@ public class WSDL2DCAT {
         while (!stop) {
             System.out.println("Select one of the following options:\n"
                     + "1: start conversion with standard settings (default)\n"
-                    + "2: change files folder location"
+                    + "2: change required files folder location\n"
                     + "3: start conversion with custom settings\n"
                     + "4: exit application\n"
                     + "Option (default 1):");
             String option = sc.nextLine();
-            if (option.equals("2")) {
+            if (option.equals("3")) {
 
                 System.out.println("Input folder (default: files/Input/WSDL):");
                 String inputDir = sc.nextLine();
@@ -73,11 +73,14 @@ public class WSDL2DCAT {
                     converter.setStylesheetDir(stylesheetDir);
                 }
                 converter.convertToDCAT();
-            } else if (option.equals("3")) {
+            } else if (option.equals("2")) {
+                System.out.println("filesfolder=Files folder (default: files):");
                 String filesDir = sc.nextLine();
                 if (!filesDir.equals("")) {
                     converter.setCurrentPath(filesDir);
                 }
+                 converter.convertToDCAT();
+                converter.convertFamiliesToDCAT();
             } else if (option.equals("4")) {
                 stop = true;
             } else {

@@ -47,19 +47,18 @@ public class Converter {
     private String outputDir;
     private String fileType;
     private String inputDir;
-    private String currentPath;
     private String stylesheetDir;
 
-    private final String inputDirFamilies;
-    private final String fileTypeFamilies;
-    private final String inputDirXsd;
-    private final String fileTypeXsd;
+    private String inputDirFamilies;
+    private String fileTypeFamilies;
+    private String inputDirXsd;
+    private String fileTypeXsd;
 
     /**
      * Default constructor. Sets default input, output and stylesheet directory.
      */
     public Converter() {
-        currentPath="";
+        String currentPath = "";
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
@@ -255,12 +254,12 @@ public class Converter {
         this.inputDir = inputDir;
     }
 
-    public String getCurrentPath() {
-        return currentPath;
-    }
-
     public void setCurrentPath(String currentPath) {
-        this.currentPath = currentPath;
+        this.inputDir = currentPath + "\\" + WSDLPATH;
+        this.outputDir = currentPath + "\\" + DCATPATH;
+        this.stylesheetDir = currentPath + "\\" + XSLPATH;
+        this.inputDirFamilies = currentPath + "\\" + FAMILIESPATH;
+        this.inputDirXsd = currentPath + "\\" + XSDPATH;
     }
 
     public String getStylesheetDir() {
