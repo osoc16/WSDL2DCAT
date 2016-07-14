@@ -46,7 +46,7 @@ public class Converter {
     private String inputDirXsd;
     private String inputDirFamilies;
     private String currentPath;
-    
+
     private final String fileTypeFamilies;
     private final String fileTypeXsd;
 
@@ -54,7 +54,7 @@ public class Converter {
      * Default constructor. Sets default input, output and stylesheet directory.
      */
     public Converter() {
-        String currentPath = "";
+        currentPath = "";
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
@@ -97,7 +97,7 @@ public class Converter {
              * *
              * Checks if the files folder is a directory
              */
-            if (!new File(currentPath).isDirectory()) {
+            if (!currentPath.equals("") && !new File(currentPath).isDirectory()) {
                 throw new IllegalArgumentException("The files folder directory " + currentPath + " is not a directory");
             }
             /**

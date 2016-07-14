@@ -41,7 +41,7 @@ public class WSDL2DCAT {
                     + "4: exit application\n"
                     + "Option (default 1):");
             String option = sc.nextLine();
-            if (option.equals("4")) {
+            if (!option.equals("4")) {
                 if (option.equals("3")) {
                     customConvert(converter, sc);
                 } else if (option.equals("2")) {
