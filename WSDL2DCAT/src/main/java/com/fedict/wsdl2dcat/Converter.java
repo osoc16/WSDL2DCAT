@@ -38,21 +38,20 @@ import org.apache.commons.io.FileUtils;
 public class Converter {
 
     // Default paths
-    private static final String WSDLPATH = "\\Input\\WSDL\\";
-    private static final String XSDPATH = "\\Input\\XSD\\";
-    private static final String DCATPATH = "\\Output\\DCAT\\";
-    private static final String XSLPATH = "\\Transformation\\XSL\\";
-    private static final String FAMILIESPATH = "\\Input\\FAMILIES\\";
+    private static final String WSDLPATH = "\\files\\Input\\WSDL\\";
+    private static final String XSDPATH = "\\files\\Input\\XSD\\";
+    private static final String DCATPATH = "\\files\\Output\\DCAT\\";
+    private static final String XSLPATH = "\\files\\Transformation\\XSL\\";
+    private static final String FAMILIESPATH = "\\files\\Input\\FAMILIES\\";
 
     private String outputDir;
-
     private String fileType;
     private String inputDir;
-    private final String stylesheetDir;
+    private String currentPath;
+    private String stylesheetDir;
 
     private final String inputDirFamilies;
     private final String fileTypeFamilies;
-
     private final String inputDirXsd;
     private final String fileTypeXsd;
 
@@ -60,7 +59,7 @@ public class Converter {
      * Default constructor. Sets default input, output and stylesheet directory.
      */
     public Converter() {
-        String currentPath = "files";
+
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
@@ -254,6 +253,22 @@ public class Converter {
 
     public void setInputDir(String inputDir) {
         this.inputDir = inputDir;
+    }
+
+    public String getCurrentPath() {
+        return currentPath;
+    }
+
+    public void setCurrentPath(String currentPath) {
+        this.currentPath = currentPath;
+    }
+
+    public String getStylesheetDir() {
+        return stylesheetDir;
+    }
+
+    public void setStylesheetDir(String stylesheetDir) {
+        this.stylesheetDir = stylesheetDir;
     }
 
 }
