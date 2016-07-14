@@ -5,8 +5,6 @@
  */
 package com.fedict.wsdl2dcat;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,9 +14,6 @@ import java.util.Collection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.transform.Source;
@@ -48,11 +43,12 @@ public class Converter {
     private String fileType;
     private String inputDir;
     private String stylesheetDir;
-
-    private String inputDirFamilies;
-    private String fileTypeFamilies;
     private String inputDirXsd;
-    private String fileTypeXsd;
+    private String inputDirFamilies;
+    private String currentPath;
+    
+    private final String fileTypeFamilies;
+    private final String fileTypeXsd;
 
     /**
      * Default constructor. Sets default input, output and stylesheet directory.
@@ -97,6 +93,13 @@ public class Converter {
         OutputStream DCATfile = null;
         try {
             String[] extensions = {fileType};
+            /**
+             * *
+             * Checks if the files folder is a directory
+             */
+            if (!new File(currentPath).isDirectory()) {
+                throw new IllegalArgumentException("The files folder directory " + currentPath + " is not a directory");
+            }
             /**
              * *
              * Checks if the output file is a directory
@@ -235,7 +238,9 @@ public class Converter {
     }
 
     public void setOutputDir(String outputDir) {
-        this.outputDir = outputDir;
+        if (!outputDir.equals("")) {
+            this.outputDir = outputDir;
+        }
     }
 
     public String getFileType() {
@@ -243,23 +248,31 @@ public class Converter {
     }
 
     public void setFileType(String fileType) {
-        this.fileType = fileType;
+        if (!fileType.equals("")) {
+            this.fileType = fileType;
+        }
     }
 
     public String getInputDir() {
+
         return inputDir;
     }
 
     public void setInputDir(String inputDir) {
-        this.inputDir = inputDir;
+        if (!inputDir.equals("")) {
+            this.inputDir = inputDir;
+        }
     }
 
     public void setCurrentPath(String currentPath) {
-        this.inputDir = currentPath + "\\" + WSDLPATH;
-        this.outputDir = currentPath + "\\" + DCATPATH;
-        this.stylesheetDir = currentPath + "\\" + XSLPATH;
-        this.inputDirFamilies = currentPath + "\\" + FAMILIESPATH;
-        this.inputDirXsd = currentPath + "\\" + XSDPATH;
+        if (!currentPath.equals("")) {
+            this.inputDir = currentPath + "\\" + WSDLPATH;
+            this.outputDir = currentPath + "\\" + DCATPATH;
+            this.stylesheetDir = currentPath + "\\" + XSLPATH;
+            this.inputDirFamilies = currentPath + "\\" + FAMILIESPATH;
+            this.inputDirXsd = currentPath + "\\" + XSDPATH;
+            this.currentPath = currentPath;
+        }
     }
 
     public String getStylesheetDir() {
@@ -267,7 +280,8 @@ public class Converter {
     }
 
     public void setStylesheetDir(String stylesheetDir) {
-        this.stylesheetDir = stylesheetDir;
+        if (!stylesheetDir.equals("")) {
+            this.stylesheetDir = stylesheetDir;
+        }
     }
-
 }
