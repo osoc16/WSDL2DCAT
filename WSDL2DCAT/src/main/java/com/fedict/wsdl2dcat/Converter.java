@@ -44,11 +44,11 @@ public class Converter {
     private String inputDir;
     private String stylesheetDir;
     private String inputDirXsd;
-    private String inputDirFamilies;
     private String currentPath;
+    private String inputDirFamilies;
+    private String fileTypeXsd;
 
     private final String fileTypeFamilies;
-    private final String fileTypeXsd;
 
     /**
      * Default constructor. Sets default input, output and stylesheet directory.
@@ -77,7 +77,7 @@ public class Converter {
      */
     public void convertToDCAT() {
         convertToDCAT(this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
-        convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileType);
+        convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileTypeXsd);
     }
 
     /**
@@ -251,6 +251,9 @@ public class Converter {
         if (!fileType.equals("")) {
             this.fileType = fileType;
         }
+        if (!fileTypeXsd.equals("")) {
+            this.fileTypeXsd = fileType;
+        }
     }
 
     public String getInputDir() {
@@ -262,6 +265,26 @@ public class Converter {
         if (!inputDir.equals("")) {
             this.inputDir = inputDir;
         }
+
+        if (!inputDirXsd.equals("")) {
+            this.inputDirXsd = inputDir;
+        }
+    }
+
+    public String getInputDirXsd() {
+        return inputDirXsd;
+    }
+
+    public void setInputDirXsd(String inputDirXsd) {
+        this.inputDirXsd = inputDirXsd;
+    }
+
+    public String getFileTypeXsd() {
+        return fileTypeXsd;
+    }
+
+    public void setFileTypeXsd(String fileTypeXsd) {
+        this.fileTypeXsd = fileTypeXsd;
     }
 
     public void setCurrentPath(String currentPath) {
