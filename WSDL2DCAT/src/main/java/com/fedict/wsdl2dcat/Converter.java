@@ -38,11 +38,11 @@ import org.apache.commons.io.FileUtils;
 public class Converter {
 
     // Default paths
-    private static final String WSDLPATH = "\\files\\Input\\WSDL\\";
-    private static final String XSDPATH = "\\files\\Input\\XSD\\";
-    private static final String DCATPATH = "\\files\\Output\\DCAT\\";
-    private static final String XSLPATH = "\\files\\Transformation\\XSL\\";
-    private static final String FAMILIESPATH = "\\files\\Input\\FAMILIES\\";
+    private static final String WSDLPATH = "files\\Input\\WSDL\\";
+    private static final String XSDPATH = "files\\Input\\XSD\\";
+    private static final String DCATPATH = "files\\Output\\DCAT\\";
+    private static final String XSLPATH = "files\\Transformation\\XSL\\";
+    private static final String FAMILIESPATH = "files\\Input\\FAMILIES\\";
 
     private String outputDir;
     private String fileType;
@@ -59,7 +59,7 @@ public class Converter {
      * Default constructor. Sets default input, output and stylesheet directory.
      */
     public Converter() {
-
+        currentPath="";
         this.inputDir = currentPath + WSDLPATH;
         this.outputDir = currentPath + DCATPATH;
         this.stylesheetDir = currentPath + XSLPATH;
