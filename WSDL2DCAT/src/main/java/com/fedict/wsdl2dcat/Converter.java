@@ -75,9 +75,9 @@ public class Converter {
     /**
      * (overload) Converts files in default folder to DCAT files
      */
-    public void convertToDCAT() {
-        convertToDCAT(this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
-        convertToDCAT(this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileType);
+    public void convertToDCAT(boolean withConfigFile) {
+        convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
+        convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileType);
     }
 
     /**
@@ -89,7 +89,7 @@ public class Converter {
      * @param stylesheetDir directory where the XSL files are stored
      * @param stylesheetFileName name of the stylesheet that should be used
      */
-    public void convertToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
+    public void convertToDCAT(boolean withConfigFile, String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
             String[] extensions = {fileType};
@@ -147,10 +147,19 @@ public class Converter {
             }
         } catch (FileNotFoundException | IllegalArgumentException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+            if (withConfigFile) {
+                System.exit(1);
+            }
         } catch (TransformerConfigurationException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+            if (withConfigFile) {
+                System.exit(1);
+            }
         } catch (TransformerException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
+            if (withConfigFile) {
+                System.exit(1);
+            }
         }
 
     }
@@ -159,14 +168,14 @@ public class Converter {
      * (overload) Converts families to DCAT using default settings
      *
      */
-    public void convertFamiliesToDCAT() {
-        convertFamiliesToDCAT(this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
+    public void convertFamiliesToDCAT(boolean withConfigFile) {
+        convertFamiliesToDCAT(withConfigFile,this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
     }
 
-    public void convertFamiliesToDCAT(String inputDir, String fileType, String outputDir, String stylesheetDir) {
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
-        convertToDCAT(inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
+    public void convertFamiliesToDCAT(boolean withConfigFile, String inputDir, String fileType, String outputDir, String stylesheetDir) {
+        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
+        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
+        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
     }
 
     /**

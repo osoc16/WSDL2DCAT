@@ -46,11 +46,11 @@ public class WSDL2DCAT {
                     customConvert(converter, sc);
                 } else if (option.equals("2")) {
                     changeLocationFilesFolder(converter, sc);
-                    converter.convertFamiliesToDCAT();
+                    converter.convertFamiliesToDCAT(false);
                 } else {
-                    converter.convertFamiliesToDCAT();
+                    converter.convertFamiliesToDCAT(false);
                 }
-                converter.convertToDCAT();
+                converter.convertToDCAT(false);
 
             } else {
                 stop = true;
