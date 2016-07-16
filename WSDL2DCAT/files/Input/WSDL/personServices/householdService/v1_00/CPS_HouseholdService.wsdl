@@ -8,7 +8,8 @@
 	targetNamespace="http://fsb.belgium.be/householdService/v1_00">
 
 	<wsdl:documentation>version 1.00</wsdl:documentation>
-
+        
+        <!--reeds beschreven via url-->
 	<wsdl:types>
 		<xsd:schema xmlns:tns="http://fsb.belgium.be/householdService/v1_00" targetNamespace="http://fsb.belgium.be/householdService/v1_00">
 			<xsd:import namespace="http://fsb.belgium.be/householdService/messages/v1_00" schemaLocation="../messages/v1_00/householdServiceMessages.xsd" />

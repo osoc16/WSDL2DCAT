@@ -44,11 +44,11 @@ public class Converter {
     private String inputDir;
     private String stylesheetDir;
     private String inputDirXsd;
-    private String inputDirFamilies;
     private String currentPath;
+    private String inputDirFamilies;
+    private String fileTypeXsd;
 
     private final String fileTypeFamilies;
-    private final String fileTypeXsd;
 
     /**
      * Default constructor. Sets default input, output and stylesheet directory.
@@ -107,6 +107,14 @@ public class Converter {
             if (!new File(outputDir).isDirectory()) {
                 throw new IllegalArgumentException("The output directory " + outputDir + " is not a directory");
             }
+            
+                /**
+             * *
+             * Checks if the output file is a directory
+             */
+            if (!new File(stylesheetDir).isDirectory()) {
+                throw new IllegalArgumentException("The stylesheet directory " + outputDir + " is not a directory");
+            }
             /**
              * *
              * Checks if the input file is a directory
@@ -142,7 +150,7 @@ public class Converter {
                     }
                 }
                 Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "File(s) have been converted to DCAT.");
-                Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "DCAT files can be found in: \n{0}", outputDir);
+                Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "DCAT files can be found in: {0} \n", outputDir);
                 Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "--------------------------------------------");
             }
         } catch (FileNotFoundException | IllegalArgumentException ex) {
@@ -260,6 +268,9 @@ public class Converter {
         if (!fileType.equals("")) {
             this.fileType = fileType;
         }
+        if (!fileTypeXsd.equals("")) {
+            this.fileTypeXsd = fileType;
+        }
     }
 
     public String getInputDir() {
@@ -270,7 +281,24 @@ public class Converter {
     public void setInputDir(String inputDir) {
         if (!inputDir.equals("")) {
             this.inputDir = inputDir;
+            this.inputDirXsd = inputDir;
         }
+    }
+
+    public String getInputDirXsd() {
+        return inputDirXsd;
+    }
+
+    public void setInputDirXsd(String inputDirXsd) {
+        this.inputDirXsd = inputDirXsd;
+    }
+
+    public String getFileTypeXsd() {
+        return fileTypeXsd;
+    }
+
+    public void setFileTypeXsd(String fileTypeXsd) {
+        this.fileTypeXsd = fileTypeXsd;
     }
 
     public void setCurrentPath(String currentPath) {
