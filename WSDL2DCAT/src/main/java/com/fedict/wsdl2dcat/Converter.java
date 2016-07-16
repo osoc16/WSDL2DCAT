@@ -107,6 +107,14 @@ public class Converter {
             if (!new File(outputDir).isDirectory()) {
                 throw new IllegalArgumentException("The output directory " + outputDir + " is not a directory");
             }
+            
+                /**
+             * *
+             * Checks if the output file is a directory
+             */
+            if (!new File(stylesheetDir).isDirectory()) {
+                throw new IllegalArgumentException("The stylesheet directory " + outputDir + " is not a directory");
+            }
             /**
              * *
              * Checks if the input file is a directory
@@ -142,7 +150,7 @@ public class Converter {
                     }
                 }
                 Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "File(s) have been converted to DCAT.");
-                Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "DCAT files can be found in: \n{0}", outputDir);
+                Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "DCAT files can be found in: {0} \n", outputDir);
                 Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.INFO, "--------------------------------------------");
             }
         } catch (FileNotFoundException | IllegalArgumentException ex) {
@@ -264,9 +272,6 @@ public class Converter {
     public void setInputDir(String inputDir) {
         if (!inputDir.equals("")) {
             this.inputDir = inputDir;
-        }
-
-        if (!inputDirXsd.equals("")) {
             this.inputDirXsd = inputDir;
         }
     }

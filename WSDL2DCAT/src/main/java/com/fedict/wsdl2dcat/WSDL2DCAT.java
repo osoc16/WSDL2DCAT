@@ -5,9 +5,16 @@
  */
 package com.fedict.wsdl2dcat;
 
+import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
 
 /**
  *
@@ -29,34 +36,42 @@ public class WSDL2DCAT {
      * @param args input, output, stylesheet directory
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Converter converter = new Converter();
-        System.out.println("WSDL2DCAT tool \n");
-        boolean stop = false;
-        while (!stop) {
-            System.out.println("Select one of the following options:\n"
-                    + "1: start conversion with standard settings (default)\n"
-                    + "2: change location of required files folder\n"
-                    + "3: start conversion with custom settings\n"
-                    + "4: exit application\n"
-                    + "Option (default 1):");
-            String option = sc.nextLine();
-            if (!option.equals("4")) {
-                if (option.equals("3")) {
-                    customConvert(converter, sc);
-                } else if (option.equals("2")) {
-                    changeLocationFilesFolder(converter, sc);
-                    converter.convertFamiliesToDCAT();
+        PropertiesFileReader propertiesFileReader = new PropertiesFileReader();
+        boolean hasPropertiesFile = propertiesFileReader.readPropertiesFile(converter, "config.properties");
+        if (hasPropertiesFile) {
+            converter.convertToDCAT();
+            converter.convertFamiliesToDCAT();
+            System.out.println("Converted files to DCAT");
+        } else {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("WSDL2DCAT tool \n");
+            boolean stop = false;
+            while (!stop) {
+                System.out.println("Select one of the following options:\n"
+                        + "1: start conversion with standard settings (default)\n"
+                        + "2: change location of required files folder\n"
+                        + "3: start conversion with custom settings\n"
+                        + "4: exit application\n"
+                        + "Option (default 1):");
+                String option = sc.nextLine();
+                if (!option.equals("4")) {
+                    if (option.equals("3")) {
+                        customConvert(converter, sc);
+                    } else if (option.equals("2")) {
+                        changeLocationFilesFolder(converter, sc);
+                        converter.convertFamiliesToDCAT();
+                    } else {
+                        converter.convertFamiliesToDCAT();
+                    }
+                    converter.convertToDCAT();
+
                 } else {
-                    converter.convertFamiliesToDCAT();
+                    stop = true;
                 }
-                converter.convertToDCAT();
-
-            } else {
-                stop = true;
             }
-
         }
+
     }
 
     private static void customConvert(Converter converter, Scanner sc) {
