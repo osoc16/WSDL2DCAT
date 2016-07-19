@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:mes="http://fsb.belgium.be/addressHistoryService/messages/v1_00" 
+		xmlns:err="http://fsb.belgium.be/data/common/error/v1_00"
+		xmlns:add="http://fsb.belgium.be/data/entity/address/v1_00" 
+		xmlns:ctx="http://fsb.belgium.be/data/business/context/v1_00" 
+		targetNamespace="http://fsb.belgium.be/addressHistoryService/messages/v1_00" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+
+	<xs:annotation>
+		<xs:documentation>
+			Definition of the request and response messages used by the verify person service.
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://fsb.belgium.be/data/common/error/v1_00" schemaLocation="../../../../data/common/error/v1_00/error.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/address/v1_00" schemaLocation="../../../../data/entity/address/v1_00/address.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/business/context/v1_00" schemaLocation="../../../../data/business/context/v1_00/context.xsd"/>
+
+	<xs:element name="getAddressHistoryRequest" type="mes:GetAddressHistoryRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message for the verifyName operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="getAddressHistoryResponse" type="mes:GetAddressHistoryResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message for the verifyName operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="GetAddressHistoryRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the type of the request message for the get address history operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ctx:userContext"/>
+			<xs:element name="personNumber">
+				<xs:annotation>
+					<xs:documentation>
+						The person's national or social security number. 
+						This must be exactly 11 digits long.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="\d{11}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GetAddressHistoryResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the type of the response message for the verifyName operation.
+				There are no business errors defined.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="addressHistory" type="mes:AddressHistoryType">
+					<xs:annotation>
+						<xs:documentation>
+							To be defined. 
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name ="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction
+							with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name ="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>
+						Business error. For a list of possible errors, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:simpleType name="KindOfAddressType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the existing kinds of addresses that exist: main residence, 
+				declared address, legal address, temporary address.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LEGAL_ADDRESS">
+				<xs:annotation>
+					<xs:documentation>
+						Legal address. For a definition, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DECLARED_ADDRESS">
+				<xs:annotation>
+					<xs:documentation>
+						Declared address. For a definition, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TEMPORARY_ADDRESS">
+				<xs:annotation>
+					<xs:documentation>
+						Temporary address. For a definition, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAIN_RESIDENCE">
+				<xs:annotation>
+					<xs:documentation>
+						Main residence. For a definition, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="StructuredHistoricAddressType">
+		<xs:annotation>
+			<xs:documentation>
+				A historic structured address. 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="add:StructuredAddressType">
+				<xs:attribute name="kindOfAddress" type="mes:KindOfAddressType" use="required"/>
+				<xs:attribute name="validFrom" type="xs:date" use="required"/>
+				<xs:attribute name="validUntil" type="xs:date" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="UnstructuredHistoricAddressType">
+		<xs:annotation>
+			<xs:documentation>
+				A historix unstructured address
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="add:UnstructuredAddressType">
+				<xs:attribute name="kindOfAddress" type="mes:KindOfAddressType" use="required"/>
+				<xs:attribute name="validFrom" type="xs:date" use="required"/>
+				<xs:attribute name="validUntil" type="xs:date" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="AddressHistoryType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the type of the response message for the verifyName operation.
+				There are no business errors defined.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="structuredAddress" type="mes:StructuredHistoricAddressType"/>
+				<xs:element name="unstructuredAddress" type="mes:UnstructuredHistoricAddressType"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema version="1.0" 
+	targetNamespace="http://fsb.belgium.be/edrl/ActivityService/messages/v1_00"
+	xmlns:cod="http://fsb.belgium.be/edrl/common/codes/v1_00" 
+	xmlns:ent="http://fsb.belgium.be/edrl/common/entities/v1_00"
+	xmlns:tns="http://fsb.belgium.be/edrl/ActivityService/messages/v1_00" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:import namespace="http://fsb.belgium.be/edrl/common/codes/v1_00" schemaLocation="../../../common/codes/v1_00/codes.xsd" />
+	<xs:import namespace="http://fsb.belgium.be/edrl/common/entities/v1_00" schemaLocation="../../../common/entities/v1_00/entities.xsd" />
+
+	<xs:element name="get" type="tns:GetType" />
+	<xs:element name="getResponse" type="tns:GetResponseType" />
+
+	<xs:element name="getAll" type="tns:GetAllType" />
+	<xs:element name="getAllResponse" type="tns:GetAllResponseType" />
+
+	<xs:element name="getAllCodes" type="tns:GetAllCodesType" />
+	<xs:element name="getAllCodesResponse" type="tns:GetAllCodesResponseType" />
+
+	<xs:element name="hasChanged" type="tns:HasChangedType" />
+	<xs:element name="hasChangedResponse" type="tns:HasChangedResponseType" />
+
+	<xs:complexType name="GetType">
+		<xs:sequence>
+			<xs:element name="activityCode" type="cod:ActivityCodeType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GetResponseType">
+		<xs:sequence>
+			<xs:element name="activity" type="ent:ActivityType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GetAllType">
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="GetAllResponseType">
+		<xs:sequence>
+			<xs:element name="activity" type="ent:ActivityType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GetAllCodesType">
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="GetAllCodesResponseType">
+		<xs:sequence>
+			<xs:element name="activityCode" type="cod:ActivityCodeType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HasChangedType">
+		<xs:sequence>
+			<xs:element name="activityCode" type="cod:ActivityCodeType" />
+			<xs:element name="referenceDate" type="xs:dateTime" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HasChangedResponseType">
+		<xs:sequence>
+			<xs:element name="changed" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

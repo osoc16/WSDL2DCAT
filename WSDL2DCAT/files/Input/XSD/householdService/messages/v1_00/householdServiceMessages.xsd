@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:mes="http://fsb.belgium.be/householdService/messages/v1_00" 
+		xmlns:err="http://fsb.belgium.be/data/common/error/v1_00"
+		xmlns:num="http://fsb.belgium.be/data/entity/person/number/v1_00" 
+		xmlns:cod="http://fsb.belgium.be/data/common/code/v1_00" 
+		xmlns:ctx="http://fsb.belgium.be/data/business/context/v1_00" 
+		xmlns:per="http://fsb.belgium.be/data/entity/person/v1_00"
+		targetNamespace="http://fsb.belgium.be/householdService/messages/v1_00" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+	<xs:annotation>
+		<xs:documentation>
+			Definition of the request and response messages used by the household service.
+			
+			version 1.00: HouseHoldMemberType only contains national number
+			version 1.01: HHMT is basicpersonType
+			version 1.02: removed valid from and added household events
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://fsb.belgium.be/data/common/error/v1_00" schemaLocation="../../../../data/common/error/v1_00/error.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/number/v1_00" schemaLocation="../../../../data/entity/person/number/v1_00/personNumber.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/business/context/v1_00" schemaLocation="../../../../data/business/context/v1_00/context.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/common/code/v1_00" schemaLocation="../../../../data/common/code/v1_00/code.xsd"/>
+	<xs:import namespace="http://fsb.belgium.be/data/entity/person/v1_00" schemaLocation="../../../../data/entity/person/v1_00/person.xsd"/>
+
+	<xs:element name="getHeadOfHouseholdRequest" type="mes:GetHeadOfHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message for the getHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="getHeadOfHouseholdResponse" type="mes:GetHeadOfHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message for the getHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="isHeadOfHouseholdRequest" type="mes:IsHeadOfHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message for the isHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="isHeadOfHouseholdResponse" type="mes:IsHeadOfHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message for the isHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="getNumberOfHouseholdMembersRequest" type="mes:GetNumberOfHouseholdMembersRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message for the getNumberOfHouseholdMembers operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="getNumberOfHouseholdMembersResponse" type="mes:GetNumberOfHouseholdMembersResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message for the getNumberOfHouseholdMembers operation
+			</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="GetHeadOfHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message of the getHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestRefDateType">
+				<xs:sequence>
+					<!-- possible extensions go here -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetHeadOfHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message of the getHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="headOfHousehold" type="mes:HouseholdMemberType">
+					<xs:annotation>
+						<xs:documentation>
+							The head of household
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name ="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction
+							with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name ="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>
+						Business error. For a list of possible errors, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="IsHeadOfHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message of the isHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestRefDateType">
+				<xs:sequence>
+					<!-- possible extensions go here -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="IsHeadOfHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message of the isHeadOfHousehold operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="isHeadOfHousehold" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>
+							If the person number given in the request corresponds to
+							the head of the household at the reference date, the
+							element isHeadOfHousehold is true. For all other cases,
+							the value is false.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name ="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction
+							with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name ="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>
+						Business error. For a list of possible errors, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="GetNumberOfHouseholdMembersRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the request message of the getNumberOfHouseholdMembers operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestRefDateType">
+				<xs:sequence>
+					<!-- possible extensions go here -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetNumberOfHouseholdMembersResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				Definition of the response message of the getNumberOfHouseholdMembers operation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="numberOfHouseholdMembers" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>
+							Holds the number of household members for a specific person 
+							at the given reference date. The number will be at least one.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name ="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction
+							with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name ="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>
+						Business error. For a list of possible errors, see the user manual.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:element name="getHouseholdRequest" type="mes:GetHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>Definition of the request message for the getHousehold operation</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="getHouseholdResponse" type="mes:GetHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>Definition of the response message for the getHousehold operation</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="getHouseholdEventsRequest" type="mes:GetHouseholdEventsRequestType">
+		<xs:annotation>
+			<xs:documentation>Definition of the request message for the getHouseholdHistory operation</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="getHouseholdEventsResponse" type="mes:GetHouseholdEventsResponseType">
+		<xs:annotation>
+			<xs:documentation>Definition of the response message for the getHouseholdHistory operation</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="household" type="mes:HouseholdType">
+		<xs:annotation>
+			<xs:documentation>The household</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="householdEvents" type="mes:HouseholdEventsType">
+		<xs:annotation>
+			<xs:documentation>The household history</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="GeneralRequestType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Definition of the type of the general request message for household operations</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ctx:userContext" />
+			<xs:element name="personNumber" type="num:PersonNumberType">
+				<xs:annotation>
+					<xs:documentation>The person's national or social security number. This must be exactly 11 digits long.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="GeneralRequestRefDateType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Definition of the type of the general request message for household operations</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestType">
+			<xs:sequence>
+			<xs:element name="referenceDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						A reference date may be given to which date the request refers to. This date can only be in the past. If omitted, today's date is
+						implied, and the actual, current situation is returned. If a future date is given, an error will occur.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetHouseholdRequestType">
+		<xs:annotation>
+			<xs:documentation>Definition of the request message of the getHousehold operation</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestRefDateType">
+				<xs:sequence>
+					<!-- possible extensions go here -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetHouseholdEventsRequestType">
+		<xs:annotation>
+			<xs:documentation>Definition of the request message of the getHouseholdHistory operation</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mes:GeneralRequestType">
+				<xs:sequence>
+					<!-- possible extensions go here -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetHouseholdResponseType">
+		<xs:annotation>
+			<xs:documentation>Definition of the response message of the getHousehold operation</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element ref="mes:household">
+					<xs:annotation>
+						<xs:documentation>The household</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>Business error. For a list of possible errors, see the user manual.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="GetHouseholdEventsResponseType">
+		<xs:annotation>
+			<xs:documentation>Definition of the response message of the getHousehold operation</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element ref="mes:householdEvents">
+					<xs:annotation>
+						<xs:documentation>The household</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="warning" type="err:ErrorOrWarningType" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							An optional warning. Warnings are only given in conjunction with data. For a list of possible warnings, see the user manual.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name="error" type="err:ErrorOrWarningType">
+				<xs:annotation>
+					<xs:documentation>Business error. For a list of possible errors, see the user manual.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="HouseholdMemberType">
+		<xs:complexContent>
+			<xs:extension base="per:BasicPersonType">
+				<xs:sequence>
+					<xs:element name="relationship" type="cod:CodeType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								The relationship of the household member, with respect to the head of household. In case the person is the head of household
+								him- or herself, the relationshiop element is not provided. Hence the optional declaration.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="HouseholdEventsMemberType">
+		<xs:complexContent>
+			<xs:extension base="mes:HouseholdMemberType">
+				<xs:attribute name="validFrom" type="xs:date" use="optional">
+					<xs:annotation>
+						<xs:documentation>The date from which the household information is valid</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="validUntil" type="xs:date" use="optional">
+					<xs:annotation>
+						<xs:documentation>
+							The date until which the household information is valid. If not given, an undefined future date is implied.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="ValidityType">
+		<xs:attribute name="validFrom" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date from which the household information is valid</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="validUntil" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date until which the household information is valid. If not given, an undefined future date is implied.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="HouseholdType">
+		<xs:annotation>
+			<xs:documentation>A household is composed of one head of household and zero or more household members.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="head" type="per:BasicPersonType">
+				<xs:annotation>
+					<xs:documentation>The head of household</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="member" type="mes:HouseholdMemberType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>A member of the household</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="HouseholdEventsType">
+		<xs:annotation>
+			<xs:documentation>....</xs:documentation>
+		</xs:annotation>
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="head" type="mes:HouseholdEventsMemberType">
+				<xs:annotation>
+					<xs:documentation>The head of household</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="member" type="mes:HouseholdEventsMemberType">
+				<xs:annotation>
+					<xs:documentation>A member of the household</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="single" type="mes:ValidityType">
+				<xs:annotation>
+					<xs:documentation>If person is single</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="community" type="mes:ValidityType">
+				<xs:annotation>
+					<xs:documentation>If person is living in community home</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://fsb.belgium.be/addressHistoryService/v1_00" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:mes="http://fsb.belgium.be/addressHistoryService/messages/v1_00" 
+	xmlns:fsb="http://fsb.belgium.be/v1_01" 
+	targetNamespace="http://fsb.belgium.be/addressHistoryService/v1_00">
+
+	<wsdl:documentation>version 1.00</wsdl:documentation>
+
+	<wsdl:types>
+		<xsd:schema xmlns:tns="http://fsb.belgium.be/addressHistoryService/v1_00" targetNamespace="http://fsb.belgium.be/addressHistoryService/v1_00">
+			<xsd:import namespace="http://fsb.belgium.be/addressHistoryService/messages/v1_00" schemaLocation="../messages/v1_00/addressHistoryServiceMessages.xsd" />
+			<xsd:import namespace="http://fsb.belgium.be/v1_01" schemaLocation="../../../v1_01/fsb.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="headerRequest">
+		<wsdl:part name="header" element="fsb:SyncHeader" />
+	</wsdl:message>
+
+	<wsdl:message name="headerResponse">
+		<wsdl:part name="header" element="fsb:SyncResponseHeader" />
+	</wsdl:message>
+
+	<wsdl:message name="getAddressHistoryRequest">
+		<wsdl:part name="body" element="mes:getAddressHistoryRequest" />
+	</wsdl:message>
+	
+	<wsdl:message name="getAddressHistoryResponse">
+		<wsdl:part name="body" element="mes:getAddressHistoryResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="addressHistoryServicePortType">
+		<wsdl:operation name="getAddressHistory">
+			<wsdl:documentation>
+				...
+			</wsdl:documentation>
+			<wsdl:input message="tns:getAddressHistoryRequest" />
+			<wsdl:output message="tns:getAddressHistoryResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="addressHistoryServiceSoapBinding" type="tns:addressHistoryServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getAddressHistory">
+			<soap:operation style="document" soapAction="" />
+			<wsdl:input>
+				<soap:header message="tns:headerRequest" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:headerResponse" part="header" use="literal" />
+				<soap:body parts="body" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="addressHistoryService">
+		<wsdl:port binding="tns:addressHistoryServiceSoapBinding" name="addressHistoryServicePort">
+			<soap:address location="https://fsb.services.pr.belgium.be/1.00/CPS_AddressHistoryService" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
