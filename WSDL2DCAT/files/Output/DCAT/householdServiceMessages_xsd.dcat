@@ -5,49 +5,61 @@
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHeadOfHouseholdRequest>
 	a dcat:Distribution ;
+	dc:title "getHeadOfHouseholdRequest"@en ;
 	dc:description "Definition of the request message for the getHeadOfHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHeadOfHouseholdResponse>
 	a dcat:Distribution ;
+	dc:title "getHeadOfHouseholdResponse"@en ;
 	dc:description "Definition of the response message for the getHeadOfHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/isHeadOfHouseholdRequest>
 	a dcat:Distribution ;
+	dc:title "isHeadOfHouseholdRequest"@en ;
 	dc:description "Definition of the request message for the isHeadOfHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/isHeadOfHouseholdResponse>
 	a dcat:Distribution ;
+	dc:title "isHeadOfHouseholdResponse"@en ;
 	dc:description "Definition of the response message for the isHeadOfHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getNumberOfHouseholdMembersRequest>
 	a dcat:Distribution ;
+	dc:title "getNumberOfHouseholdMembersRequest"@en ;
 	dc:description "Definition of the request message for the getNumberOfHouseholdMembers operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getNumberOfHouseholdMembersResponse>
 	a dcat:Distribution ;
+	dc:title "getNumberOfHouseholdMembersResponse"@en ;
 	dc:description "Definition of the response message for the getNumberOfHouseholdMembers operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHouseholdRequest>
 	a dcat:Distribution ;
+	dc:title "getHouseholdRequest"@en ;
 	dc:description "Definition of the request message for the getHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHouseholdResponse>
 	a dcat:Distribution ;
+	dc:title "getHouseholdResponse"@en ;
 	dc:description "Definition of the response message for the getHousehold operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHouseholdEventsRequest>
 	a dcat:Distribution ;
+	dc:title "getHouseholdEventsRequest"@en ;
 	dc:description "Definition of the request message for the getHouseholdHistory operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/getHouseholdEventsResponse>
 	a dcat:Distribution ;
+	dc:title "getHouseholdEventsResponse"@en ;
 	dc:description "Definition of the response message for the getHouseholdHistory operation"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/household>
 	a dcat:Distribution ;
+	dc:title "household"@en ;
 	dc:description "The household"@en .
 
 <http://fsb.belgium.be/householdService/messages/v1_00/householdEvents>
 	a dcat:Distribution ;
+	dc:title "householdEvents"@en ;
 	dc:description "The household history"@en .
 

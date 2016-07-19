@@ -5,9 +5,11 @@
 
 <http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryRequest>
 	a dcat:Distribution ;
+	dc:title "getAddressHistoryRequest"@en ;
 	dc:description "Definition of the request message for the verifyName operation"@en .
 
 <http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryResponse>
 	a dcat:Distribution ;
+	dc:title "getAddressHistoryResponse"@en ;
 	dc:description "Definition of the response message for the verifyName operation"@en .
 

@@ -10,7 +10,7 @@
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	foaf:homepage <http://registry.fsb.belgium.be/web/service-catalog/partner/homepage> ;
 	dc:publisher <https://opencorporates.com/companies/be/0367302178> ;
-	dc:modified "2016-07-18+02:00" ;
+	dc:modified "2016-07-19+02:00" ;
 	dcat:dataset <http://fsb.belgium.be/addressHistoryService/v1_00> .
 
 <http://fsb.belgium.be/addressHistoryService/v1_00>
@@ -18,7 +18,7 @@
 	dc:title "Service name http://fsb.belgium.be/addressHistoryService/v1_00"@en;
 	dc:description "This is a fedict webservice named: http://fsb.belgium.be/addressHistoryService/v1_00"@en;
 	dc:identifier "addressHistoryService/v1_00"@en;
-	dc:modified "2016-07-18+02:00" ;
+	dc:modified "2016-07-19+02:00" ;
 	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
 	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	dcat:distribution  <http://fsb.belgium.be/addressHistoryService/messages/v1_00/headerRequest>,  <http://fsb.belgium.be/addressHistoryService/messages/v1_00/headerResponse>,  <http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryRequest>,  <http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryResponse> .

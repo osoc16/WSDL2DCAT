@@ -45,10 +45,17 @@
     
     <xsl:template match="family/service">
         <xsl:variable name="languageTag" select="'@en'" />
+        <xsl:variable name="title" select="@id" />
         <xsl:text>&lt;</xsl:text>  
         <xsl:value-of select="@uri" /> 
         <xsl:text>&gt;</xsl:text>    
-        <xsl:text>&#10;&#x9;a dcat:Distribution ;&#10;&#x9;dc:description "</xsl:text>
+        <xsl:text>&#10;&#x9;a dcat:Distribution ; </xsl:text>
+        <xsl:text>&#10;&#x9;dc:title "</xsl:text>
+        <xsl:value-of select="$title"/> 
+        <xsl:text>"</xsl:text>
+        <xsl:value-of select="$languageTag"/> 
+        <xsl:text> ;</xsl:text>
+        <xsl:text>&#10;&#x9;dc:description "</xsl:text>
         <xsl:apply-templates select="desc" />      
         <xsl:text>"</xsl:text>
         <xsl:value-of select="$languageTag"/> 

@@ -72,17 +72,9 @@ public class Converter {
 
     }
 
-    /**
-     * (overload) Converts files in default folder to DCAT files
-     */
-    public void convertCustomisedToDCAT(boolean withConfigFile) {
-        convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
-    }
-    
-    
     public void convertToDCAT(boolean withConfigFile) {
         convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
-        convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileType);
+        convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileTypeXsd);
     }
 
     /**
@@ -112,8 +104,8 @@ public class Converter {
             if (!new File(outputDir).isDirectory()) {
                 throw new IllegalArgumentException("The output directory " + outputDir + " is not a directory");
             }
-            
-                /**
+
+            /**
              * *
              * Checks if the output file is a directory
              */
@@ -182,13 +174,13 @@ public class Converter {
      *
      */
     public void convertFamiliesToDCAT(boolean withConfigFile) {
-        convertFamiliesToDCAT(withConfigFile,this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
+        convertFamiliesToDCAT(withConfigFile, this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
     }
 
     public void convertFamiliesToDCAT(boolean withConfigFile, String inputDir, String fileType, String outputDir, String stylesheetDir) {
-        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
-        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
-        convertToDCAT(withConfigFile,inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
+        convertToDCAT(withConfigFile, inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
+        convertToDCAT(withConfigFile, inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
+        convertToDCAT(withConfigFile, inputDir, fileType, outputDir, stylesheetDir, "distribution_xml");
     }
 
     /**

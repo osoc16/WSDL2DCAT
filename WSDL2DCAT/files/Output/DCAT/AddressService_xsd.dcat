@@ -5,33 +5,41 @@
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/get>
 	a dcat:Distribution ;
+	dc:title "get"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getResponse>
 	a dcat:Distribution ;
+	dc:title "getResponse"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getAll>
 	a dcat:Distribution ;
+	dc:title "getAll"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getAllResponse>
 	a dcat:Distribution ;
+	dc:title "getAllResponse"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getChanged>
 	a dcat:Distribution ;
+	dc:title "getChanged"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getChangedResponse>
 	a dcat:Distribution ;
+	dc:title "getChangedResponse"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/hasChanged>
 	a dcat:Distribution ;
+	dc:title "hasChanged"@en ;
 	dc:description ""@en .
 
 <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/hasChangedResponse>
 	a dcat:Distribution ;
+	dc:title "hasChangedResponse"@en ;
 	dc:description ""@en .
 
