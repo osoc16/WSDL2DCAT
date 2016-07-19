@@ -75,6 +75,11 @@ public class Converter {
     /**
      * (overload) Converts files in default folder to DCAT files
      */
+    public void convertCustomisedToDCAT(boolean withConfigFile) {
+        convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
+    }
+    
+    
     public void convertToDCAT(boolean withConfigFile) {
         convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
         convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileType);

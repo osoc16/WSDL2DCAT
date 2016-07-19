@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions targetNamespace="http://fsb.belgium.be/edrl/AddressService/v1_00"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://fsb.belgium.be/edrl/AddressService/v1_00"
+	xmlns:mes="http://fsb.belgium.be/edrl/AddressService/messages/v1_00" 
+	xmlns:fsb="http://fsb.belgium.be/v1_01"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+	<documentation>version: 1.00.00</documentation>
+
+	<wsp:UsingPolicy Required="true" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+
+	<types>
+		<xsd:schema targetNamespace="http://fsb.belgium.be/edrl/AddressService/v1_00"
+			xmlns:tns="http://fsb.belgium.be/edrl/AddressService/v1_00">
+			<xsd:import namespace="http://fsb.belgium.be/edrl/AddressService/messages/v1_00"
+				schemaLocation="../messages/v1_00/AddressService.xsd" />
+			<xsd:import namespace="http://fsb.belgium.be/v1_01" schemaLocation="../../../v1_01/fsb.xsd" />
+
+			<xsd:element name="Ping" type="xsd:boolean" nillable="true" />
+			<xsd:element name="PingResponse" type="xsd:boolean" />
+		</xsd:schema>
+	</types>
+
+	<message name="headerRequest">
+		<part name="headerRequest" element="fsb:SyncHeader" />
+	</message>
+	<message name="headerResponse">
+		<part name="headerResponse" element="fsb:SyncResponseHeader" />
+	</message>
+
+	<message name="get">
+		<part name="body" element="mes:get" />
+	</message>
+	<message name="getResponse">
+		<part name="body" element="mes:getResponse" />
+	</message>
+	<message name="getAll">
+		<part name="body" element="mes:getAll" />
+	</message>
+	<message name="getAllResponse">
+		<part name="body" element="mes:getAllResponse" />
+	</message>
+	<message name="hasChanged">
+		<part name="body" element="mes:hasChanged" />
+	</message>
+	<message name="hasChangedResponse">
+		<part name="body" element="mes:hasChangedResponse" />
+	</message>
+	<message name="getChanged">
+		<part name="body" element="mes:getChanged" />
+	</message>
+	<message name="getChangedResponse">
+		<part name="body" element="mes:getChangedResponse" />
+	</message>
+	<!-- added ping messages -->
+	<message name="Ping">
+		<part name="body" element="tns:Ping" />
+	</message>
+	<message name="PingResponse">
+		<part name="body" element="tns:PingResponse" />
+	</message>
+
+	<portType name="AddressService">
+		<operation name="get" parameterOrder="body headerRequest headerResponse">
+			<input message="tns:get" />
+			<output message="tns:getResponse" />
+		</operation>
+		<operation name="getAll" parameterOrder="body headerRequest headerResponse">
+			<input message="tns:getAll" />
+			<output message="tns:getAllResponse" />
+		</operation>
+		<operation name="hasChanged" parameterOrder="body headerRequest headerResponse">
+			<input message="tns:hasChanged" />
+			<output message="tns:hasChangedResponse" />
+		</operation>
+		<operation name="getChanged" parameterOrder="body headerRequest headerResponse">
+			<input message="tns:getChanged" />
+			<output message="tns:getChangedResponse" />
+		</operation>
+		<!-- added ping porttypes -->
+		<operation name="ping">
+			<input message="tns:Ping" />
+			<output message="tns:PingResponse" />
+		</operation>
+	</portType>
+
+	<binding name="AddressServicePortBinding" type="tns:AddressService">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+		<operation name="get">
+			<soap:operation soapAction="get" />
+			<input>
+				<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="policy:X509TokenIntegrity-1.00" />
+					<wsp:PolicyReference URI="policy:X509TokenIdentificationWOTokenSignature-1.00" />
+				</wsp:Policy>
+			</input>
+			<output>
+				<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="getAll">
+			<soap:operation soapAction="getAll" />
+			<input>
+				<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="policy:X509TokenIntegrity-1.00" />
+					<wsp:PolicyReference URI="policy:X509TokenIdentificationWOTokenSignature-1.00" />
+				</wsp:Policy>
+			</input>
+			<output>
+				<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="hasChanged">
+			<soap:operation soapAction="hasChanged" />
+			<input>
+				<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="policy:X509TokenIntegrity-1.00" />
+					<wsp:PolicyReference URI="policy:X509TokenIdentificationWOTokenSignature-1.00" />
+				</wsp:Policy>
+			</input>
+			<output>
+				<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="getChanged">
+			<soap:operation soapAction="getChanged" />
+			<input>
+				<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="policy:X509TokenIntegrity-1.00" />
+					<wsp:PolicyReference URI="policy:X509TokenIdentificationWOTokenSignature-1.00" />
+				</wsp:Policy>
+			</input>
+			<output>
+				<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<!-- added ping binding -->
+		<operation name="ping">
+			<soap:operation soapAction="ping" />
+			<input>
+				<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+				<soap:body use="literal" />
+				<wsp:Policy>
+					<wsp:PolicyReference URI="policy:UsernameTokenPlainIdentification-2.00" />
+				</wsp:Policy>
+			</input>
+			<output>
+				<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+	<service name="AddressServiceService">
+		<port name="AddressServicePort" binding="tns:AddressServicePortBinding">
+			<soap:address location="https://fsb.services.pr.belgium.be/EDRL/1.00/CPS_AddressService" />
+		</port>
+	</service>
+</definitions>

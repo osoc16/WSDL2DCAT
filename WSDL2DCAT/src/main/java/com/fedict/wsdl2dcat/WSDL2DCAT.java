@@ -64,7 +64,7 @@ public class WSDL2DCAT {
                     } else {
                         converter.convertFamiliesToDCAT(false);
                     }
-                    converter.convertToDCAT(false);
+                    converter.convertCustomisedToDCAT(false);
 
                 } else {
                     stop = true;

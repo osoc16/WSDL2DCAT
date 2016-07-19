@@ -40,7 +40,7 @@
         <xsl:text>&#10;</xsl:text>
         
         <!--Distribution-->
-        <xsl:variable name="distribution" select="namespace::mes" />
+        <xsl:variable name="distribution" select="@targetNamespace" />
         <xsl:apply-templates select="xs:element">
             <xsl:with-param name="distribution" select="$distribution" />
             <xsl:with-param name="languageTag" select="$languageTag" />

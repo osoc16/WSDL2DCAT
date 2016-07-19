@@ -225,17 +225,17 @@
             <desc></desc>
         </service>
     </family>
-    <family id='S184-Maritime Localization Services' uri='http://fsb.rovin.be/family/S184-Maritime Localization Services'>
-        <service id='S244-LRITEndpointService' parent='S184-Maritime Localization Services' uri='http://fsb.rovin.be/service/S244-LRITEndpointService'>
+    <family id='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/family/S184-MaritimeLocalizationServices'>
+        <service id='S244-LRITEndpointService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S244-LRITEndpointService'>
             <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers.</desc>
         </service>
-        <service id='S185-MIKPrivateService' parent='S184-Maritime Localization Services' uri='http://fsb.rovin.be/service/S185-MIKPrivateService'>
+        <service id='S185-MIKPrivateService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S185-MIKPrivateService'>
             <desc>Web service to retrieve new ships data and GPS location information from EMSA (European Maritime Safety Agency) only for MIK.</desc>
         </service>
-        <service id='S186-MikPublicService' parent='S184-Maritime Localization Services' uri='http://fsb.rovin.be/service/S186-MikPublicService'>
+        <service id='S186-MikPublicService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S186-MikPublicService'>
             <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows consumers to manage their subscription by communicating with MIK or to request ad-hoc information.</desc>
         </service>
-        <service id='S187-MIKResponseService' parent='S184-Maritime Localization Services' uri='http://fsb.rovin.be/service/S187-MIKResponseService'>
+        <service id='S187-MIKResponseService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S187-MIKResponseService'>
             <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers.</desc>
         </service>
     </family>
