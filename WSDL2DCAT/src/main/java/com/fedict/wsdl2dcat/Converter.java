@@ -72,6 +72,10 @@ public class Converter {
 
     }
 
+    /**
+     * (overload) Converts files to DCAT using default settings
+     * @param withConfigFile true if a configuration file needs to be used
+     */
     public void convertToDCAT(boolean withConfigFile) {
         convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
         convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileTypeXsd);
@@ -80,6 +84,7 @@ public class Converter {
     /**
      * Method used for converting files to DCAT
      *
+     * @param withConfigFile true if a configuration file needs to be used
      * @param inputDir directory from where the files will be read
      * @param fileType file type of the converted files
      * @param outputDir directory where the converted files will be stored
@@ -172,11 +177,21 @@ public class Converter {
     /**
      * (overload) Converts families to DCAT using default settings
      *
+     * @param withConfigFile true if a configuration file is used
      */
     public void convertFamiliesToDCAT(boolean withConfigFile) {
         convertFamiliesToDCAT(withConfigFile, this.inputDirFamilies, this.fileTypeFamilies, this.outputDir, this.stylesheetDir);
     }
 
+    /**
+     * Method used for converting families to DCAT using provided settings
+     * 
+     * @param withConfigFile true if a configuration file is used
+     * @param inputDir directory from where the files will be read
+     * @param fileType file type of the converted files
+     * @param outputDir directory where the converted files will be stored
+     * @param stylesheetDir directory where the XSL files are stored
+     */
     public void convertFamiliesToDCAT(boolean withConfigFile, String inputDir, String fileType, String outputDir, String stylesheetDir) {
         convertToDCAT(withConfigFile, inputDir, fileType, outputDir, stylesheetDir, "prefix_catalog_xml");
         convertToDCAT(withConfigFile, inputDir, fileType, outputDir, stylesheetDir, "dataset_xml");
@@ -247,20 +262,36 @@ public class Converter {
         return fname;
     }
 
+    /**
+     * Getter method for output directory
+     * @return the output directory where the files are located
+     */
     public String getOutputDir() {
         return outputDir;
     }
 
+    /**
+     * Setter method for output directory
+     * @param outputDir the directory that should be used for output
+     */
     public void setOutputDir(String outputDir) {
         if (!outputDir.equals("")) {
             this.outputDir = outputDir;
         }
     }
 
+    /**
+     * Getter method for file type
+     * @return the file type
+     */
     public String getFileType() {
         return fileType;
     }
 
+    /**
+     * Setter method for file type
+     * @param fileType the file type
+     */
     public void setFileType(String fileType) {
         if (!fileType.equals("")) {
             this.fileType = fileType;
@@ -270,11 +301,19 @@ public class Converter {
         }
     }
 
+    /**
+     * Getter method for input directory where files are located
+     * @return the input directory
+     */
     public String getInputDir() {
-
         return inputDir;
     }
 
+    /**
+     * Setter method for input directory for changing 
+     * the location for reading files
+     * @param inputDir the input directory
+     */
     public void setInputDir(String inputDir) {
         if (!inputDir.equals("")) {
             this.inputDir = inputDir;
@@ -282,22 +321,42 @@ public class Converter {
         }
     }
 
+    /**
+     * Getter method for input directory of xsd files
+     * @return the input directory
+     */
     public String getInputDirXsd() {
         return inputDirXsd;
     }
 
+    /**
+     * Setter method for input directory of xsd files
+     * @param inputDirXsd the input directory
+     */
     public void setInputDirXsd(String inputDirXsd) {
         this.inputDirXsd = inputDirXsd;
     }
 
+    /**
+     * Getter method for file type that's used by xsd
+     * @return the file type
+     */
     public String getFileTypeXsd() {
         return fileTypeXsd;
     }
 
+    /**
+     * Setter method for setting the file type used by xsd
+     * @param fileTypeXsd the file type
+     */
     public void setFileTypeXsd(String fileTypeXsd) {
         this.fileTypeXsd = fileTypeXsd;
     }
 
+    /**
+     * Setter method for changing the root path for input/output/...
+     * @param currentPath the path to use
+     */
     public void setCurrentPath(String currentPath) {
         if (!currentPath.equals("")) {
             this.inputDir = currentPath + "\\" + WSDLPATH;
@@ -309,10 +368,18 @@ public class Converter {
         }
     }
 
+    /**
+     * Getter method for directory of stylesheets
+     * @return the directory of stylesheets
+     */
     public String getStylesheetDir() {
         return stylesheetDir;
     }
 
+    /**
+     * Setter method for directory of stylesheets
+     * @param stylesheetDir the directory of stylesheets
+     */
     public void setStylesheetDir(String stylesheetDir) {
         if (!stylesheetDir.equals("")) {
             this.stylesheetDir = stylesheetDir;

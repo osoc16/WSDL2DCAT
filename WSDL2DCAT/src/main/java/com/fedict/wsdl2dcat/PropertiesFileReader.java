@@ -8,8 +8,6 @@ package com.fedict.wsdl2dcat;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +15,16 @@ import java.util.logging.Logger;
 /**
  *
  * @author Miguel
+ * @author Umut
  */
 public class PropertiesFileReader {
 
+    /**
+     * Reads properties of a specified file
+     * @param converter the converter to use
+     * @param filename the filename of the file 
+     * @return true if properties are found, false otherwise
+     */
     public boolean readPropertiesFile(Converter converter, String filename) {
         Properties prop = new Properties();
         File file = new File(filename);

@@ -5,16 +5,9 @@
  */
 package com.fedict.wsdl2dcat;
 
-import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
+
 
 /**
  *
@@ -75,6 +68,11 @@ public class WSDL2DCAT {
 
     }
 
+    /**
+     * Used for custom conversion
+     * @param converter the converter to use
+     * @param sc the scanner to use
+     */
     private static void customConvert(Converter converter, Scanner sc) {
         System.out.println("Input folder (default: files/Input/WSDL):");
         converter.setInputDir(sc.nextLine());
@@ -92,6 +90,11 @@ public class WSDL2DCAT {
         converter.setStylesheetDir(sc.nextLine());
     }
 
+    /**
+     * Used for changing location of the files
+     * @param converter the converter to use
+     * @param sc the scanner to use
+     */
     private static void changeLocationFilesFolder(Converter converter, Scanner sc) {
         System.out.println("filesfolder=Files folder (default: files):");
         converter.setCurrentPath(sc.nextLine());
