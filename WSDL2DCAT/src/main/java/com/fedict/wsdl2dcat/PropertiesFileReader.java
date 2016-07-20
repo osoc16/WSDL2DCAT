@@ -35,20 +35,22 @@ public class PropertiesFileReader {
             prop.load(new FileInputStream(file));
 
             //get the property value and add it to the converter
+            String filesdirLocation = prop.getProperty("filesdirLocation", "");
             String outputdir = prop.getProperty("outputdir", "");
             String inputdir = prop.getProperty("inputdir", "");
             String transformationdir = prop.getProperty("transformationdir", "");
 
-            if (outputdir.equals("") && !inputdir.equals("") && !transformationdir.equals("")) {
+            if (filesdirLocation.equals("") && outputdir.equals("") && inputdir.equals("") && transformationdir.equals("")) {
                 propertyHasValue = false;
             }
 
-            System.out.println(inputdir);
-            System.out.println(outputdir);
-            System.out.println(transformationdir);
-            converter.setInputDir(inputdir);
-            converter.setOutputDir(outputdir);
-            converter.setStylesheetDir(transformationdir);
+            if (filesdirLocation.equals("")) {
+                converter.setInputDir(inputdir);
+                converter.setOutputDir(outputdir);
+                converter.setStylesheetDir(transformationdir);
+            }else{
+                converter.setCurrentPath(filesdirLocation);
+            }
 
         } catch (IOException ex) {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, null, ex);
