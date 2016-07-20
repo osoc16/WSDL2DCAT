@@ -59,12 +59,12 @@
             <xsl:text>&gt;&#10;</xsl:text>
             <xsl:text>&#x9;a dcat:Dataset ;&#10;</xsl:text>
             <xsl:text>&#x9;dc:title "Family name </xsl:text>
-            <xsl:value-of select="$family"/>
+            <xsl:value-of select="$id"/>
             <xsl:text>"</xsl:text>
             <xsl:value-of select="$languageTag"/> 
             <xsl:text>;&#10;</xsl:text>
             <xsl:text>&#x9;dc:description "This is a fedict web service family named: </xsl:text>
-            <xsl:value-of select="$family"/>
+            <xsl:value-of select="$id"/>
             <xsl:text>"</xsl:text>
             <xsl:value-of select="$languageTag"/> 
             <xsl:text>;&#10;</xsl:text>
