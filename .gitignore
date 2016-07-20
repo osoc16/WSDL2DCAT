@@ -12,3 +12,9 @@
 hs_err_pid*
 /WSDL2DCATconverter/build/
 /WSDL2DCATconverter/dist/
+/XSLX2XMLconverter/nbproject/private/
+/XSLX2XMLconverter/build/
+/XSLX2XMLconverter/dist/
+/WSDL2DCAT/target/
+
+.idea

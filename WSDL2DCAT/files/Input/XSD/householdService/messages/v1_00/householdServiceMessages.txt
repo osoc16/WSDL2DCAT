@@ -1,0 +1,53 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+	@prefix dc: <http://purl.org/dc/terms/> .
+	@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+	@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+</getHeadOfHouseholdRequest>
+	a dcat:Distribution ;
+	dc:description "Definition of the request message for the getHeadOfHousehold operation"@en .
+
+</getHeadOfHouseholdResponse>
+	a dcat:Distribution ;
+	dc:description "Definition of the response message for the getHeadOfHousehold operation"@en .
+
+</isHeadOfHouseholdRequest>
+	a dcat:Distribution ;
+	dc:description "Definition of the request message for the isHeadOfHousehold operation"@en .
+
+</isHeadOfHouseholdResponse>
+	a dcat:Distribution ;
+	dc:description "Definition of the response message for the isHeadOfHousehold operation"@en .
+
+</getNumberOfHouseholdMembersRequest>
+	a dcat:Distribution ;
+	dc:description "Definition of the request message for the getNumberOfHouseholdMembers operation"@en .
+
+</getNumberOfHouseholdMembersResponse>
+	a dcat:Distribution ;
+	dc:description "Definition of the response message for the getNumberOfHouseholdMembers operation"@en .
+
+</getHouseholdRequest>
+	a dcat:Distribution ;
+	dc:description "Definition of the request message for the getHousehold operation"@en .
+
+</getHouseholdResponse>
+	a dcat:Distribution ;
+	dc:description "Definition of the response message for the getHousehold operation"@en .
+
+</getHouseholdEventsRequest>
+	a dcat:Distribution ;
+	dc:description "Definition of the request message for the getHouseholdHistory operation"@en .
+
+</getHouseholdEventsResponse>
+	a dcat:Distribution ;
+	dc:description "Definition of the response message for the getHouseholdHistory operation"@en .
+
+</household>
+	a dcat:Distribution ;
+	dc:description "The household"@en .
+
+</householdEvents>
+	a dcat:Distribution ;
+	dc:description "The household history"@en .
+

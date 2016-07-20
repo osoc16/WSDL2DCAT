@@ -1,0 +1,15 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+	@prefix dc: <http://purl.org/dc/terms/> .
+	@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+	@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryRequest>
+	a dcat:Distribution ;
+	dc:title "getAddressHistoryRequest"@en ;
+	dc:description "Definition of the request message for the verifyName operation"@en .
+
+<http://fsb.belgium.be/addressHistoryService/messages/v1_00/getAddressHistoryResponse>
+	a dcat:Distribution ;
+	dc:title "getAddressHistoryResponse"@en ;
+	dc:description "Definition of the response message for the verifyName operation"@en .
+

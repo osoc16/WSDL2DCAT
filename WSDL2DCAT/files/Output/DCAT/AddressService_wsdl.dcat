@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+	@prefix dc: <http://purl.org/dc/terms/> .
+	@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+	@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://fsb.rovin.be>
+	a dcat:Catalog ;
+	dc:title "The FSB web service catalogue"@en;
+	dc:description "Fedict provides to the administrations and the public a platform allowing the consultation and a standardized data exchange, from one application to another application, through the Internet. The Federal Service Bus offers a safe and secured access to the Web Services connected, among others, to authentic sources. For more details about: - The FSB - The access procedure to the Web Services; - The site navigation; Please consult the list of available Web Services by using the search tool or browse through the catalogue. Please note that this site contains only information and technical documents. The content of this site is only available in English."@en;
+	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+	foaf:homepage <http://registry.fsb.belgium.be/web/service-catalog/partner/homepage> ;
+	dc:publisher <https://opencorporates.com/companies/be/0367302178> ;
+	dc:modified "2016-07-20+02:00" ;
+	dcat:dataset <http://fsb.belgium.be/edrl/AddressService/v1_00> .
+
+<http://fsb.belgium.be/edrl/AddressService/v1_00>
+	a dcat:Dataset ;
+	dc:title "Service name http://fsb.belgium.be/edrl/AddressService/v1_00"@en;
+	dc:description "This is a fedict webservice named: http://fsb.belgium.be/edrl/AddressService/v1_00"@en;
+	dc:identifier "edrl/AddressService/v1_00"@en;
+	dc:modified "2016-07-20+02:00" ;
+	dc:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+	dc:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+	dcat:distribution  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/headerRequest>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/headerResponse>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/get>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getResponse>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getAll>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getAllResponse>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/hasChanged>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/hasChangedResponse>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getChanged>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/getChangedResponse>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/Ping>,  <http://fsb.belgium.be/edrl/AddressService/messages/v1_00/PingResponse> .

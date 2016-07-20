@@ -1,0 +1,343 @@
+<?xml version='1.0'?>
+<fsb baseURI='http://fsb.rovin.be'>
+    <family id='S034-PersonServices' uri='http://fsb.rovin.be/family/S034-PersonServices'>
+        <service id='S189-AddressHistoryService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S189-AddressHistoryService'>
+            <desc>Web service delivering the history of address of a person.</desc>
+        </service>
+        <service id='S190-HouseholdService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S190-HouseholdService'>
+            <desc>Web service to obtain information regarding the household situation of a person.</desc>
+        </service>
+        <service id='S038-InternetGamingValidationService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S038-InternetGamingValidationService'>
+            <desc>Web service which checks if a person is minimum 18 years old and lives in Belgium.</desc>
+        </service>
+        <service id='S197-NRProxyService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S197-NRProxyService'>
+            <desc>De Nrproxyservice geeft de mogelijk om IT's door te geven die wij niet beschikbaar stellen in onze standaard PersonService webservices</desc>
+        </service>
+        <service id='S196-PersonHistoryService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S196-PersonHistoryService'>
+            <desc>De PersonHistoryservice gives historic data of personnames, civilstate and nationality</desc>
+        </service>
+        <service id='S192-VerifyPersonNameService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S192-VerifyPersonNameService'>
+            <desc>Web service which returns 'True' or 'False' when input of national number, first name and last name of a person correspond.</desc>
+        </service>
+        <service id='S035-GetPersonService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S035-GetPersonService'>
+            <desc>Web service which orchestrates the retrieval of person information from the RRN and the BCS/KSZ authentic sources.</desc>
+        </service>
+        <service id='S037-SearchPersonService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S037-SearchPersonService'>
+            <desc>Web service which offers two operations searchPersonByName and searchPersonByAddress. The service returns basic person information.</desc>
+        </service>
+        <service id='S151-ManagePersonService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S151-ManagePersonService'>
+            <desc>Web service which enables the consumer to retrieve and add or update basic person information in the BCSS/KSZ registry.</desc>
+        </service>
+        <service id='S234-SSRProxyService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S234-SSRProxyService'>
+            <desc>De SSRproxyservice geeft de mogelijk om bispersonen aan te maken en om bis en RAD (enkel adres) personen te updaten</desc>
+        </service>
+        <service id='S191-PictureService' parent='S034-PersonServices' uri='http://fsb.rovin.be/service/S191-PictureService'>
+            <desc>Web service which delivers the eID photo of a person.</desc>
+        </service>
+    </family>
+    <family id='S039-EnterpriseServices' uri='http://fsb.rovin.be/family/S039-EnterpriseServices'>
+        <service id='S235-AuthorisationFileService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S235-AuthorisationFileService'>
+            <desc>Web service to manage authorisation files for mobile trade and fairs.</desc>
+        </service>
+        <service id='S236-CertificateService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S236-CertificateService'>
+            <desc>Web service to manage certifications which provide authorization for mobile trade and fairs.</desc>
+        </service>
+        <service id='S237-ListService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S237-ListService'>
+            <desc>Web service to retrieve information regarding authorizations for mobile trade and fairs.</desc>
+        </service>
+        <service id='S040-WSConsultAgentEnterpriseService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S040-WSConsultAgentEnterpriseService'>
+            <desc>opzoeken van wettelijke vertegenwoordiger van een onderneming</desc>
+        </service>
+        <service id='S042-WSConsultAttestService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S042-WSConsultAttestService'>
+            <desc>raadplegen van attesten (= bewijzen van ondernemersvaardigheid om een bepaalde activiteit te kunnen uitoefenen)</desc>
+        </service>
+        <service id='S043-WSConsultKBOService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S043-WSConsultKBOService'>
+            <desc>raadplegen van ondernemingsgegevens in de Kruispuntbank van Ondernemingen (KBO)</desc>
+        </service>
+        <service id='S048-WSConsultTAPService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S048-WSConsultTAPService'>
+            <desc>raadplegen van de huidige situatie van de toelatingsaanvragen van een onderneming of een vestigingseenheid in de TAP (Toelatingen Autorisatie Procedure) databank</desc>
+        </service>
+        <service id='S044-WSReportKBOService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S044-WSReportKBOService'>
+            <desc>opvragen van rapporten in de KBO</desc>
+        </service>
+        <service id='S049-WSReportTAPService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S049-WSReportTAPService'>
+            <desc>opvragen van overzicht van de lopende toelatingsaanvragen van één onderneming of één vestigingseenheid op een bepaald tijdstip in de TAP (Toelatingen Autorisatie Procedure) databank</desc>
+        </service>
+        <service id='S045-WSStatusKBOService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S045-WSStatusKBOService'>
+            <desc>nagaan van de beschikbaarheid van de KBO services</desc>
+        </service>
+        <service id='S047-WSUpdateAttestService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S047-WSUpdateAttestService'>
+            <desc>creëren en aanpassen van attesten (= bewijzen van ondernemersvaardigheid om een bepaalde activiteit te kunnen uitoefenen)</desc>
+        </service>
+        <service id='S051-WSUpdateKBOService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S051-WSUpdateKBOService'>
+            <desc>creëren en aanpassen van ondernemingsgegevens in de KBO</desc>
+        </service>
+        <service id='S050-WSUpdateTAPService' parent='S039-EnterpriseServices' uri='http://fsb.rovin.be/service/S050-WSUpdateTAPService'>
+            <desc>creëren, wijzigen of annuleren van toelatingsaanvragen van één onderneming of één vestigingseenheid in de  TAP (Toelatingen Autorisatie Procedure) databank</desc>
+        </service>
+    </family>
+    <family id='S092-eLoketServices' uri='http://fsb.rovin.be/family/S092-eLoketServices'>
+        <service id='S095-PoliceBackOfficeService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S095-PoliceBackOfficeService'>
+            <desc>backend politie om neerleggen van een klacht te registreren</desc>
+        </service>
+        <service id='S096-PoliceReferenceTableUpdateService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S096-PoliceReferenceTableUpdateService'>
+            <desc>uitwisselen van info tussen front- en back-end van Aline tijdens de update van de referentietabellen van de politie</desc>
+        </service>
+        <service id='S222-AlineCasBackEndService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S222-AlineCasBackEndService'>
+            <desc>beheer van aangiften van alarmsystemen door alarmcentrales</desc>
+        </service>
+        <service id='S093-AlinePublicBackEndService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S093-AlinePublicBackEndService'>
+            <desc>beheer van aangiften van alarmsystemen</desc>
+        </service>
+        <service id='S159-CitizenStatusService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S159-CitizenStatusService'>
+            <desc>Webservice die bevestigt of de aangelogde persoon recht heeft op een sociaal tarief</desc>
+        </service>
+        <service id='S223-SoctarService' parent='S092-eLoketServices' uri='http://fsb.rovin.be/service/S223-SoctarService'>
+            <desc>Consulteren of een persoon recht heeft op Sociaal energie tarief</desc>
+        </service>
+    </family>
+    <family id='S097-eBirthServices' uri='http://fsb.rovin.be/family/S097-eBirthServices'>
+        <service id='S097-CityService' parent='S097-eBirthServices' uri='http://fsb.rovin.be/service/S097-CityService'>
+            <desc>FSB service voor eBirth waarop de gemeenten zich connecteren</desc>
+        </service>
+        <service id='S147-HospitalService' parent='S097-eBirthServices' uri='http://fsb.rovin.be/service/S147-HospitalService'>
+            <desc>FSB service voor eBirth waarop de gegevens van de ziekenhuizen via eHealt op terecht komen</desc>
+        </service>
+        <service id='S148-InternalService' parent='S097-eBirthServices' uri='http://fsb.rovin.be/service/S148-InternalService'>
+            <desc>FSB service voor eBirth</desc>
+        </service>
+        <service id='S149-ManageService' parent='S097-eBirthServices' uri='http://fsb.rovin.be/service/S149-ManageService'>
+            <desc>FSB service voor eBirth</desc>
+        </service>
+    </family>
+    <family id='S098-4thWayServices' uri='http://fsb.rovin.be/family/S098-4thWayServices'>
+        <service id='S240-CCFFSubscriber' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S240-CCFFSubscriber'>
+            <desc>Fod Finance subscriber service</desc>
+        </service>
+        <service id='S238-DebtService' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S238-DebtService'>
+            <desc>Web service to send debt notifications to the FourthWay project</desc>
+        </service>
+        <service id='S239-TransactionService' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S239-TransactionService'>
+            <desc>Web service to send a notice to the FourthWay project</desc>
+        </service>
+        <service id='S241-FRNBSubscriber' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S241-FRNBSubscriber'>
+            <desc>FRNB subscriver service</desc>
+        </service>
+        <service id='S242-BCSSSubscriber' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S242-BCSSSubscriber'>
+            <desc>KSZ subscriber service</desc>
+        </service>
+        <service id='S099-DebtInfoProvider' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S099-DebtInfoProvider'>
+            <desc>Web service to send debt notifications to the FourthWay project</desc>
+        </service>
+        <service id='S266-ESUCECACSubscriber' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S266-ESUCECACSubscriber'>
+            <desc></desc>
+        </service>
+        <service id='S100-NoticeRequester' parent='S098-4thWayServices' uri='http://fsb.rovin.be/service/S100-NoticeRequester'>
+            <desc>Web service to send a notice to the FourthWay project</desc>
+        </service>
+    </family>
+    <family id='S135-EDRLServices' uri='http://fsb.rovin.be/family/S135-EDRLServices'>
+        <service id='S152-ActivityService' parent='S135-EDRLServices' uri='http://fsb.rovin.be/service/S152-ActivityService'>
+            <desc></desc>
+        </service>
+        <service id='S154-ProcedureService' parent='S135-EDRLServices' uri='http://fsb.rovin.be/service/S154-ProcedureService'>
+            <desc></desc>
+        </service>
+        <service id='S156-SectorService' parent='S135-EDRLServices' uri='http://fsb.rovin.be/service/S156-SectorService'>
+            <desc></desc>
+        </service>
+        <service id='S153-AddressService' parent='S135-EDRLServices' uri='http://fsb.rovin.be/service/S153-AddressService'>
+            <desc></desc>
+        </service>
+        <service id='S155-ProductService' parent='S135-EDRLServices' uri='http://fsb.rovin.be/service/S155-ProductService'>
+            <desc></desc>
+        </service>
+    </family>
+    <family id='S137-FSBUtilityServices' uri='http://fsb.rovin.be/family/S137-FSBUtilityServices'>
+        <service id='S138-EchoService' parent='S137-FSBUtilityServices' uri='http://fsb.rovin.be/service/S138-EchoService'>
+            <desc>FSB service om consumer en provider  connectietesten zonder WS-security mogelijk te maken</desc>
+        </service>
+        <service id='S243-SecuredEchoService' parent='S137-FSBUtilityServices' uri='http://fsb.rovin.be/service/S243-SecuredEchoService'>
+            <desc>FSB service om consumer en provider  connectietesten met WS-security mogelijk te maken</desc>
+        </service>
+    </family>
+    <family id='S139-eDepotServices' uri='http://fsb.rovin.be/family/S139-eDepotServices'>
+        <service id='S220-MoniteurEDepotCallbackService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S220-MoniteurEDepotCallbackService'>
+            <desc>Webservice for Staatsblad  to reply on eDepot messages (confirmation of publication of the Deed)</desc>
+        </service>
+        <service id='S140-MoniteurProxyService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S140-MoniteurProxyService'>
+            <desc>FSB service voor FRNB om ondernemingen te publiceren met als provider Staatsblad</desc>
+        </service>
+        <service id='S219-JusticeEDepotCallbackService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S219-JusticeEDepotCallbackService'>
+            <desc>Webservice for Justice to reply on eDepot messages (prevalidation of Deed OK and confirmation data Deed received)</desc>
+        </service>
+        <service id='S142-JusticeProxyService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S142-JusticeProxyService'>
+            <desc>FSB service voor FRNB om ondernemingen aan te maken met als provider FOD justitie en Staatsblad</desc>
+        </service>
+        <service id='S143-EDepotCreateService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S143-EDepotCreateService'>
+            <desc>FSB service voor FRNB om ondernemingen aan te maken met als providers KBO, FOD justitie en Staatsblad</desc>
+        </service>
+        <service id='S144-EDepotUpdateService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S144-EDepotUpdateService'>
+            <desc>FSB service voor FRNB om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad</desc>
+        </service>
+        <service id='S194-EvzwNotificationService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S194-EvzwNotificationService'>
+            <desc>FSB service voor Fod Justitie (eGriffie) om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad</desc>
+        </service>
+        <service id='S145-CredocNotificationService' parent='S139-eDepotServices' uri='http://fsb.rovin.be/service/S145-CredocNotificationService'>
+            <desc>FSB service voor FRNB om ondernemingen aan te passen en te publiceren met als providers KBO, FOD justitie en Staatsblad</desc>
+        </service>
+    </family>
+    <family id='S160-AuthorizationServices' uri='http://fsb.rovin.be/family/S160-AuthorizationServices'>
+        <service id='S231-AttributeAuthorityService' parent='S160-AuthorizationServices' uri='http://fsb.rovin.be/service/S231-AttributeAuthorityService'>
+            <desc>Service to consult eHealth attributes of a person or organisation</desc>
+        </service>
+        <service id='S232-AttributeService' parent='S160-AuthorizationServices' uri='http://fsb.rovin.be/service/S232-AttributeService'>
+            <desc>Service to consult IAM attributes of a person or organisation</desc>
+        </service>
+        <service id='S233-OrganizationPublicationService' parent='S160-AuthorizationServices' uri='http://fsb.rovin.be/service/S233-OrganizationPublicationService'>
+            <desc>Service to consult departments of public organisations</desc>
+        </service>
+        <service id='S160-SocialSecurityUserManagementService' parent='S160-AuthorizationServices' uri='http://fsb.rovin.be/service/S160-SocialSecurityUserManagementService'>
+            <desc>Webservice die de mogelijkheid geeft om rollen op te vragen bij de KSZ. Wordt bijvoorbeeld gebruikt om aan OCMW's toegang te verlenen tot de Digiflow applicatie</desc>
+        </service>
+        <service id='S224-FlemishRegionUserManagementService' parent='S160-AuthorizationServices' uri='http://fsb.rovin.be/service/S224-FlemishRegionUserManagementService'>
+            <desc>Flemisch Regional Usermangement Service gebruikt door FAS voor het opvragen van de rollen van de vlaamse ambtenaren.</desc>
+        </service>
+    </family>
+    <family id='S163-DebtServices' uri='http://fsb.rovin.be/family/S163-DebtServices'>
+        <service id='S179-AttestService' parent='S163-DebtServices' uri='http://fsb.rovin.be/service/S179-AttestService'>
+            <desc>Web service to obtain official attests from SPF Finance / FOD Financiën (Fiscal Attest and VAT Status Attest, BCE/KBO (Attest non-bankrupcy), ONSS/RSZ (Employer Contribution Balance Attest), NBB (Annual Account Attest)</desc>
+        </service>
+        <service id='S181-SocialDebtService' parent='S163-DebtServices' uri='http://fsb.rovin.be/service/S181-SocialDebtService'>
+            <desc>Web service to obtain official Social Debt Attest from RSZ/ONSS</desc>
+        </service>
+        <service id='S180-FiscalDebtService' parent='S163-DebtServices' uri='http://fsb.rovin.be/service/S180-FiscalDebtService'>
+            <desc>Web service to obtain official Fiscal Attest from SPF Finance / FOD Financiën.</desc>
+        </service>
+    </family>
+    <family id='S165-NationalBankServices' uri='http://fsb.rovin.be/family/S165-NationalBankServices'>
+        <service id='S188-BankAccountExtractsService' parent='S165-NationalBankServices' uri='http://fsb.rovin.be/service/S188-BankAccountExtractsService'>
+            <desc>Web service to retrieve references of the balance sheets of a Belgian company from the enterprise number.</desc>
+        </service>
+    </family>
+    <family id='S170-EurTransBelServices' uri='http://fsb.rovin.be/family/S170-EurTransBelServices'>
+        <service id='S136-NationalExecutionMeasureNotificationService' parent='S170-EurTransBelServices' uri='http://fsb.rovin.be/service/S136-NationalExecutionMeasureNotificationService'>
+            <desc></desc>
+        </service>
+    </family>
+    <family id='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/family/S184-MaritimeLocalizationServices'>
+        <service id='S244-LRITEndpointService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S244-LRITEndpointService'>
+            <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers.</desc>
+        </service>
+        <service id='S185-MIKPrivateService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S185-MIKPrivateService'>
+            <desc>Web service to retrieve new ships data and GPS location information from EMSA (European Maritime Safety Agency) only for MIK.</desc>
+        </service>
+        <service id='S186-MikPublicService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S186-MikPublicService'>
+            <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows consumers to manage their subscription by communicating with MIK or to request ad-hoc information.</desc>
+        </service>
+        <service id='S187-MIKResponseService' parent='S184-MaritimeLocalizationServices' uri='http://fsb.rovin.be/service/S187-MIKResponseService'>
+            <desc>Web service 'Maritiem Informatie Kruispunt / Carrefour Information Maritime' allows sending ship data and GPS location information by SPF Mobilité / FOD Mobiliteit to the MIK consumers.</desc>
+        </service>
+    </family>
+    <family id='S193-eHealthServices' uri='http://fsb.rovin.be/family/S193-eHealthServices'>
+        <service id='S150-CodageService' parent='S193-eHealthServices' uri='http://fsb.rovin.be/service/S150-CodageService'>
+            <desc>Web service from eHealth to encode medical forms.</desc>
+        </service>
+    </family>
+    <family id='S210-MappingServices' uri='http://fsb.rovin.be/family/S210-MappingServices'>
+        <service id='S211-CountryService' parent='S210-MappingServices' uri='http://fsb.rovin.be/service/S211-CountryService'>
+            <desc>Webservice for mapping CountryCodes , Nationalities and places (ISO, NIS)</desc>
+        </service>
+    </family>
+    <family id='S216-eInvoiceServices' uri='http://fsb.rovin.be/family/S216-eInvoiceServices'>
+        <service id='S217-CustomerService' parent='S216-eInvoiceServices' uri='http://fsb.rovin.be/service/S217-CustomerService'>
+            <desc>Webservice for Governement Organisations to confirm receipt of invoice supplier</desc>
+        </service>
+        <service id='S218-SupplierService' parent='S216-eInvoiceServices' uri='http://fsb.rovin.be/service/S218-SupplierService'>
+            <desc>Webservices for suppliers to sent invoice digitaly to government organisations</desc>
+        </service>
+    </family>
+    <family id='S227-CSAMServices' uri='http://fsb.rovin.be/family/S227-CSAMServices'>
+        <service id='S229-CapacityService' parent='S227-CSAMServices' uri='http://fsb.rovin.be/service/S229-CapacityService'>
+            <desc>Service to consult capacities of organisation or person for a chosen domain. Today only HealthCare Domain</desc>
+        </service>
+        <service id='S230-MandateService' parent='S227-CSAMServices' uri='http://fsb.rovin.be/service/S230-MandateService'>
+            <desc>Service to consult Mandate of organisation or person for a chosen domain. Today only HealthCare Domain</desc>
+        </service>
+        <service id='S183-SocialSecurityAccessManagmentService' parent='S227-CSAMServices' uri='http://fsb.rovin.be/service/S183-SocialSecurityAccessManagmentService'>
+            <desc>Web service which consults the User Management of ONSS/RSZ to retrieve information about  which organization is represented by a person or  who is representing an organization.</desc>
+        </service>
+    </family>
+    <family id='S245-TrafficClearingService' uri='http://fsb.rovin.be/family/S245-TrafficClearingService'>
+        <service id='S246-PTS_CBS2Mob' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S246-PTS_CBS2Mob'>
+            <desc>Webservices to send information from Belgian Ports to ISPS (Mobiliteit)</desc>
+        </service>
+        <service id='S247-PTS_Mob2CBS' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S247-PTS_Mob2CBS'>
+            <desc>Webservices to send clearance from ISPS to Belgian ports</desc>
+        </service>
+        <service id='S248-PTS_CBS2FedPol' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S248-PTS_CBS2FedPol'>
+            <desc>Webservices to send information from Belgian Ports to AquaTask (FedPol)</desc>
+        </service>
+        <service id='S249-PTS_FedPol2CBS' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S249-PTS_FedPol2CBS'>
+            <desc>Webservices to send clearance from AquaTask to Belgian Ports</desc>
+        </service>
+        <service id='S250-PTS_CBS2VVVL' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S250-PTS_CBS2VVVL'>
+            <desc>Webservices to send information from Belgian Ports to Saniport</desc>
+        </service>
+        <service id='S251-PTS_VVVL2CBS' parent='S245-TrafficClearingService' uri='http://fsb.rovin.be/service/S251-PTS_VVVL2CBS'>
+            <desc>Webservices to send clearance from Saniport to Belgian Ports</desc>
+        </service>
+    </family>
+    <family id='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/family/S252-EmployeeSelfServices'>
+        <service id='S253-PTS_AllowParticipation' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S253-PTS_AllowParticipation'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S254-PTS_Book' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S254-PTS_Book'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S255-PTS_GetOrgList' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S255-PTS_GetOrgList'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S256PTS_GetPDetailsRRN' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S256PTS_GetPDetailsRRN'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S257-PTS_GetSessions' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S257-PTS_GetSessions'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S258-PTS_KeepMeInformed' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S258-PTS_KeepMeInformed'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+        <service id='S259-PTS_SetPDetails' parent='S252-EmployeeSelfServices' uri='http://fsb.rovin.be/service/S259-PTS_SetPDetails'>
+            <desc>Webservice to consult, register and follow up courses of OFO-IFA</desc>
+        </service>
+    </family>
+    <family id='S260-JudicialServices' uri='http://fsb.rovin.be/family/S260-JudicialServices'>
+        <service id='S262-ePVSocSecDocumentService' parent='S260-JudicialServices' uri='http://fsb.rovin.be/service/S262-ePVSocSecDocumentService'>
+            <desc>Webservice voor het opvragen van de ePV 's van de sociale zekerheid</desc>
+        </service>
+        <service id='S261-CriminalRecordService' parent='S260-JudicialServices' uri='http://fsb.rovin.be/service/S261-CriminalRecordService'>
+            <desc>Webservice voor het consulteren van het Strafregister</desc>
+        </service>
+    </family>
+    <family id='S263-SocialSecurityServices' uri='http://fsb.rovin.be/family/S263-SocialSecurityServices'>
+        <service id='S264-ARZAService' parent='S263-SocialSecurityServices' uri='http://fsb.rovin.be/service/S264-ARZAService'>
+            <desc>Webservice voor het opvragen van de sociale bijdragen van een betrokken zelfstandige</desc>
+        </service>
+    </family>
+    <family id='S267-VDIServices' uri='http://fsb.rovin.be/family/S267-VDIServices'>
+        <service id='S268-LEDService' parent='S267-VDIServices' uri='http://fsb.rovin.be/service/S268-LEDService'>
+            <desc>Webservice voor consulteren van de Vlaamse Leer en Ervaringen Database</desc>
+        </service>
+    </family>
+    <family id='S269-MobilityServices' uri='http://fsb.rovin.be/family/S269-MobilityServices'>
+        <service id='S270-CarPassService' parent='S269-MobilityServices' uri='http://fsb.rovin.be/service/S270-CarPassService'>
+            <desc>Ophalen gegevens kilometerstand bij Car-Pass vzw</desc>
+        </service>
+        <service id='S271-CarPassEUService' parent='S269-MobilityServices' uri='http://fsb.rovin.be/service/S271-CarPassEUService'>
+            <desc>Ophalen gegevens kilometerstand bij Europese partnerlanden (via FOD Mobiliteit)</desc>
+        </service>
+        <service id='VehicleRegistrationService' parent='S269-MobilityServices' uri='http://fsb.rovin.be/service/VehicleRegistrationService'>
+            <desc>Consultation titular of vehicle</desc>
+        </service>
+    </family>
+</fsb>
