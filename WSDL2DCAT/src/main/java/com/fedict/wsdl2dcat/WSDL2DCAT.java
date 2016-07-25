@@ -70,8 +70,8 @@ public class WSDL2DCAT {
 
     /**
      * Used for custom conversion
-     * @param converter the converter to use
-     * @param sc the scanner to use
+     * @param converter the used converter
+     * @param sc the scanner to get/print feedback from/to the user 
      */
     private static void customConvert(Converter converter, Scanner sc) {
         System.out.println("Input folder (default: files/Input/WSDL):");
@@ -92,8 +92,8 @@ public class WSDL2DCAT {
 
     /**
      * Used for changing location of the files
-     * @param converter the converter to use
-     * @param sc the scanner to use
+     * @param converter the wsdl2dcat-converter 
+     * @param sc the scanner to get/print feedback from/to the user
      */
     private static void changeLocationFilesFolder(Converter converter, Scanner sc) {
         System.out.println("filesfolder=Files folder (default: files):");
