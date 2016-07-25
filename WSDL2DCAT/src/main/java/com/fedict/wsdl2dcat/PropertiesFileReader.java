@@ -21,7 +21,7 @@ public class PropertiesFileReader {
 
     /**
      * Reads properties of a specified file
-     * @param converter the converter to use
+     * @param converter the wsdl2dcat converter to use
      * @param filename the filename of the file 
      * @return true if properties are found, false otherwise
      */
@@ -37,7 +37,7 @@ public class PropertiesFileReader {
             }
             fileInputStream = new FileInputStream(file);
             //load a properties file from class path, inside static method
-            prop.load(new FileInputStream(file));
+            prop.load(fileInputStream);
 
             //get the property value and add it to the converter
             String filesdirLocation = prop.getProperty("filesdirLocation", "");

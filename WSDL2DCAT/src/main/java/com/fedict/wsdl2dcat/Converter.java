@@ -74,6 +74,7 @@ public class Converter {
 
     /**
      * (overload) Converts files to DCAT using default settings
+     *
      * @param withConfigFile true if a configuration file needs to be used
      */
     public void convertToDCAT(boolean withConfigFile) {
@@ -94,7 +95,6 @@ public class Converter {
     public void convertToDCAT(boolean withConfigFile, String inputDir, String fileType, String outputDir, String stylesheetDir, String stylesheetFileName) {
         OutputStream DCATfile = null;
         try {
-            String[] extensions = {fileType};
             /**
              * *
              * Checks if the files folder is a directory
@@ -125,7 +125,7 @@ public class Converter {
             if (!inputDirectory.isDirectory()) {
                 throw new IllegalArgumentException("The input directory " + inputDir + " is no directory");
             }
-            Collection<File> files = FileUtils.listFiles(inputDirectory, extensions, true);
+            Collection<File> files = FileUtils.listFiles(inputDirectory, new String[]{fileType}, true);
             int count = files.size();
             if (count == 0) {
                 throw new IllegalArgumentException("No " + fileType + " file found in directory: " + inputDir);
@@ -185,7 +185,7 @@ public class Converter {
 
     /**
      * Method used for converting families to DCAT using provided settings
-     * 
+     *
      * @param withConfigFile true if a configuration file is used
      * @param inputDir directory from where the files will be read
      * @param fileType file type of the converted files
@@ -201,7 +201,7 @@ public class Converter {
     /**
      * Creates directory if the directory doesn't exist
      *
-     * @param directoryName Directory name to check
+     * @param directoryName name of the directory to check
      */
     private static void createDirectoryIfNeeded(String directoryName) {
         Path path = Paths.get(directoryName);
@@ -218,23 +218,6 @@ public class Converter {
                         .getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    /**
-     * Counts the amount of files according to given type
-     *
-     * @param files Files to work with
-     * @param type The type of files
-     * @return Amount of files according to type
-     */
-    private int getCountOfType(File[] files, String type) {
-        int count = 0;
-        for (File file : files) {
-            if (file.isFile() && getExtension(file).equals(type)) {
-                count++;
-            }
-        }
-        return count;
     }
 
     /**
@@ -264,6 +247,7 @@ public class Converter {
 
     /**
      * Getter method for output directory
+     *
      * @return the output directory where the files are located
      */
     public String getOutputDir() {
@@ -272,6 +256,7 @@ public class Converter {
 
     /**
      * Setter method for output directory
+     *
      * @param outputDir the directory that should be used for output
      */
     public void setOutputDir(String outputDir) {
@@ -282,6 +267,7 @@ public class Converter {
 
     /**
      * Getter method for file type
+     *
      * @return the file type
      */
     public String getFileType() {
@@ -290,6 +276,7 @@ public class Converter {
 
     /**
      * Setter method for file type
+     *
      * @param fileType the file type
      */
     public void setFileType(String fileType) {
@@ -303,6 +290,7 @@ public class Converter {
 
     /**
      * Getter method for input directory where files are located
+     *
      * @return the input directory
      */
     public String getInputDir() {
@@ -310,8 +298,9 @@ public class Converter {
     }
 
     /**
-     * Setter method for input directory for changing 
-     * the location for reading files
+     * Setter method for input directory for changing the location for reading
+     * files
+     *
      * @param inputDir the input directory
      */
     public void setInputDir(String inputDir) {
@@ -323,6 +312,7 @@ public class Converter {
 
     /**
      * Getter method for input directory of xsd files
+     *
      * @return the input directory
      */
     public String getInputDirXsd() {
@@ -331,6 +321,7 @@ public class Converter {
 
     /**
      * Setter method for input directory of xsd files
+     *
      * @param inputDirXsd the input directory
      */
     public void setInputDirXsd(String inputDirXsd) {
@@ -339,6 +330,7 @@ public class Converter {
 
     /**
      * Getter method for file type that's used by xsd
+     *
      * @return the file type
      */
     public String getFileTypeXsd() {
@@ -347,6 +339,7 @@ public class Converter {
 
     /**
      * Setter method for setting the file type used by xsd
+     *
      * @param fileTypeXsd the file type
      */
     public void setFileTypeXsd(String fileTypeXsd) {
@@ -355,6 +348,7 @@ public class Converter {
 
     /**
      * Setter method for changing the root path for input/output/...
+     *
      * @param currentPath the path to use
      */
     public void setCurrentPath(String currentPath) {
@@ -370,6 +364,7 @@ public class Converter {
 
     /**
      * Getter method for directory of stylesheets
+     *
      * @return the directory of stylesheets
      */
     public String getStylesheetDir() {
@@ -378,6 +373,7 @@ public class Converter {
 
     /**
      * Setter method for directory of stylesheets
+     *
      * @param stylesheetDir the directory of stylesheets
      */
     public void setStylesheetDir(String stylesheetDir) {
