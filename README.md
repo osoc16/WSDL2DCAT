@@ -7,5 +7,5 @@ If you're interested in using the web-interface for easily viewing DCAT files, p
 the repo https://github.com/osoc16/webinterface-fedict
 the interface http://wsdl2dcat.be/ 
 
-Want to reference less techy savvy people to out project, this is the link to our github page: https://osoc16.github.io/webinterface-fedict/ .
+Want to reference less techy savvy people to our project, this is the link to our github page: https://osoc16.github.io/webinterface-fedict/ .
 
