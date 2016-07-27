@@ -4,17 +4,20 @@
 The config file in the directory WSDL2DCAT can be used to predefine the input, output and transformation directory. When the properties has no value or the properties file doesn't exist the interactive mode will start.
 
 This is an example of a file config_example.properties (you can find it in the same directory):
+
 ![config file example](https://s31.postimg.org/hnr4v5naz/example_config.png)
 
 When the filedir location in the properties file has value the other values will be ignored. The input, output, and transformation child directories of the filedir will be used. 
 
 This is an example of a config file with filedirLocation:
+
 ![config file example](https://s31.postimg.org/6uj1abhkb/filedir_example.png)
 
 When there went something wrong the logger will log it as explained on the exception page and the exit code will be 1.
 
 ## Interactive mode
-If you start the application you'll be welcomed by oldskool CMD UI.   
+If you start the application you'll be welcomed by oldskool CMD UI. 
+
 ![BAT CMD example](https://s31.postimg.org/jt9wlmx23/cmd_begin.png)
 
 
