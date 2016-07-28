@@ -115,7 +115,7 @@ public class Converter {
              * Checks if the output file is a directory
              */
             if (!new File(stylesheetDir).isDirectory()) {
-                throw new IllegalArgumentException("The stylesheet directory " + outputDir + " is not a directory");
+                throw new IllegalArgumentException("The stylesheet directory " + stylesheetDir + " is not a directory");
             }
             /**
              * *
@@ -212,7 +212,6 @@ public class Converter {
             Logger.getLogger(WSDL2DCAT.class.getName()).log(Level.SEVERE, "Creating directory: {0}", directoryName);
             try {
                 Files.createDirectories(path);
-
             } catch (IOException ex) {
                 Logger.getLogger(Converter.class
                         .getName()).log(Level.SEVERE, null, ex);
@@ -282,8 +281,6 @@ public class Converter {
     public void setFileType(String fileType) {
         if (!fileType.equals("")) {
             this.fileType = fileType;
-        }
-        if (!fileTypeXsd.equals("")) {
             this.fileTypeXsd = fileType;
         }
     }
@@ -343,7 +340,9 @@ public class Converter {
      * @param fileTypeXsd the file type
      */
     public void setFileTypeXsd(String fileTypeXsd) {
-        this.fileTypeXsd = fileTypeXsd;
+        if (!fileTypeXsd.equals("")) {
+            this.fileTypeXsd = fileTypeXsd;
+        }
     }
 
     /**
