@@ -79,8 +79,8 @@ public class Converter {
      */
     public void convertToDCAT(boolean withConfigFile) {
         convertToDCAT(withConfigFile, this.inputDir, this.fileType, this.outputDir, this.stylesheetDir, this.fileType);
-        if(fileTypeXsd != fileType ){
-                    convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileTypeXsd);
+        if (!(fileTypeXsd.equalsIgnoreCase(fileType)&& inputDirXsd.equalsIgnoreCase(inputDir))) {
+            convertToDCAT(withConfigFile, this.inputDirXsd, this.fileTypeXsd, this.outputDir, this.stylesheetDir, this.fileTypeXsd);
 
         }
     }

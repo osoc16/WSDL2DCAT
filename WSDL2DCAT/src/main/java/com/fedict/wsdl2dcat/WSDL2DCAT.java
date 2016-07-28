@@ -30,8 +30,7 @@ public class WSDL2DCAT {
      */
     public static void main(String[] args) {
         Converter converter = new Converter();
-        PropertiesFileReader propertiesFileReader = new PropertiesFileReader();
-        boolean hasPropertiesFile = propertiesFileReader.readPropertiesFile(converter, "config.properties");
+        boolean hasPropertiesFile =  new PropertiesFileReader().readPropertiesFile(converter, "config.properties");
         if (hasPropertiesFile) {
             converter.convertToDCAT(true);
             converter.convertFamiliesToDCAT(true);
@@ -70,7 +69,7 @@ public class WSDL2DCAT {
 
     /**
      * Used for custom conversion
-     * @param converter the used converter
+     * @param converter the wsdl2dcat converter
      * @param sc the scanner to get/print feedback from/to the user 
      */
     private static void customConvert(Converter converter, Scanner sc) {

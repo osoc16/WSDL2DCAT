@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class PropertiesFileReader {
 
     /**
-     * Reads properties of a specified file
+     * Reads properties of the config file sets the properties on the converter if the config file exists and has properties
      * @param converter the wsdl2dcat converter to use
      * @param filename the filename of the file 
      * @return true if properties are found, false otherwise
